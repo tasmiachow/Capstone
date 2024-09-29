@@ -1,3 +1,4 @@
+// old code here
 const videoElement = document.getElementById('videoElement');
 
 // Request permission to access the user's camera
@@ -15,3 +16,5 @@ navigator.mediaDevices.getUserMedia({ video: true })
             console.error('Error accessing camera: ', error);
         }
     });
+
+
