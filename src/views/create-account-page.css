@@ -1,0 +1,387 @@
+.create-account-page-container10 {
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  background-color: #ABD2FA;
+}
+.create-account-page-navbar {
+  width: 100%;
+  height: 123px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #FFFFFF;
+}
+.create-account-page-container11 {
+  flex: 0 0 auto;
+  width: 41px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  border-color: #ffffff;
+  border-style: dashed;
+  border-width: 0px;
+  justify-content: center;
+}
+.create-account-page-container12 {
+  flex: 0 0 auto;
+  width: 524px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  border-color: var(--dl-color-theme-secondary1);
+  border-style: solid;
+  border-width: 0px;
+  flex-direction: column;
+  justify-content: center;
+}
+.create-account-page-hands2wordslogo1 {
+  width: 421px;
+  height: 421px;
+  align-self: flex-start;
+  margin-top: 5%;
+}
+.create-account-page-container13 {
+  flex: 0 0 auto;
+  width: 261px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.create-account-page-text10 {
+  color: rgba(9, 21, 64, 1);
+  height: auto;
+  font-size: 48px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Manrope;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.create-account-page-container14 {
+  flex: 0 0 auto;
+  width: 224px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.create-account-page-text12 {
+  color: rgba(9, 21, 64, 1);
+  height: auto;
+  font-size: 48px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Manrope;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.create-account-page-container15 {
+  flex: 0 0 auto;
+  width: 261px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.create-account-page-text14 {
+  color: rgba(9, 21, 64, 1);
+  height: auto;
+  font-size: 48px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Manrope;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.create-account-page-container16 {
+  width: 100%;
+  height: 1179px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ABD2FA;
+}
+.create-account-page-container17 {
+  width: 100%;
+  height: 1117px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.create-account-page-container18 {
+  width: 100%;
+  height: 122px;
+  display: flex;
+  align-items: flex-start;
+}
+.create-account-page-container19 {
+  flex: 0 0 auto;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+}
+.create-account-page-text16 {
+  left: 0px;
+  color: rgba(9, 21, 64, 1);
+  right: 0px;
+  bottom: 17px;
+  height: auto;
+  margin: auto;
+  position: absolute;
+  font-size: 64px;
+  align-self: center;
+  font-style: Regular;
+  text-align: center;
+  font-family: Manrope;
+  font-weight: 400;
+  line-height: normal;
+  border-color: var(--dl-color-theme-neutral-dark);
+  border-width: 0px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.create-account-page-container20 {
+  width: 100%;
+  height: 174px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  border-color: rgba(120, 120, 120, 0.4);
+  border-style: dashed;
+  border-width: 0px;
+}
+.create-account-page-rectangle21 {
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: 1129px;
+  height: 102px;
+  margin: auto;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  border-radius: 10px;
+  background-size: cover;
+  justify-content: center;
+  background-image: url("/external/rectangle2627-9j96-200h.png");
+  background-position: center;
+}
+.create-account-page-text17 {
+  left: 0px;
+  color: rgba(0, 0, 0, 0.5099999904632568);
+  bottom: 18px;
+  height: auto;
+  position: absolute;
+  font-size: 48px;
+  align-self: center;
+  font-style: Regular;
+  text-align: left;
+  font-family: Manrope;
+  font-weight: 400;
+  line-height: normal;
+  margin-left: 10%;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.create-account-page-container21 {
+  width: 100%;
+  height: 174px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  border-color: rgba(120, 120, 120, 0.4);
+  border-style: dashed;
+  border-width: 0px;
+}
+.create-account-page-rectangle22 {
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: 1129px;
+  height: 102px;
+  margin: auto;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  border-radius: 10px;
+  background-size: cover;
+  justify-content: center;
+  background-image: url("/external/rectangle2627-9j96-200h.png");
+  background-position: center;
+}
+.create-account-page-text19 {
+  left: 0px;
+  color: rgba(0, 0, 0, 0.51);
+  bottom: 18px;
+  position: absolute;
+  font-size: 48px;
+  font-family: "Manrope";
+  font-weight: 400;
+  line-height: normal;
+  margin-left: 10%;
+  text-decoration: none;
+}
+.create-account-page-container22 {
+  width: 100%;
+  height: 174px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  border-color: rgba(120, 120, 120, 0.4);
+  border-style: dashed;
+  border-width: 0px;
+}
+.create-account-page-rectangle23 {
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: 1129px;
+  height: 102px;
+  margin: auto;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  border-radius: 10px;
+  background-size: cover;
+  justify-content: center;
+  background-image: url("/external/rectangle2627-9j96-200h.png");
+  background-position: center;
+}
+.create-account-page-text20 {
+  left: 0px;
+  color: rgba(0, 0, 0, 0.51);
+  bottom: 18px;
+  position: absolute;
+  font-size: 48px;
+  font-family: "Manrope";
+  font-weight: 400;
+  line-height: normal;
+  margin-left: 10%;
+  text-decoration: none;
+}
+.create-account-page-container23 {
+  width: 100%;
+  height: 174px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  border-color: rgba(120, 120, 120, 0.4);
+  border-style: dashed;
+  border-width: 0px;
+}
+.create-account-page-rectangle24 {
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: 1129px;
+  height: 102px;
+  margin: auto;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  border-radius: 10px;
+  background-size: cover;
+  justify-content: center;
+  background-image: url("/external/rectangle2627-9j96-200h.png");
+  background-position: center;
+}
+.create-account-page-text23 {
+  left: 0px;
+  color: rgba(0, 0, 0, 0.51);
+  bottom: 18px;
+  height: auto;
+  position: absolute;
+  font-size: 48px;
+  align-self: center;
+  font-style: Regular;
+  text-align: left;
+  font-family: Manrope;
+  font-weight: 400;
+  line-height: normal;
+  margin-left: 10%;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.create-account-page-container24 {
+  width: 100%;
+  height: 282px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  border-color: rgba(120, 120, 120, 0.4);
+  border-style: dashed;
+  border-width: 0px;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.create-account-page-rectangle8 {
+  width: 318px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  border-radius: 55px;
+  justify-content: center;
+  background-color: #1B2CC1;
+}
+.create-account-page-text26 {
+  color: #ffffff;
+  height: auto;
+  font-size: 48px;
+  font-style: normal;
+  text-align: center;
+  font-family: Manrope;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.create-account-page-text28 {
+  color: rgb(9, 21, 64);
+  height: auto;
+  font-size: 44px;
+  font-style: normal;
+  margin-top: 2%;
+  text-align: center;
+  font-family: Manrope;
+  font-weight: 500;
+  line-height: normal;
+  font-stretch: normal;
+  margin-bottom: 1%;
+  text-decoration: none;
+}
+.create-account-page-text29 {
+  color: #091540;
+}
+.create-account-page-text30 {
+  color: #000000;
+}
+.create-account-page-text31 {
+  color: #1b2cc1;
+}
+.create-account-page-text32 {
+  color: rgb(27, 44, 193);
+  font-size: 40px;
+  font-style: normal;
+  font-family: "Manrope";
+  font-weight: 500;
+  line-height: normal;
+  text-decoration: none;
+}
