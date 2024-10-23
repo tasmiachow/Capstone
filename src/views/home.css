@@ -1,0 +1,274 @@
+.home-container10 {
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+.home-container11 {
+  width: 100%;
+  height: 123px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #FFFFFF;
+}
+.home-container12 {
+  flex: 0 0 auto;
+  width: 41px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  border-color: #ffffff;
+  border-style: dashed;
+  border-width: 0px;
+  justify-content: center;
+}
+.home-container13 {
+  flex: 0 0 auto;
+  width: 524px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  border-color: var(--dl-color-theme-secondary1);
+  border-style: solid;
+  border-width: 0px;
+  flex-direction: column;
+  justify-content: center;
+}
+.home-hands2wordslogo1 {
+  width: 421px;
+  height: 421px;
+  align-self: flex-start;
+  margin-top: 5%;
+}
+.home-container14 {
+  flex: 0 0 auto;
+  width: 261px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.home-text10 {
+  color: rgba(9, 21, 64, 1);
+  height: auto;
+  font-size: 48px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Manrope;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.home-container15 {
+  flex: 0 0 auto;
+  width: 224px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.home-text12 {
+  color: rgba(9, 21, 64, 1);
+  height: auto;
+  font-size: 48px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Manrope;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.home-container16 {
+  flex: 0 0 auto;
+  width: 261px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.home-text14 {
+  color: rgba(9, 21, 64, 1);
+  height: auto;
+  font-size: 48px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Manrope;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.home-container17 {
+  width: 100%;
+  height: 1179px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: #ABD2FA;
+}
+.home-container18 {
+  flex: 0 0 auto;
+  width: 100%;
+  height: 806px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+}
+.home-image2 {
+  top: 0px;
+  right: var(--dl-space-space-sixunits);
+  width: 533px;
+  height: 594px;
+  position: absolute;
+}
+.home-container19 {
+  width: 878px;
+  height: 520px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.home-text16 {
+  color: rgba(9, 21, 64, 1);
+  width: 585px;
+  height: auto;
+  font-size: 64px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Manrope;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.home-text18 {
+  color: rgb(61, 81, 140);
+  width: 691px;
+  height: auto;
+  padding: var(--dl-space-space-unit);
+  font-size: 36px;
+  font-style: Regular;
+  text-align: right;
+  font-family: Manrope;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.home-container20 {
+  flex: 0 0 auto;
+  width: 926px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.home-startbutton {
+  width: 327px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  margin-left: 120px;
+  border-radius: 55px;
+  background-size: cover;
+  justify-content: center;
+  background-image: url("/external/startbutton1314-wq4s-200h.png");
+  background-position: center;
+}
+.home-text22 {
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  font-size: 36px;
+  font-style: ExtraBold;
+  text-align: left;
+  font-family: Manrope;
+  font-weight: 800;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.home-guestbutton {
+  width: 437px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  margin-left: var(--dl-space-space-fiveunits);
+  border-color: rgba(27, 44, 193, 1);
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 55px;
+  background-size: cover;
+  justify-content: center;
+  background-image: url("/external/guestbutton1316-mvc8-500w.png");
+  background-position: center;
+}
+.home-text24 {
+  color: rgba(9, 21, 64, 1);
+  height: auto;
+  font-size: 36px;
+  font-style: Bold;
+  text-align: left;
+  font-family: Manrope;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.home-container21 {
+  top: 0px;
+  flex: 0 0 auto;
+  left: 0px;
+  right: 0px;
+  width: 517px;
+  height: 224px;
+  margin: auto;
+  display: flex;
+  position: absolute;
+  box-shadow: 5px 5px 150px 0px #ffffff;
+  align-items: center;
+  border-radius: var(--dl-radius-radius-round);
+  flex-direction: column;
+  justify-content: center;
+}
+.home-hands2words {
+  width: 452px;
+  height: 109px;
+}
+.home-text26 {
+  color: rgb(61, 81, 140);
+  font-size: 36px;
+  align-self: flex-end;
+  font-style: normal;
+  text-align: justify;
+  font-family: "Manrope";
+  font-weight: 400;
+  line-height: 32px;
+  text-decoration: none;
+}
+.home-text27 {
+  color: rgba(61, 81, 140, 1);
+  width: 1045px;
+  height: auto;
+  font-size: 36px;
+  align-self: flex-start;
+  font-style: Regular;
+  text-align: left;
+  font-family: Manrope;
+  font-weight: 400;
+  line-height: normal;
+  margin-left: 120px;
+  font-stretch: normal;
+  text-decoration: none;
+}
