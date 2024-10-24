@@ -8,8 +8,8 @@ const About = (props) => {
   return (
     <div className="about-container10">
       <Helmet>
-        <title>About - Homepage convert</title>
-        <meta property="og:title" content="About - Homepage convert" />
+        <title>About - Hands2Words</title>
+        <meta property="og:title" content="About - Hands2Words" />
       </Helmet>
       <div className="about-container11">
         <div className="about-container12"></div>
