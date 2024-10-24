@@ -1,3 +1,6 @@
+body{
+  background-color: #ABD2FA
+}
 .login-page-container10 {
   width: 100%;
   display: flex;
@@ -8,7 +11,7 @@
 }
 .login-page-navbar {
   width: 100%;
-  height: 123px;
+  height: 10vh;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -16,36 +19,28 @@
 }
 .login-page-container11 {
   flex: 0 0 auto;
-  width: 41px;
-  height: 100px;
+  width: 5%;
   display: flex;
   align-items: center;
-  border-color: #ffffff;
-  border-style: dashed;
-  border-width: 0px;
   justify-content: center;
 }
 .login-page-container12 {
   flex: 0 0 auto;
-  width: 524px;
+  width: 42vw;
   height: 100px;
   display: flex;
   align-items: center;
-  border-color: var(--dl-color-theme-secondary1);
-  border-style: solid;
-  border-width: 0px;
   flex-direction: column;
   justify-content: center;
 }
 .login-page-hands2wordslogo1 {
-  width: 421px;
-  height: 421px;
+  width: 70%;
   align-self: flex-start;
   margin-top: 5%;
 }
 .login-page-container13 {
   flex: 0 0 auto;
-  width: 261px;
+  width: 15vw;
   height: 100px;
   display: flex;
   align-items: center;
@@ -55,7 +50,7 @@
 .login-page-text10 {
   color: rgba(9, 21, 64, 1);
   height: auto;
-  font-size: 48px;
+  font-size: 3vw;
   font-style: Regular;
   text-align: left;
   font-family: Manrope;
@@ -66,7 +61,7 @@
 }
 .login-page-container14 {
   flex: 0 0 auto;
-  width: 224px;
+  width: 15vw;
   height: 100px;
   display: flex;
   align-items: center;
@@ -76,7 +71,7 @@
 .login-page-text12 {
   color: rgba(9, 21, 64, 1);
   height: auto;
-  font-size: 48px;
+  font-size: 3vw;
   font-style: Regular;
   text-align: left;
   font-family: Manrope;
@@ -87,7 +82,7 @@
 }
 .login-page-container15 {
   flex: 0 0 auto;
-  width: 261px;
+  width: 15vw;
   height: 100px;
   display: flex;
   align-items: center;
@@ -97,7 +92,7 @@
 .login-page-text14 {
   color: rgba(9, 21, 64, 1);
   height: auto;
-  font-size: 48px;
+  font-size: 3vw;
   font-style: Regular;
   text-align: left;
   font-family: Manrope;
@@ -108,22 +103,20 @@
 }
 .login-page-container16 {
   width: 100%;
-  height: 1179px;
+  height: 100vh;
   display: flex;
   position: relative;
   flex-direction: column;
 }
 .login-page-container17 {
-  width: 200px;
-  border: 2px dashed rgba(120, 120, 120, 0.4);
-  height: 3px;
+  width: 13vw;
   display: flex;
   align-self: flex-end;
   align-items: flex-start;
   flex-direction: column;
 }
 .login-page-container18 {
-  top: 3px;
+  top: 5%;
   right: 0px;
   width: 50%;
   height: 100%;
@@ -132,14 +125,11 @@
   position: absolute;
   align-self: flex-end;
   align-items: flex-start;
-  border-color: rgba(120, 120, 120, 0.4);
-  border-style: dashed;
-  border-width: 0px;
   flex-direction: column;
 }
 .login-page-container19 {
-  width: 906px;
-  height: 433px;
+  width: 60vw;
+  height: 25vh;
   display: flex;
   align-self: center;
   align-items: center;
@@ -147,13 +137,10 @@
   justify-content: flex-start;
 }
 .login-page-thumbuminremovebgpreview1 {
-  width: 559px;
-  height: 230px;
+  width: 37vw;
+  height: 50vh;
   display: flex;
   align-self: center;
-  border-color: rgba(120, 120, 120, 0.4);
-  border-style: dashed;
-  border-width: 0px;
   background-size: cover;
   justify-content: center;
   background-image: url("/external/thumbuminremovebgpreview1410-sx6-600w.png");
@@ -161,48 +148,41 @@
 }
 .login-page-text16 {
   color: rgba(9, 21, 64, 1);
-  width: 626px;
+  width: 42vw;
   height: auto;
-  font-size: 56px;
+  font-size: 2.5vw;
   font-style: Regular;
-  margin-top: 10%;
   text-align: center;
   font-family: Manrope;
   font-weight: 400;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
 }
 .login-page-container20 {
   width: 100%;
-  height: 188px;
+  height: 15vh;
   display: flex;
   position: relative;
   align-self: center;
   align-items: flex-start;
-  border-color: rgba(120, 120, 120, 0.4);
-  border-style: dashed;
-  border-width: 0px;
   flex-direction: row;
   justify-content: flex-start;
 }
 .login-page-rectangle21 {
-  top: 95px;
+  top: 12vh;
   left: 5%;
   right: 5%;
-  width: 789px;
-  height: 83px;
+  width: 40vw;
+  height: 8vh;
   margin: auto;
   position: absolute;
-  border-radius: 10px;
+  border-radius: 15rem;
 }
 .login-page-text18 {
   color: rgba(9, 21, 64, 1);
   height: auto;
-  font-size: 36px;
+  font-size: 2vw;
   align-self: flex-start;
   font-style: normal;
-  margin-top: 4%;
+  margin-top: 5%;
   text-align: center;
   font-family: Manrope;
   font-weight: 500;
@@ -213,34 +193,31 @@
 }
 .login-page-container21 {
   width: 100%;
-  height: 238px;
+  height: 20vh;
   display: flex;
   position: relative;
   align-self: center;
   align-items: flex-start;
-  border-color: rgba(120, 120, 120, 0.4);
-  border-style: dashed;
-  border-width: 0px;
   flex-direction: row;
   justify-content: flex-start;
 }
 .login-page-rectangle22 {
-  top: 95px;
+  top: 12vh;
   left: 5%;
   right: 5%;
-  width: 789px;
-  height: 83px;
+  width: 40vw;
+  height: 8vh;
   margin: auto;
   position: absolute;
-  border-radius: 10px;
+  border-radius: 15rem;
 }
 .login-page-text20 {
   color: rgb(9, 21, 64);
   height: auto;
-  font-size: 36px;
+  font-size: 2vw;
   align-self: flex-start;
   font-style: normal;
-  margin-top: 4%;
+  margin-top: 5%;
   text-align: center;
   font-family: Manrope;
   font-weight: 500;
@@ -252,7 +229,7 @@
 .login-page-text24 {
   color: rgba(27, 44, 193, 1);
   height: auto;
-  font-size: 24px;
+  font-size: 1vw;
   font-style: normal;
   margin-top: 20%;
   text-align: right;
@@ -267,22 +244,20 @@
 .login-page-container22 {
   flex: 0 0 auto;
   width: 100%;
-  height: 324px;
+  height: 40vh;
   display: flex;
   align-self: center;
   align-items: flex-start;
-  border-color: rgba(120, 120, 120, 0.4);
-  border-style: dashed;
-  border-width: 0px;
   flex-direction: column;
 }
 .login-page-rectangle8 {
-  width: 264px;
-  height: 70px;
+  margin-top: 5%;
+  width: 10vw;
+  height: 9vh;
   display: flex;
   align-self: center;
   align-items: center;
-  border-radius: 55px;
+  border-radius: 15rem;
   background-size: cover;
   justify-content: center;
   background-image: url("/external/rectangle8232-nke-200h.png");
@@ -290,7 +265,7 @@
 }
 .login-page-text26 {
   color: rgb(0, 0, 0);
-  font-size: 36px;
+  font-size: 2vw;
   font-family: "Manrope";
   font-weight: 700;
   line-height: normal;
@@ -298,15 +273,15 @@
 }
 .login-page-container23 {
   flex: 0 0 auto;
-  width: 609px;
-  height: 73px;
+  width: 41vw;
+  height: 9vh;
   display: flex;
   align-self: center;
   flex-direction: column;
 }
 .login-page-text27 {
   color: rgb(0, 0, 0);
-  font-size: 24px;
+  font-size: 2vw;
   align-self: center;
   font-style: normal;
   margin-top: 4%;
@@ -320,9 +295,9 @@
 }
 .login-page-text30 {
   color: rgba(27, 44, 193, 1);
-  width: 171px;
+  width: 11.4vw;
   height: auto;
-  font-size: 24px;
+  font-size: 2vw;
   align-self: center;
   font-style: normal;
   text-align: center;
@@ -338,28 +313,25 @@
   display: flex;
   position: relative;
   align-items: flex-end;
-  border-color: #ffffff;
-  border-style: dashed;
-  border-width: 0px;
   flex-direction: row;
   justify-content: center;
   background-color: #ffffff;
 }
 .login-page-hands1 {
-  top: 0px;
+  top: -13%;
   left: 0px;
   right: 0px;
-  width: 547px;
-  height: 519px;
+  width: 28vw;
+  height: 48vh;
   margin: auto;
   position: absolute;
   align-self: flex-start;
 }
 .login-page-giphy21 {
-  top: 180px;
-  left: 228px;
-  width: 514px;
-  height: 554px;
+  top: 5vh;
+  left: 12vw;
+  width: 24vw;
+  height: 48vh;
   margin: auto;
   position: absolute;
 }
@@ -367,7 +339,7 @@
   fill: #3D518C;
   color: #3D518C;
   height: auto;
-  font-size: 48px;
+  font-size: 3vw;
   font-style: normal;
   text-align: center;
   font-family: Manrope;

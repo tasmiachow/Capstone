@@ -8,10 +8,10 @@ const CreateAccountPage = (props) => {
   return (
     <div className="create-account-page-container10">
       <Helmet>
-        <title>CreateAccountPage - Homepage convert</title>
+        <title>CreateAccountPage - Hands2Words</title>
         <meta
           property="og:title"
-          content="CreateAccountPage - Homepage convert"
+          content="CreateAccountPage - Hands2Words"
         />
       </Helmet>
       <div className="create-account-page-navbar">
