@@ -8,8 +8,8 @@ const LoginPage = (props) => {
   return (
     <div className="login-page-container10">
       <Helmet>
-        <title>LoginPage - Homepage convert</title>
-        <meta property="og:title" content="LoginPage - Homepage convert" />
+        <title>LoginPage - Hands2Words</title>
+        <meta property="og:title" content="LoginPage - Hands2Words" />
       </Helmet>
       <div className="login-page-navbar">
         <div className="login-page-container11"></div>
