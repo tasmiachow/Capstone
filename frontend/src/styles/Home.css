@@ -1,0 +1,85 @@
+.home {
+  display: flex;
+  flex-direction: row; 
+  align-items: center; 
+  justify-content: center; 
+  height: calc(100vh - 73px); 
+  background-image: url('../styles/backimg.jpg'); 
+  color: white;
+  text-align: center; 
+  padding: 100px; 
+  box-sizing: border-box;
+}
+
+.text-container {
+  flex: 2; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  height: 100%;
+  overflow: hidden; 
+}
+
+.gif-container {
+  flex: 1; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center; 
+  text-align: center; 
+  height: 100%; 
+}
+
+.learning-gif {
+  max-width: 100%; 
+  height: auto; 
+  margin: 0 auto; 
+}
+
+
+.home h1 {
+  font-family: Proxima Nova;
+  color: black;
+  font-size: 3vw; 
+  font-weight: bold;
+  margin: 10px 0; 
+  text-transform: uppercase;
+  text-shadow: 3px 3px 5px rgba(255, 253, 253, 0.7);
+}
+
+.home p {
+  font-family: Proxima Nova;
+  color: rgb(0, 0, 0);
+  font-size: 2vw; 
+  max-width: 800px;
+  line-height: 1.6;
+  overflow: hidden; /* Prevent overflow */
+}
+
+.start-button {
+  background-color: #2431a0;
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  border-radius:25px;
+  transition: background-color 0.3s ease;
+}
+
+.start-button:hover {
+  background-color: #e84118;
+}
+
+/* Ensure the image scales properly without causing overflow */
+@media (max-height: 600px) {
+  .home img {
+      display: none; 
+  }
+  
+  .home {
+      padding: 20px; 
+  }
+}
