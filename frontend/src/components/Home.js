@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Home.css';
-import learningGif from '../styles/handigif.gif';
 
 const Home = () => {
   return (
@@ -16,7 +15,7 @@ const Home = () => {
         </Link>
       </div>
       <div className="gif-container">
-        <img src={learningGif} alt="Learning GIF" className="learning-gif" />
+        <img src="/handigif.gif" alt="Learning GIF" className="learning-gif" />
       </div>
     </div>
   );

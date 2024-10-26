@@ -4,7 +4,7 @@
   align-items: center; 
   justify-content: center; 
   height: calc(100vh - 73px); 
-  background-image: url('../styles/backimg.jpg'); 
+  background-image: url('/public/backimg.jpg'); 
   color: white;
   text-align: center; 
   padding: 100px; 
@@ -40,7 +40,7 @@
 
 .home h1 {
   font-family: Proxima Nova;
-  color: black;
+  color: #2431a0;
   font-size: 3vw; 
   font-weight: bold;
   margin: 10px 0; 
@@ -58,7 +58,7 @@
 }
 
 .start-button {
-  background-color: #2431a0;
+  background-color: #3D518C;
   border: none;
   color: white;
   padding: 15px 30px;
