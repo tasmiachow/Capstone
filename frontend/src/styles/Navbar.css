@@ -6,17 +6,13 @@
     background: linear-gradient(to right, #eff2fc 40%,#CCCCFF 120%);
   }
   
-  .navbar h1 {
-    color: white;
-  }
-  
   .navbar ul {
     list-style: none;
     display: flex;
   }
   
   .navbar ul li {
-    margin-left: 20px;
+    margin-right: 30px;
   }
   
   .navbar ul li a {
@@ -33,6 +29,7 @@
   }
   
   .logo-image {
+    margin-left: 30px;
     width: 10vw; /* Set the width you need */
     height: auto; /* Maintains the aspect ratio */
   }
