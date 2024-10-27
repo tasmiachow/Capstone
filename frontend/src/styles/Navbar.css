@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 .navbar {
     display: flex;
     justify-content: space-between;
-    padding: 10px;
-    background-color: #ede8d0;
+    background: -webkit-linear-gradient(to right, #ABD2FA, #7692FF);
+    background: linear-gradient(to right, #eff2fc 40%,#CCCCFF 120%);
   }
   
   .navbar h1 {
@@ -19,16 +20,19 @@
   }
   
   .navbar ul li a {
+    font-family: manrope;
     color: rgb(0, 0, 0);
     text-decoration: none;
-    font-weight: bold;
+    font-size: 1rem;
+    font-weight: 600;
   }
   
   .navbar ul li a:hover {
     text-decoration: underline;
+    text-decoration-color: blue;
   }
   
   .logo-image {
-    width: 200px; /* Set the width you need */
+    width: 10vw; /* Set the width you need */
     height: auto; /* Maintains the aspect ratio */
   }

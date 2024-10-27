@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div className="home">
       <div className="text-container">
-        <h1>Dive into ASL and express Yourself Beyond Words</h1>
+        <h1>Dive into ASL and express yourself beyond words</h1>
         <p>
           How? Allow your camera, start working on the lessons, and make ASL gestures!
         </p>
