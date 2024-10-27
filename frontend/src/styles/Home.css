@@ -1,10 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
 .home {
   display: flex;
   flex-direction: row; 
   align-items: center; 
   justify-content: center; 
   height: calc(100vh - 73px); 
-  background-image: url('/public/backimg.jpg'); 
+  background: -webkit-linear-gradient(to right, #ABD2FA 30%,#7692FF 120%);
+  background: linear-gradient(to right, #ABD2FA 30%,#7692FF 120%);
   color: white;
   text-align: center; 
   padding: 100px; 
@@ -39,22 +42,19 @@
 
 
 .home h1 {
-  font-family: Proxima Nova;
-  color: #2431a0;
-  font-size: 3vw; 
-  font-weight: bold;
-  margin: 10px 0; 
-  text-transform: uppercase;
-  text-shadow: 3px 3px 5px rgba(255, 253, 253, 0.7);
+  font-family: 'Poppins', sans-serif;
+  font-size: 4vw;
+  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .home p {
-  font-family: Proxima Nova;
+  font-family: 'Poppins';
   color: rgb(0, 0, 0);
-  font-size: 2vw; 
+  font-size: 1.5vw; 
   max-width: 800px;
   line-height: 1.6;
-  overflow: hidden; /* Prevent overflow */
 }
 
 .start-button {
