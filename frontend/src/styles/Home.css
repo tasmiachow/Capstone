@@ -7,6 +7,12 @@
   align-items: center; 
   justify-content: center; 
   min-height: calc(100vh - 54px);
+  /*
+  background-image: url('/public/backimg.jpg'); 
+  background-size: 100%; /* Adjust this value for more or less zoom
+  background-position: center; 
+  background-repeat: no-repeat;
+  */
   background: -webkit-linear-gradient(to right, #ABD2FA 30%, #7692FF 120%);
   background: linear-gradient(to right, #ABD2FA 30%, #7692FF 120%);
   text-align: center; 
