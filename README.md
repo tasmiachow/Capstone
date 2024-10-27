@@ -1,2 +1,0 @@
-# Capstone
-Sign Language Interpreter 
