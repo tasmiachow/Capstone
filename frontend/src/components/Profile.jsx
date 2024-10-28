@@ -8,8 +8,8 @@ const Profile = () => {
     name: 'John Doe',
     profilePic: './profile.png',
     about: 'I want to learn ASL',
-    points: 1300,
-    nextLevelPoints: 1500,
+    points: 400,
+    nextLevelPoints: 500,
     badges: ['Beginner', 'Quiz Master'],
   });
 
