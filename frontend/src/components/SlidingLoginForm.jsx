@@ -13,13 +13,14 @@ const SlidingLoginForm = () => {
   };
 
   return (
+    <div className="sliding-login-form"> {/* Added the parent class */}
     <div className={`container ${isRightPanelActive ? 'right-panel-active' : ''}`}>
       <div className="form-container sign-up-container">
         <form action="#">
           <h1>Create Account</h1>
           <input type="text" placeholder="Name" required/>
           <input type="email" placeholder="Email" required/>
-          <input type="password" pattern="[a-z0-5]{8,}" placeholder="Password" required/>
+          <input type="password" pattern=".{8,}" placeholder="Password" required/>
           <input type="password" placeholder="Confirm Password" required/> 
           <button>Sign Up</button>
         </form>
@@ -54,6 +55,7 @@ const SlidingLoginForm = () => {
         </div>
       </div>
     </div>
+  </div>
   );
 };
 

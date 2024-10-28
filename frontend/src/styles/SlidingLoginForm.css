@@ -1,50 +1,46 @@
-/* SlidingLoginForm.css */
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
-
-* {
-  box-sizing: border-box;
+.sliding-login-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: #f6f5f7;
+    font-family: 'Montserrat', sans-serif;
 }
 
-body {
-  background: #f6f5f7;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  font-family: 'Monsterrat', sans-serif;
-  height: 100vh;
-  margin: -20px 0 50px;
+.sliding-login-form * {
+    box-sizing: border-box;
 }
 
-h1 {
+.sliding-login-form h1 {
     font-weight: bold;
     margin: 0;
 }
 
-h2 {
+.sliding-login-form h2 {
     text-align: center;
 }
 
-p {
- font-size: 14px;
- font-weight: 100;
- line-height: 20px;
- letter-spacing: 0.5px;
- margin: 20px 0 30px;
+.sliding-login-form p {
+    font-size: 14px;
+    font-weight: 100;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    margin: 20px 0 30px;
 }
 
-span {
+.sliding-login-form span {
     font-size: 12px;
 }
 
-a {
+.sliding-login-form a {
     color: #333;
     font-size: 14px;
     text-decoration: none;
     margin: 15px 0;
 }
 
-button {
+.sliding-login-form button {
     border-radius: 20px;
     border: 1px solid #1B2CC1;
     background-color: #1B2CC1;
@@ -57,20 +53,20 @@ button {
     transition: transform 80ms ease-in;
 }
 
-button:active {
+.sliding-login-form button:active {
     transform: scale(0.95);
 }
 
-button:focus {
+.sliding-login-form button:focus {
     outline: none;
 }
 
-button.ghost {
+.sliding-login-form button.ghost {
     background-color: transparent;
     border-color: #FFFFFF;
 }
 
-form {
+.sliding-login-form form {
     background-color: #FFFFFF;
     display: flex;
     align-items: center;
@@ -81,7 +77,7 @@ form {
     text-align: center;
 }
 
-input {
+.sliding-login-form input {
     background-color: #eee;
     border: none;
     padding: 12px 15px;
@@ -89,7 +85,7 @@ input {
     width: 100%;
 }
 
-.container {
+.sliding-login-form .container {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25),
@@ -99,33 +95,36 @@ input {
     width: 768px;
     max-width: 100%;
     min-height: 480px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.form-container {
+.sliding-login-form .form-container {
     position: absolute;
     top: 0;
     height: 100%;
     transition: all 0.6s ease-in-out;
 }
 
-.sign-in-container {
+.sliding-login-form .sign-in-container {
     left: 0;
     width: 50%;
     z-index: 2;
 }
 
-.container.right-panel-active .sign-in-container {
+.sliding-login-form .container.right-panel-active .sign-in-container {
     transform: translateX(100%);
 }
 
-.sign-up-container {
+.sliding-login-form .sign-up-container {
     left: 0;
     width: 50%;
     opacity: 0;
     z-index: 1;
 }
 
-.container.right-panel-active .sign-up-container {
+.sliding-login-form .container.right-panel-active .sign-up-container {
     transform: translateX(100%);
     opacity: 1;
     z-index: 5;
@@ -143,7 +142,7 @@ input {
     }
 }
 
-.overlay-container {
+.sliding-login-form .overlay-container {
     position: absolute;
     top: 0;
     left: 50%;
@@ -154,11 +153,11 @@ input {
     z-index: 100;
 }
 
-.container.right-panel-active .overlay-container {
+.sliding-login-form .container.right-panel-active .overlay-container {
     transform: translateX(-100%);
 }
 
-.overlay {
+.sliding-login-form .overlay {
     background: #ABD2FA;
     background: -webkit-linear-gradient(to right, #ABD2FA, #7692FF);
     background: linear-gradient(to right, #ABD2FA,#7692FF);
@@ -174,11 +173,11 @@ input {
     transition: transform 0.6s ease-in-out;
 }
 
-.container.right-panel-active .overlay {
+.sliding-login-form .container.right-panel-active .overlay {
     transform: translateX(50%);
 }
 
-.overlay-panel {
+.sliding-login-form .overlay-panel {
     position: absolute;
     display: flex;
     align-items: center;
@@ -193,28 +192,28 @@ input {
     transition: transform 0.6s ease-in-out;
 }
 
-.overlay-left {
+.sliding-login-form .overlay-left {
     transform: translateX(-20%);
 }
 
-.container.right-panel-active .overlay-left {
+.sliding-login-form .container.right-panel-active .overlay-left {
     transform: translateX(0);
 }
 
-.overlay-right {
+.sliding-login-form .overlay-right {
     right: 0;
     transform: translateX(0);
 }
 
-.container.right-panel-active .overlay-right {
+.sliding-login-form .container.right-panel-active .overlay-right {
     transform: translateX(20%);
 }
 
-.social-container {
+.sliding-login-form .social-container {
     margin: 20px 0;
 }
 
-.social-container a {
+.sliding-login-form .social-container a {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -222,57 +221,57 @@ input {
     height: 40px;
     width: 40px;
 }
-/* Media Queries for Responsiveness */
 
+/* Media Queries for Responsiveness */
 @media (max-width: 768px) {
-    .container {
-      width: 100%;
-      height: 100vh;
-      flex-direction: column;
+    .sliding-login-form .container {
+        width: 100%;
+        height: 100vh;
+        flex-direction: column;
     }
-  
-    .form-container {
-      width: 100%;
-      height: auto;
-      position: relative;
-      z-index: 1;
+
+    .sliding-login-form .form-container {
+        width: 100%;
+        height: auto;
+        position: relative;
+        z-index: 1;
     }
-  
-    .sign-in-container,
-    .sign-up-container {
-      width: 100%;
+
+    .sliding-login-form .sign-in-container,
+    .sliding-login-form .sign-up-container {
+        width: 100%;
     }
-  
-    .overlay-container {
-      display: none;
+
+    .sliding-login-form .overlay-container {
+        display: none;
     }
-  
-    .container.right-panel-active .sign-in-container {
-      transform: translateX(0);
+
+    .sliding-login-form .container.right-panel-active .sign-in-container {
+        transform: translateX(0);
     }
-  
-    .container.right-panel-active .sign-up-container {
-      transform: translateX(0);
-      opacity: 1;
-      z-index: 1;
-      animation: none;
+
+    .sliding-login-form .container.right-panel-active .sign-up-container {
+        transform: translateX(0);
+        opacity: 1;
+        z-index: 1;
+        animation: none;
     }
-  }
-  
-  @media (max-width: 480px) {
-    .container {
-      padding: 20px;
+}
+
+@media (max-width: 480px) {
+    .sliding-login-form .container {
+        padding: 20px;
     }
-  
-    form {
-      padding: 0 20px;
+
+    .sliding-login-form form {
+        padding: 0 20px;
     }
-  
-    button {
-      padding: 10px 30px;
+
+    .sliding-login-form button {
+        padding: 10px 30px;
     }
-  
-    .overlay-panel {
-      padding: 0 20px;
+
+    .sliding-login-form .overlay-panel {
+        padding: 0 20px;
     }
-  }
+}
