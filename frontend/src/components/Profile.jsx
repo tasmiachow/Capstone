@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/Profile.css';
+import SettingsIcon from '@mui/icons-material/Settings';
 
 const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
@@ -35,6 +36,9 @@ const Profile = () => {
   return (
     <div className="user-page">
       <div className={`profile-card ${isAnimatingOut ? 'slide-out' : 'slide-in'}`}>
+      <button onClick={toggleEditMode} className="edit-button">
+        {isEditing ? 'Cancel' : <SettingsIcon/>}
+        </button>
         <div className="profile-section">
           <img src={userData.profilePic} alt="Profile" className="profile-pic" />
           <h2 className="profile-name">{userData.name}</h2>
@@ -58,14 +62,13 @@ const Profile = () => {
             ))}
           </ul>
         </div>
-        <button onClick={toggleEditMode} className="edit-button">
-          {isEditing ? 'Cancel' : 'Edit Profile'}
-        </button>
       </div>
 
       {isEditing && (
         <div className={`edit-form ${isAnimatingOut ? 'slide-out' : 'slide-in'}`}>
           <h3>Edit Profile</h3>
+          <h4>Profile Image</h4>
+          <input type="file" id="avatarupload" name="filename"/>
           <h4>Name</h4>
           <input
             type="text"

@@ -30,6 +30,12 @@
   
   .logo-image {
     margin-left: 30px;
-    width: 10vw; /* Set the width you need */
-    height: auto; /* Maintains the aspect ratio */
+    width: 10vw; 
+    margin-top: 0.5%;
+  }
+  /* to align the icons and the navbar text */
+  .navitem{
+    display: flex;
+    align-items: 'center';
+    flex-wrap: 'wrap';
   }
