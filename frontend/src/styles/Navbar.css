@@ -31,5 +31,5 @@
   .logo-image {
     margin-left: 30px;
     width: 10vw; /* Set the width you need */
-    height: auto; /* Maintains the aspect ratio */
+    margin-top: 0.5%;
   }
