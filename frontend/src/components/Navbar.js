@@ -14,9 +14,9 @@ const Navbar = () => {
       <ul>
         <li><Link to="/"><div className='navitem'><HomeIcon fontSize='medium'/></div></Link></li>
         <li><Link to="/About"><div className='navitem'><InfoIcon fontSize='small'/></div></Link></li>
-        <li><Link to="/Profile"><div className='navitem'><AccountCircleIcon fontSize='small'/></div></Link></li>
         <li><Link to="/modules"><div className='navitem'><MenuBookIcon fontSize='small'/></div></Link></li>
-        <li><Link to="/login"><div className='navitem'>Login</div></Link></li>
+        <li><Link to="/Profile"><div className='navitem'><AccountCircleIcon fontSize='small'/></div></Link></li>
+        <li><Link to="/login"><div className="navitem login-button">Login</div></Link></li>
       </ul>
     </nav>
   );

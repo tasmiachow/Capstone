@@ -2,10 +2,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 53px);
+    height: calc(100vh - 64px);
     width: 100%;
     background-color: #f6f5f7;
     font-family: 'Montserrat', sans-serif;
+    background: -webkit-linear-gradient(to right, #ABD2FA 30%, #7692FF 120%);
+    background: linear-gradient(to right, #ABD2FA 30%, #7692FF 120%);
 }
 
 .sliding-login-form * {
@@ -328,3 +330,4 @@
 .forgot-password-link:hover {
   color: #7692FF;
 }
+
