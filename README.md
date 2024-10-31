@@ -1,6 +1,7 @@
 # Hands2Words
 Our mission is to empower individuals through accessible and engaging American Sign Language (ASL) education. We strive to create an inclusive community where learners of all ages can develop their signing skills, foster cultural understanding, and promote effective communication. By providing innovative learning tools, interactive resources, and real-time feedback, we aim to enhance the ASL learning experience through Machine Learning, ensuring that every learner feels confident and supported on their journey to fluency.
-#Setting up React 
+
+# Setting up React 
 npm install - will retrieve all node modules 
 npm run start - will start the frontend.
 
