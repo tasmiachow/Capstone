@@ -30,26 +30,9 @@
   
   .logo-image {
     margin-left: 30px;
-    width: 10vw; 
-    margin-top: 0.5%;
+    width: 10vw; /* Set the width you need */
+    height: auto; /* Maintains the aspect ratio */
   }
-
-  .navitem {
-    display: flex;
-    align-items: center; /* Vertically align icons and text */
-    gap: 4px; /* Add space between the icon and text */
-  }
-  
-  .navitem svg {
-    height: 24px; /* Default height */
-    width: auto; /* Maintain aspect ratio */
-  }
-  
-  /* Optional: specific height for Home icon */
-  .navitem .MuiSvgIcon-root:first-child {
-    height: 32px; /* Make Home icon larger */
-  }
-  
 
   .login-button {
     padding: 8px 16px;
@@ -65,4 +48,18 @@
     background-color: #007bff; 
     text-decoration: none;
   }
+
+  /* .navitem {
+    display: flex;
+    align-items: center;
+    gap: 4px; 
+  }
   
+  .navitem svg {
+    height: 24px; 
+    width: auto;
+  }
+  
+  .navitem .MuiSvgIcon-root:first-child {
+    height: 32px; 
+  } */
