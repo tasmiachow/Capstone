@@ -56,6 +56,10 @@
 .sliding-login-form button:active {
     transform: scale(0.95);
 }
+.sliding-login-form button:hover {
+    background-color:#8b76ff;
+    border-color: #8b76ff;
+}
 
 .sliding-login-form button:focus {
     outline: none;
@@ -64,6 +68,10 @@
 .sliding-login-form button.ghost {
     background-color: transparent;
     border-color: #FFFFFF;
+}
+.sliding-login-form button.ghost:hover{
+    background-color: #edc950;
+    border-color: #d7b64a;
 }
 
 .sliding-login-form form {
@@ -217,11 +225,13 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    margin: 0 20px;
-    height: 40px;
+    margin: 0 10px;
+    height: 30px;
     width: 40px;
 }
-
+.sliding-login-form .social-container a:hover {
+    color:#5463ed;
+}
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
     .sliding-login-form .container {
