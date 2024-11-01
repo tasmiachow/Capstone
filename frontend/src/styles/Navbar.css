@@ -41,6 +41,7 @@
 }
 
 .logo-image {
+
   margin-left: 5px; /* Space before logo */
   max-width: 100%; /* Ensures the logo doesn't exceed its container */
   height: auto; /* Maintains the aspect ratio */
@@ -62,4 +63,5 @@
 .login-button:hover {
     background-color: #007bff; 
     text-decoration: none;
+
 }
