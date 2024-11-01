@@ -3,11 +3,12 @@
     align-items: flex-start;
     justify-content: center;
     gap: 30px;
-    height: calc(100vh - 53px);
+    height: calc(100vh - 56px);
     background: -webkit-linear-gradient(to right, #ABD2FA 30%, #7692FF 120%);
     background: linear-gradient(to right, #ABD2FA 30%, #7692FF 120%);
     padding: 20px;
     box-sizing: border-box;
+    position: relative;
 }
 
 .profile-card {
@@ -96,13 +97,18 @@
 
 .edit-button {
     margin-top: 15px;
-    padding: 10px 20px;
+    padding: 10px 15px;
     background-color: #0066ff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+    display: flex;
+    justify-content: right;
+    position: absolute;
+    top: 10px;
+    right: 30px;
 }
 
 .edit-form {

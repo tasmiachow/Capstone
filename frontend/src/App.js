@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Profile from './components/Profile';
 import SlidingLoginForm from './components/SlidingLoginForm';
+import ForgotPassword from './components/ForgotPassword.jsx';
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Profile" element={<Profile />} />
-        <Route path="/login" element={<SlidingLoginForm/>}/>
+        <Route path="/login" element={<SlidingLoginForm />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
       </Routes>
     </Router>
   );

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { auth, db } from '../firebase'; // Ensure Firebase is correctly initialized
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
@@ -14,10 +15,20 @@ const SlidingLoginForm = () => {
   const [errorMessage, setErrorMessage] = useState(''); // Error message state
   const navigate = useNavigate(); // For navigation
 
+
   // Handle Sign Up click
   const handleSignUpClick = () => {
+
     setIsRightPanelActive(true);
     setErrorMessage(''); // Reset error message when switching forms
+
+    if (password !== confirmPassword) {
+      setErrorMessage('Passwords do not match');
+    } else {
+      setIsRightPanelActive(true);
+      setErrorMessage('');
+    }
+
   };
 
   // Handle Sign In click
@@ -120,6 +131,7 @@ const SlidingLoginForm = () => {
   };
 
   return (
+
     <div className="sliding-login-form"> {/* Parent class for scoping styles */}
       <div className={`container ${isRightPanelActive ? 'right-panel-active' : ''}`}>
         {/* Sign Up Form */}
@@ -183,13 +195,14 @@ const SlidingLoginForm = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <a href="#">Forgot your password?</a>
+            <Link to="/forgot-password" className="forgot-password-link">Forgot Password?</Link>
             <button type="submit">Sign In</button>
             {errorMessage && <p className="error">{errorMessage}</p>} {/* Display error message */}
           </form>
         </div>
 
         {/* Overlay for switching between Sign Up and Sign In */}
+
         <div className="overlay-container">
           <div className="overlay">
             <div className="overlay-panel overlay-left">
