@@ -11,21 +11,24 @@ npm run start - will start the frontend.
 
 # Setting up Django
 
-Go to python.org and download the latest version for your computer 
-Go to cmd on your terminal then do the Python --version 
-to make sure you have the python 
-Then in your terminal do pip–version
+Go to python.org and download the latest version for your computer </br>
+Go to your terminal then do the Python --version </br>
+to make sure you have python installed. </br>
+Then in your terminal do </br>
 
-Cd into backend folder 
+pip–version </br>
+
+Cd into backend folder </br>
+cd backend </br>
 
 # Create a virtual environment 
-python -m venv my_venv
-my_venv\Scripts\activate # This activates the environment 
-deactivate # to deactivate the environment 
+python -m venv my_venv </br>
+my_venv\Scripts\activate  #This activates the environment </br>
+deactivate  #to deactivate the environment </br>
 
-While virtual env is running:
-pip install -r requirements.txt
-It will install all necessary pip packages 
+# While virtual env is running:
+pip install -r requirements.txt </br>
+It will install all necessary pip packages </br>
 
 # To run server 
 Python manage.py runserver
