@@ -15,10 +15,8 @@ const SlidingLoginForm = () => {
   const [errorMessage, setErrorMessage] = useState(''); // Error message state
   const navigate = useNavigate(); // For navigation
 
-
   // Handle Sign Up click
   const handleSignUpClick = () => {
-
     setIsRightPanelActive(true);
     setErrorMessage(''); // Reset error message when switching forms
 
@@ -28,7 +26,6 @@ const SlidingLoginForm = () => {
       setIsRightPanelActive(true);
       setErrorMessage('');
     }
-
   };
 
   // Handle Sign In click
@@ -55,10 +52,13 @@ const SlidingLoginForm = () => {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      // Optionally store additional user data in Firestore
+      // userbase schema
       await setDoc(doc(db, 'users', user.uid), {
         name: name,
         email: user.email,
+        points: 0,
+        nextLevelPoints: 1000,
+        badges: [], 
         createdAt: new Date(),
       });
 
@@ -131,7 +131,6 @@ const SlidingLoginForm = () => {
   };
 
   return (
-
     <div className="sliding-login-form"> {/* Parent class for scoping styles */}
       <div className={`container ${isRightPanelActive ? 'right-panel-active' : ''}`}>
         {/* Sign Up Form */}

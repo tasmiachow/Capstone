@@ -65,3 +65,20 @@
     text-decoration: none;
 
 }
+/* might want to change the color of logout button later? - joe */
+.logout-button{
+    padding: 8px 16px;
+    background-color: #3D518C; 
+    color: white;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s;
+    display: flex; 
+    align-items: center; 
+}
+.logout-button:hover {
+    background-color: #007bff; 
+    text-decoration: none;
+
+}

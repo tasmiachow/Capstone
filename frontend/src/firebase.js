@@ -3,6 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";  // For Firebase Authentication
 import { getFirestore } from "firebase/firestore"; 
 import { getAnalytics } from "firebase/analytics";
+import { getStorage } from 'firebase/storage';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -21,12 +22,9 @@ const firebaseConfig = {
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 
-
 const auth = getAuth(firebaseApp);
-
 const db = getFirestore(firebaseApp);
-
 const analytics = getAnalytics(firebaseApp);
-
-export { auth, db, analytics };  
-
+const storage = getStorage(firebaseApp);
+// storage for storing images???
+export { auth, db, analytics, storage }; 

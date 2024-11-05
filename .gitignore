@@ -116,3 +116,5 @@ local_settings.py
 
 .env
 db.sqlite3
+my_venv
+config

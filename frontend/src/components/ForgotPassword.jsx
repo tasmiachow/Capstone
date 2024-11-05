@@ -1,12 +1,19 @@
 import { useState } from 'react';
-import '../styles/ForgotPassword.css'; 
+import { sendPasswordResetEmail } from 'firebase/auth';
+import { auth } from '../firebase'; 
+import '../styles/ForgotPassword.css';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
 
-  const handleResetPassword = () => {
-    // add functionality for resetting password firebase
-    alert(`Password reset link sent to ${email}`);
+  const handleResetPassword = async () => {
+    try {
+      await sendPasswordResetEmail(auth, email);
+      setMessage(`Password reset link sent to ${email}`);
+    } catch (error) {
+      setMessage(`Error: ${error.message}`);
+    }
   };
 
   return (
@@ -19,6 +26,7 @@ const ForgotPassword = () => {
         onChange={(e) => setEmail(e.target.value)} 
       />
       <button onClick={handleResetPassword}>Send Reset Link</button>
+      {message && <p>{message}</p>}
     </div>
   );
 };

@@ -1,25 +1,44 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import '../styles/Navbar.css';
 
-{/* <li><Link to="/"><div className='navitem'><HomeIcon fontSize='medium'/></div></Link></li>
-<li><Link to="/About"><div className='navitem'><InfoIcon fontSize='small'/></div></Link></li>
-<li><Link to="/modules"><div className='navitem'><MenuBookIcon fontSize='small'/></div></Link></li>
-<li><Link to="/Profile"><div className='navitem'><AccountCircleIcon fontSize='small'/></div></Link></li> */}
-
 const Navbar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+    });
+  }, []);
+
+  const handleLogout = async () => {
+    const auth = getAuth();
+    await signOut(auth);
+    navigate('/');
+  };
+
   return (
     <nav className="navbar">
-      <img src="/logo.png" alt="logo" className="logo-image" />;
+      <img src="/logo.png" alt="logo" className="logo-image" />
       <ul>
         <li><Link to="/">Home</Link></li>
-        {/*<li><Link to="/About">About</Link></li>*/}
-        <li><Link to="/Profile">Profile</Link></li>
+        {isLoggedIn && <li><Link to="/Profile">Profile</Link></li>}
         <li><Link to="/modules">Modules</Link></li>
-        <li><Link to="/login"><div className="navitem login-button">Login</div></Link></li>
+        {isLoggedIn ? (
+          <li><button onClick={handleLogout} className="navitem logout-button">Logout</button></li>
+        ) : (
+          <li><Link to="/login"><div className="navitem login-button">Login</div></Link></li>
+        )}
       </ul>
     </nav>
   );
-}
+};
 
 export default Navbar;

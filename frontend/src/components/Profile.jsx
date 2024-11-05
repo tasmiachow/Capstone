@@ -1,20 +1,73 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/Profile.css';
 import SettingsIcon from '@mui/icons-material/Settings';
+import { getDoc, doc, updateDoc } from 'firebase/firestore';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { db, auth, storage } from '../firebase'; 
 
 const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
-  const [isAnimatingOut, setIsAnimatingOut] = useState(false); 
+  const [isAnimatingOut, setIsAnimatingOut] = useState(false);
   const [userData, setUserData] = useState({
-    name: 'John Doe',
-    profilePic: './profile.png',
-    about: 'I want to learn ASL',
-    points: 400,
-    nextLevelPoints: 500,
-    badges: ['Beginner', 'Quiz Master'],
+    name: '',
+    profilePic: '',
+    about: '',
+    points: 0,  
+    nextLevelPoints: 0,  
+    badges: [], 
   });
+  const [loading, setLoading] = useState(true);
+  const [profilePicFile, setProfilePicFile] = useState(null);
 
-  const progress = (userData.points / userData.nextLevelPoints) * 100;
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const user = auth.currentUser;
+        if (user) {
+          const userDoc = await getDoc(doc(db, 'users', user.uid));
+          if (userDoc.exists()) {
+            const data = userDoc.data();
+            setUserData({
+              ...data,
+              points: data.points || 0,
+              nextLevelPoints: data.nextLevelPoints || 0,
+              badges: data.badges || [],
+            });
+          } else {
+            console.log('No such document!');
+          }
+        } else {
+          console.log('No user is signed in.');
+        }
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+        setLoading(false);
+      }
+    };
+
+    // check for changes in auth
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        fetchUserData();
+      } else {
+        setUserData({
+          name: '',
+          profilePic: '',
+          about: '',
+          points: 0,
+          nextLevelPoints: 0,
+          badges: [],
+        });
+        setLoading(false);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  // calculate progress 
+  const progress = userData.nextLevelPoints ? (userData.points / userData.nextLevelPoints) * 100 : 0;
 
   const toggleEditMode = () => {
     if (isEditing) {
@@ -33,26 +86,58 @@ const Profile = () => {
     setUserData({ ...userData, [name]: value });
   };
 
+  const handleFileChange = (e) => {
+    if (e.target.files[0]) {
+      setProfilePicFile(e.target.files[0]);
+    }
+  };
+
+  const handleSaveChanges = async () => {
+    try {
+      const user = auth.currentUser;
+      if (user) {
+        if (profilePicFile) {
+          const profilePicRef = ref(storage, `profile_pics/${user.uid}`);
+          await uploadBytes(profilePicRef, profilePicFile);
+          const profilePicURL = await getDownloadURL(profilePicRef);
+          userData.profilePic = profilePicURL;
+        }
+
+        await updateDoc(doc(db, 'users', user.uid), userData);
+        setIsEditing(false);
+        setIsAnimatingOut(false);
+        console.log('User data updated successfully');
+      }
+    } catch (error) {
+      console.error('Error updating user data:', error);
+      alert(`Failed to update user data: ${error.message}`);
+    }
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="user-page">
       <div className={`profile-card ${isAnimatingOut ? 'slide-out' : 'slide-in'}`}>
-      <button onClick={toggleEditMode} className="edit-button">
-        {isEditing ? 'Cancel' : <SettingsIcon/>}
+        <button onClick={toggleEditMode} className="edit-button">
+          {isEditing ? 'Cancel' : <SettingsIcon/>}
         </button>
         <div className="profile-section">
-          <img src={userData.profilePic} alt="Profile" className="profile-pic" />
-          <h2 className="profile-name">{userData.name}</h2>
+          <img src={userData.profilePic || './profile.png'} alt="Profile" className="profile-pic" />
+          <h2 className="profile-name">{userData.name || 'No Name'}</h2>
         </div>
         <div className="user-about">
           <h3>About</h3>
-          <p>{userData.about}</p>
+          <p>{userData.about || 'No description available'}</p>
         </div>
         <div className="points-section">
           <h3>Points: {userData.points}</h3>
           <div className="progress-bar">
             <div className="progress" style={{ width: `${progress}%` }}></div>
           </div>
-          <p className="next-level-points">{userData.nextLevelPoints - userData.points} points to next level</p>
+          <p className="next-level-points">{userData.nextLevelPoints ? userData.nextLevelPoints - userData.points : '0'} points to next level</p>
         </div>
         <div className="badges-section">
           <h3>Badges</h3>
@@ -68,7 +153,7 @@ const Profile = () => {
         <div className={`edit-form ${isAnimatingOut ? 'slide-out' : 'slide-in'}`}>
           <h3>Edit Profile</h3>
           <h4>Profile Image</h4>
-          <input type="file" id="avatarupload" name="filename"/>
+          <input type="file" id="avatarupload" name="filename" onChange={handleFileChange}/>
           <h4>Name</h4>
           <input
             type="text"
@@ -84,7 +169,7 @@ const Profile = () => {
             onChange={handleInputChange}
             placeholder="Tell us about yourself"
           ></textarea>
-          <button onClick={toggleEditMode}>Save Changes</button>
+          <button onClick={handleSaveChanges}>Save Changes</button>
         </div>
       )}
     </div>
