@@ -12,15 +12,15 @@
 }
 
 .content {
-  display: flex;
+  display: grid;
+  grid-template-columns: 200px 1fr; 
+  gap: 20px; 
   width: 100%;
   max-width: 1000px;
-  justify-content: flex-start;
-  gap: 20px; /* Add spacing between sidebar and content */
 }
 
 .levels-sidebar {
-  width: 200px;
+  width: 100%; 
   background-color: #f4f4f4;
   padding: 20px;
   border-radius: 8px;
@@ -65,11 +65,11 @@
 }
 
 .lesson-content {
-  flex: 1;
   padding: 20px;
   border-left: 1px solid #ccc;
   background-color: #fff;
   border-radius: 8px;
+  overflow: auto; 
 }
 
 .lesson-image {

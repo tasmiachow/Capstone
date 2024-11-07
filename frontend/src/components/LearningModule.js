@@ -14,7 +14,8 @@ const LearningModule = () => {
   const lessonContent = {
     'Lesson 1': {
       text: 'A',
-      image: '/Aslvid/Alphabet/A.png'
+      image: '/Aslvid/Alphabet/A.png',
+      description: 'How to sign To sign "A" in American Sign Language (ASL), raise your dominant hand in a fist with the palm facing out and extend your thumb.'
     },
     'Lesson 2': {
       text: 'C',
@@ -31,6 +32,26 @@ const LearningModule = () => {
     'Lesson 5': {
       text: 'O',
       image: '/Aslvid/Alphabet/O.png'
+    },
+    'Lesson 6': {
+      text: 'Angry',
+      video: '/Aslvid/Emotions/Angry.mp4',
+    },
+    'Lesson 7': {
+      text: 'Happy',
+      video: '/Aslvid/Emotions/Happy.mp4',
+    },
+    'Lesson 8': {
+      text: 'Sad',
+      video: '/Aslvid/Emotions/Sad.mp4',
+    },
+    'Lesson 9': {
+      text: 'Confused',
+      video: '/Aslvid/Emotions/Confused.mp4',
+    },
+    'Lesson 10': {
+      text: 'Calm',
+      video: '/Aslvid/Emotions/Calm.mp4',
     }
   };
 
@@ -83,7 +104,7 @@ const LearningModule = () => {
                 />
               )}
               {lessonContent[selectedLesson].video && (
-                <video controls className="lesson-video">
+                <video key={selectedLesson} controls className="lesson-video">
                   <source src={lessonContent[selectedLesson].video} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
