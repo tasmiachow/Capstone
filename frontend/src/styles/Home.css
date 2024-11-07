@@ -13,8 +13,6 @@
   background-position: center; 
   background-repeat: no-repeat;
   */
-  background: -webkit-linear-gradient(to right, #ABD2FA 30%, #7692FF 120%);
-  background: linear-gradient(to right, #ABD2FA 30%, #7692FF 120%);
   text-align: center; 
   padding: 100px; 
   box-sizing: border-box;

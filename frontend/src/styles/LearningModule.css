@@ -1,0 +1,73 @@
+.learning-module-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.module-title {
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+  justify-content: flex-start;
+  gap: 20px; /* Add spacing between sidebar and content */
+}
+
+.levels-sidebar {
+  width: 200px;
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.level {
+  margin-bottom: 15px;
+}
+
+.level-button {
+  background: none;
+  border: none;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+}
+
+.lesson-list {
+  list-style: none;
+  padding-left: 20px;
+  margin-top: 5px;
+}
+
+.lesson-item {
+  margin: 5px 0;
+}
+
+.lesson-button {
+  background: none;
+  border: none;
+  color: #007bff;
+  text-align: left;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.lesson-button:hover {
+  text-decoration: underline;
+}
+
+.lesson-content {
+  flex: 1;
+  padding: 20px;
+  border-left: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 8px;
+}
