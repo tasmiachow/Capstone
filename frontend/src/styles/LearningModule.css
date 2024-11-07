@@ -71,3 +71,17 @@
   background-color: #fff;
   border-radius: 8px;
 }
+
+.lesson-image {
+  width: 80%;       
+  max-width: 300px; 
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
+.lesson-video {
+  width: 100%;
+  max-width: 500px;
+  margin-top: 20px;
+  border-radius: 8px;
+}

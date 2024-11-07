@@ -6,18 +6,32 @@ const LearningModule = () => {
   const [selectedLesson, setSelectedLesson] = useState(null);
 
   const lessons = {
-    beginner: ['Lesson 1', 'Lesson 2', 'Lesson 3', 'Lesson 4', 'Lesson 5'],
-    intermediate: ['Lesson 6', 'Lesson 7', 'Lesson 8', 'Lesson 9', 'Lesson 10'],
-    hard: ['Lesson 11', 'Lesson 12', 'Lesson 13', 'Lesson 14', 'Lesson 15'],
+    Beginner: ['Lesson 1', 'Lesson 2', 'Lesson 3', 'Lesson 4', 'Lesson 5'],
+    Intermediate: ['Lesson 6', 'Lesson 7', 'Lesson 8', 'Lesson 9', 'Lesson 10'],
+    Hard: ['Lesson 11', 'Lesson 12', 'Lesson 13', 'Lesson 14', 'Lesson 15'],
   };
 
   const lessonContent = {
-    'Lesson 1': 'A',
-    'Lesson 2': 'Content for Lesson 2',
-    'Lesson 3': 'Content for Lesson 3',
-    'Lesson 4': 'Content for Lesson 4',
-    'Lesson 5': 'Content for Lesson 5',
-    // Add more lesson content here
+    'Lesson 1': {
+      text: 'A',
+      image: '/Aslvid/Alphabet/A.png'
+    },
+    'Lesson 2': {
+      text: 'C',
+      image: '/Aslvid/Alphabet/C.png'
+    },
+    'Lesson 3': {
+      text: 'E',
+      image: '/Aslvid/Alphabet/E.png'
+    },
+    'Lesson 4': {
+      text: 'L',
+      image: '/Aslvid/Alphabet/L.png'
+    },
+    'Lesson 5': {
+      text: 'O',
+      image: '/Aslvid/Alphabet/O.png'
+    }
   };
 
   const toggleLevel = (level) => {
@@ -60,7 +74,20 @@ const LearningModule = () => {
           {selectedLesson ? (
             <div>
               <h2>{selectedLesson}</h2>
-              <p>{lessonContent[selectedLesson]}</p>
+              <p>{lessonContent[selectedLesson].text}</p>
+              {lessonContent[selectedLesson].image && (
+                <img
+                  src={lessonContent[selectedLesson].image}
+                  alt={`${selectedLesson}`}
+                  className="lesson-image"
+                />
+              )}
+              {lessonContent[selectedLesson].video && (
+                <video controls className="lesson-video">
+                  <source src={lessonContent[selectedLesson].video} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              )}
             </div>
           ) : (
             <p>Please select a lesson to view its content</p>
