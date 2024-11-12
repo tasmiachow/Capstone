@@ -82,10 +82,6 @@
 .logout-button:hover {
     background-color: #007bff; 
     text-decoration: none;
-<<<<<<< HEAD
-}
-=======
-
 }
 
 .profile-icon {
@@ -97,5 +93,4 @@
   .profile-icon svg {
     font-size: 2rem;
     color: #3D518C;
-  }
->>>>>>> a8862fd (profile dropdown added)
+
