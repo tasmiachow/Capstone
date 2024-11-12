@@ -1,12 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
 .navbar {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center; /* Center align items vertically */
     background: linear-gradient(to right, #eff2fc 40%, #CCCCFF 120%);
     padding: 10px 30px; /* Add padding for better spacing */
-    height: auto; /* Fixed height for consistent alignment */
+    height: 60px; /* Fixed height for consistent alignment */
+    padding: 0 20px;
 }
 
 .navbar ul {
@@ -82,3 +84,14 @@
     text-decoration: none;
 
 }
+
+.profile-icon {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-icon svg {
+    font-size: 2rem;
+    color: #3D518C;
+  }
