@@ -1,0 +1,67 @@
+/* body{
+     background: linear-gradient(45deg, #b4ccf8, #0066ff);
+} */
+.level-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(45deg, #b4ccf8, #0066ff);
+    
+  }
+  
+  .page-title {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 2rem;
+  }
+  
+  .video-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px; /* Limit max width to keep things centered */
+    gap: 20px;
+  }
+  
+  .content, .video-feed {
+    width: 50%;
+  }
+  
+  .reference-video, .user-video {
+    width: 100%;
+    height: auto;
+    
+  }
+  .user-video {
+    width: 100%;
+    height: auto;
+    transform: scaleX(-1); /* Flip the user video horizontally */
+  }
+   .content p {
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  }
+  .user-video-container {
+    width: 100%;
+    max-height: 70vh;
+    border-radius: 8px;
+    overflow: hidden; /* Ensures the rounded corners are applied */
+    border: 3px solid #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Optional shadow */
+  }
+  .continue-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #0066ff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .continue-button:hover {
+    background-color: #004bbd;
+  }
