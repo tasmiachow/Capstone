@@ -1,31 +1,3 @@
-// import React, { useState } from 'react';
-// import ProfileCard from './ProfileCard';
-// import EditProfileCard from './EditProfileCard';
-
-// function ProfileDropdown({ onClose }) {
-//   const [isEditing, setIsEditing] = useState(false);
-
-//   const handleEditClick = () => {
-//     setIsEditing(true); // Show the edit card
-//   };
-
-//   const handleCancelClick = () => {
-//     setIsEditing(false); // Show the profile card
-//   };
-
-//   return (
-//     <div className="profile-dropdown">
-//       {isEditing ? (
-//         <EditProfileCard onCancel={handleCancelClick} />
-//       ) : (
-//         <ProfileCard onEdit={handleEditClick} />
-//       )}
-//     </div>
-//   );
-// }
-
-// export default ProfileDropdown;
-
 import React, { useState, useEffect } from 'react';
 import '../styles/Profile.css';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -151,7 +123,7 @@ const ProfileDropdown = ({ onClose }) => {
       <div className="profile-dropdown">
         <div className={`profile-card ${isAnimatingOut ? 'slide-out' : 'slide-in'}`}>
           <button onClick={toggleEditMode} className="edit">
-            {isEditing ? 'Cancel' : <SettingsIcon/>}
+            <SettingsIcon/>
           </button>
           <div className="profile-section">
             <img src={userData.profilePic || './profile.png'} alt="Profile" className="profile-pic" />
@@ -177,28 +149,32 @@ const ProfileDropdown = ({ onClose }) => {
             </ul>
           </div>
         </div>
-  
+   {/* Editing menu should be a modal now */}
+   
         {isEditing && (
-          <div className={`edit-form ${isAnimatingOut ? 'slide-out' : 'slide-in'}`}>
-            <h3>Edit Profile</h3>
-            <h4>Profile Image</h4>
-            <input type="file" id="avatarupload" name="filename" onChange={handleFileChange}/>
-            <h4>Name</h4>
-            <input
-              type="text"
-              name="name"
-              value={userData.name}
-              onChange={handleInputChange}
-              placeholder="Enter name"
-            />
-            <h4>Description</h4>
-            <textarea
-              name="about"
-              value={userData.about}
-              onChange={handleInputChange}
-              placeholder="Tell us about yourself"
-            ></textarea>
-            <button onClick={handleSaveChanges}>Save Changes</button>
+          <div className='modal'>
+            <div className={`edit-form ${isAnimatingOut ? 'slide-out' : 'slide-in'}`}>
+              <h3>Edit Profile</h3>
+              <h4>Profile Image</h4>
+              <input type="file" id="avatarupload" name="filename" onChange={handleFileChange}/>
+              <h4>Name</h4>
+              <input
+                type="text"
+                name="name"
+                value={userData.name}
+                onChange={handleInputChange}
+                placeholder="Enter name"
+              />
+              <h4>Description</h4>
+              <textarea
+                name="about"
+                value={userData.about}
+                onChange={handleInputChange}
+                placeholder="Tell us about yourself"
+              ></textarea>
+              <button onClick={toggleEditMode} className="edit">Cancel Changes</button>
+              <button onClick={handleSaveChanges}>Save Changes</button>
+            </div>
           </div>
         )}
       </div>
