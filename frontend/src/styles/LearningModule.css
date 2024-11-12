@@ -1,14 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Japanese&display=swap');
+@layer mShadow, mGradientStroke;
 .learning-module-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-}
-
-.module-title {
-  font-size: 2em;
-  margin-bottom: 20px;
-  text-align: center;
 }
 
 .content {
@@ -72,6 +68,10 @@
   overflow: auto; 
 }
 
+.lesson-content p {
+  text-align: center;
+}
+
 .lesson-image {
   width: 80%;       
   max-width: 300px; 
@@ -84,4 +84,112 @@
   max-width: 500px;
   margin-top: 20px;
   border-radius: 8px;
+}
+
+.lesson-description {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.lesson-button {
+  border-radius: 4px;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #3D518C;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.lesson-button:hover {
+  background-color: #007bff;
+  text-decoration: none;
+}
+
+.lesson-image-container,
+.lesson-video-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the content vertically */
+  justify-content: center; /* Centers the content horizontally */
+  margin-top: 20px;
+}
+
+@layer mShadow {
+	.learning-module-container h1 {
+    margin-top: 0;
+		/* Text Fill GRadient */
+		background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,112,9,1) 43%, rgba(0,212,255,1) 100%);
+		color: transparent;
+		text-fill-color: transparent;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		-webkit-background-clip: text;
+
+		font-size: 6rem;
+		paint-order: stroke fill;
+		text-shadow: 3px 3px 0px cyan, 5px 5px 0px darkcyan;
+		transition: all 0.5s;
+	}
+
+	.learning-module-container h1 {
+		font-variation-settings: "wght" 100, "ital" 1, "rota" 20;
+		/* Multiple Shadows */
+		text-shadow: 10px 10px 0px #07bcccdd,
+			15px 15px 0px #e601c099,
+			22px 22px 0px #e9019a88,
+			31px 31px 0px #f4046877,
+			42px 42px 10px #48289666;
+		animation: hithere 1s ease infinite;
+	}
+
+	.learning-module-container h1:hover {
+		animation-play-state: paused;
+	}
+}
+
+
+
+.container {
+  display: flex;
+  gap: 2rem;
+}
+
+.column {
+  font-size: 2rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Layer for text stroke */
+@layer tStroke {
+  .text-stroke {
+    -webkit-text-stroke: 0.3px #fff;
+    color: #000;
+  }
+}
+
+/* Layer for text gradient fill */
+@layer tGradient {
+  .text-gradient {
+    background-image: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(121, 112, 9, 1) 43%, rgba(0, 212, 255, 1) 100%);
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+}
+
+/* Layer for multiple shadows */
+@layer tShadows {
+  .text-shadows {
+    text-shadow: 5px 5px 0px #07bcccdd,
+                 6px 6px 0px #e601c099,
+                 8px 8px 0px #e9019a88,
+                 11px 11px 0px #f4046877,
+                 15px 15px 10px #48289666;
+  }
 }

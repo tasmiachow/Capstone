@@ -19,7 +19,7 @@ const LearningModule = () => {
     },
     'Lesson 2': {
       text: 'C',
-      image: '/Aslvid/Alphabet/C.png'
+      image: '/Aslvid/Alphabet/C.png',
     },
     'Lesson 3': {
       text: 'E',
@@ -36,6 +36,7 @@ const LearningModule = () => {
     'Lesson 6': {
       text: 'Angry',
       video: '/Aslvid/Emotions/Angry.mp4',
+      description: 'The sign for "angry" uses a single motion. If you use a double motion and a slightly less intense face it can mean, "grouchy" or "grumpy." Try not to actually touch your face while doing this sign.'
     },
     'Lesson 7': {
       text: 'Happy',
@@ -65,7 +66,7 @@ const LearningModule = () => {
 
   return (
     <div className="learning-module-container">
-      <h1 className="module-title">Learning Module</h1>
+      <h1>Learning Module</h1>
       <div className="content">
         <div className="levels-sidebar">
           {Object.keys(lessons).map((level) => (
@@ -97,21 +98,29 @@ const LearningModule = () => {
               <h2>{selectedLesson}</h2>
               <p>{lessonContent[selectedLesson].text}</p>
               {lessonContent[selectedLesson].image && (
-                <img
-                  src={lessonContent[selectedLesson].image}
-                  alt={`${selectedLesson}`}
-                  className="lesson-image"
-                />
+                <div className="lesson-image-container">
+                  <img
+                    src={lessonContent[selectedLesson].image}
+                    alt={`${selectedLesson}`}
+                    className="lesson-image"
+                  />
+                  <p className="lesson-description">{lessonContent[selectedLesson].description}</p>
+                  <button className="lesson-button">Try it</button>
+                </div>
               )}
               {lessonContent[selectedLesson].video && (
-                <video key={selectedLesson} controls className="lesson-video">
-                  <source src={lessonContent[selectedLesson].video} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                <div className="lesson-video-container">
+                  <video key={selectedLesson} controls className="lesson-video">
+                    <source src={lessonContent[selectedLesson].video} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                  <p className="lesson-description">{lessonContent[selectedLesson].description}</p>
+                  <button className="lesson-button">Try it</button>
+                </div>
               )}
             </div>
           ) : (
-            <p>Please select a lesson to view its content</p>
+            <p>Pick a lesson to start your adventure and unlock points!</p>
           )}
         </div>
       </div>
