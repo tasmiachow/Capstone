@@ -3,7 +3,7 @@ import '../styles/Profile.css';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { getDoc, doc, updateDoc } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
-import { db, auth, storage } from '../firebase'; 
+import { db, auth, storage } from '../firebase';
 
 const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
@@ -12,9 +12,9 @@ const Profile = () => {
     name: '',
     profilePic: '',
     about: '',
-    points: 0,  
-    nextLevelPoints: 0,  
-    badges: [], 
+    points: 0,
+    nextLevelPoints: 0,
+    badges: [],
   });
   const [loading, setLoading] = useState(true);
   const [profilePicFile, setProfilePicFile] = useState(null);
@@ -24,6 +24,7 @@ const Profile = () => {
       try {
         const user = auth.currentUser;
         if (user) {
+          console.log('Fetching user data for UID:', user.uid);
           const userDoc = await getDoc(doc(db, 'users', user.uid));
           if (userDoc.exists()) {
             const data = userDoc.data();
@@ -46,7 +47,6 @@ const Profile = () => {
       }
     };
 
-    // check for changes in auth
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         fetchUserData();
@@ -66,7 +66,6 @@ const Profile = () => {
     return () => unsubscribe();
   }, []);
 
-  // calculate progress 
   const progress = userData.nextLevelPoints ? (userData.points / userData.nextLevelPoints) * 100 : 0;
 
   const toggleEditMode = () => {
@@ -75,9 +74,9 @@ const Profile = () => {
       setTimeout(() => {
         setIsEditing(false);
         setIsAnimatingOut(false);
-      }, 300); 
+      }, 300);
     } else {
-      setIsEditing(true); 
+      setIsEditing(true);
     }
   };
 
@@ -122,7 +121,7 @@ const Profile = () => {
     <div className="user-page">
       <div className={`profile-card ${isAnimatingOut ? 'slide-out' : 'slide-in'}`}>
         <button onClick={toggleEditMode} className="edit-button">
-          {isEditing ? 'Cancel' : <SettingsIcon/>}
+          {isEditing ? 'Cancel' : <SettingsIcon />}
         </button>
         <div className="profile-section">
           <img src={userData.profilePic || './profile.png'} alt="Profile" className="profile-pic" />
@@ -140,20 +139,23 @@ const Profile = () => {
           <p className="next-level-points">{userData.nextLevelPoints ? userData.nextLevelPoints - userData.points : '0'} points to next level</p>
         </div>
         <div className="badges-section">
-          <h3>Badges</h3>
-          <ul>
-            {userData.badges.map((badge, index) => (
-              <li key={index} className="badge">{badge}</li>
-            ))}
-          </ul>
-        </div>
+  <h3>Badges</h3>
+  <ul>
+    {userData.badges.map((badge, index) => (
+      <li key={index} className="badge">
+        <img src={require(`../Badges/${badge.icon}`)} alt={badge.name} className="badge-icon" /> {/* Added class */}
+        <p>{badge.name}</p>
+        <small>{badge.description}</small>
+      </li>
+    ))}
+  </ul>
+</div>
       </div>
-
       {isEditing && (
         <div className={`edit-form ${isAnimatingOut ? 'slide-out' : 'slide-in'}`}>
           <h3>Edit Profile</h3>
           <h4>Profile Image</h4>
-          <input type="file" id="avatarupload" name="filename" onChange={handleFileChange}/>
+          <input type="file" id="avatarupload" name="filename" onChange={handleFileChange} />
           <h4>Name</h4>
           <input
             type="text"

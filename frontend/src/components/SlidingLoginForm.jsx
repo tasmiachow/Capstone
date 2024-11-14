@@ -5,6 +5,8 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'fire
 import { doc, setDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom'; // For redirection
 import '../styles/SlidingLoginForm.css'; // Ensure this path is correct
+// Badge path
+import waveBadge from '../Badges/wave.json'; 
 
 const SlidingLoginForm = () => {
   const [isRightPanelActive, setIsRightPanelActive] = useState(false);
@@ -37,8 +39,7 @@ const SlidingLoginForm = () => {
   // Handle Sign Up with Firebase
   const handleSignUp = async (e) => {
     e.preventDefault();
-    
-    // Clear previous errors
+
     setErrorMessage('');
 
     // Check if password and confirm password match
@@ -48,24 +49,25 @@ const SlidingLoginForm = () => {
     }
 
     try {
-      // Create user with Firebase Authentication
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      // userbase schema
+      const initialBadge = {
+        name: waveBadge.name || 'Wave',
+        description: waveBadge.description || 'Awarded for joining our community!',
+        icon: waveBadge.icon || 'wave.gif',
+      };
+
       await setDoc(doc(db, 'users', user.uid), {
-        name: name,
-        email: user.email,
+        name: name || '',
+        email: user.email || '',
         points: 0,
         nextLevelPoints: 1000,
-        badges: [], 
+        badges: [initialBadge],
         createdAt: new Date(),
       });
 
-      // Get Firebase ID token
       const token = await user.getIdToken();
-
-      // Send token to Django backend for verification
       const response = await fetch('http://localhost:8000/api/verify-token/', {
         method: 'POST',
         headers: {
@@ -77,7 +79,6 @@ const SlidingLoginForm = () => {
       const data = await response.json();
       if (data.status === 'success') {
         console.log('Token verified with Django:', data.uid);
-        // Redirect to Profile page after successful sign up
         navigate('/profile');
       } else {
         setErrorMessage('Token verification failed.');
@@ -86,26 +87,21 @@ const SlidingLoginForm = () => {
 
     } catch (error) {
       setErrorMessage(error.message || 'Sign up failed.');
-      console.error('Error during sign up:', error.message);
+      console.error('Error during sign up:', error);
     }
   };
 
   // Handle Sign In with Firebase
   const handleSignIn = async (e) => {
     e.preventDefault();
-    
-    // Clear previous errors
+
     setErrorMessage('');
 
     try {
-      // Sign in the user with Firebase Authentication
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      // Get Firebase ID token
       const token = await user.getIdToken();
-
-      // Send token to Django backend for verification
       const response = await fetch('http://localhost:8000/api/verify-token/', {
         method: 'POST',
         headers: {
@@ -117,7 +113,6 @@ const SlidingLoginForm = () => {
       const data = await response.json();
       if (data.status === 'success') {
         console.log('Token verified with Django:', data.uid);
-        // Redirect to Profile page after successful sign in
         navigate('/profile');
       } else {
         setErrorMessage('Token verification failed.');
@@ -131,13 +126,13 @@ const SlidingLoginForm = () => {
   };
 
   return (
-    <div className="sliding-login-form"> {/* Parent class for scoping styles */}
+    <div className="sliding-login-form">
       <div className={`container ${isRightPanelActive ? 'right-panel-active' : ''}`}>
         {/* Sign Up Form */}
         <div className="form-container sign-up-container">
           <form onSubmit={handleSignUp}>
             <h1>Create Account</h1>
-            {errorMessage && <p className="error">{errorMessage}</p>} {/* Display error message */}
+            {errorMessage && <p className="error">{errorMessage}</p>}
             <input
               type="text"
               placeholder="Name"
@@ -161,7 +156,7 @@ const SlidingLoginForm = () => {
             />
             <input
               type="password"
-              placeholder="Confirm Password" // Added confirm password field
+              placeholder="Confirm Password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
@@ -175,10 +170,10 @@ const SlidingLoginForm = () => {
           <form onSubmit={handleSignIn}>
             <h1>Sign In</h1>
             <div className="social-container">
-            <a href="#" className="social"><i className="fab fa-facebook-f"></i></a>
-            <a href="#" className="social"><i className="fab fa-google-plus-g"></i></a>
-            <a href="#" className="social"><i className="fab fa-linkedin-in"></i></a>
-          </div>
+              <a href="#" className="social"><i className="fab fa-facebook-f"></i></a>
+              <a href="#" className="social"><i className="fab fa-google-plus-g"></i></a>
+              <a href="#" className="social"><i className="fab fa-linkedin-in"></i></a>
+            </div>
             <span>or use your account</span>
             <input
               type="email"
@@ -196,12 +191,11 @@ const SlidingLoginForm = () => {
             />
             <Link to="/forgot-password" className="forgot-password-link">Forgot Password?</Link>
             <button type="submit">Sign In</button>
-            {errorMessage && <p className="error">{errorMessage}</p>} {/* Display error message */}
+            {errorMessage && <p className="error">{errorMessage}</p>}
           </form>
         </div>
 
         {/* Overlay for switching between Sign Up and Sign In */}
-
         <div className="overlay-container">
           <div className="overlay">
             <div className="overlay-panel overlay-left">
