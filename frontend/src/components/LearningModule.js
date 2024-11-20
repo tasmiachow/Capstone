@@ -4,6 +4,7 @@ import '../styles/LearningModule.css';
 const LearningModule = () => {
   const [expandedLevel, setExpandedLevel] = useState(null);
   const [selectedLesson, setSelectedLesson] = useState(null);
+  const [isAnimatingOut, setIsAnimatingOut] = useState(false);
 
   const lessons = {
     Beginner: ['Lesson 1', 'Lesson 2', 'Lesson 3', 'Lesson 4', 'Lesson 5'],
@@ -61,14 +62,29 @@ const LearningModule = () => {
   };
 
   const handleLessonClick = (lesson) => {
-    setSelectedLesson(lesson);
+    if (selectedLesson === lesson) {
+      setIsAnimatingOut(true);
+      setTimeout(() => {
+        setSelectedLesson(null);
+        setIsAnimatingOut(false);
+      }, 400);
+    } else { 
+      setIsAnimatingOut(true);
+      setTimeout(() => {
+        setSelectedLesson(null); // temporarily deselect new lesson to reactivate slide animation
+        setIsAnimatingOut(false);
+        setTimeout(() => {
+          setSelectedLesson(lesson); // reselect
+        }, 1);
+      }, 400);
+    }
   };
 
   return (
     <div className="learning-module-container">
       <h1>Learning Module</h1>
       <div className="content">
-        <div className="levels-sidebar">
+        <div className= {`levels-sidebar `}>
           {Object.keys(lessons).map((level) => (
             <div className="level" key={level}>
               <button className="level-button" onClick={() => toggleLevel(level)}>
@@ -92,16 +108,15 @@ const LearningModule = () => {
           ))}
         </div>
 
-        <div className="lesson-content">
+        <div className={`lesson-content`}>
           {selectedLesson ? (
-            <div>
+            <div className={`${isAnimatingOut ? 'slide-out' : 'slide-in'}`}>
               <h2>{selectedLesson}</h2>
               <p>{lessonContent[selectedLesson].text}</p>
               {lessonContent[selectedLesson].image && (
                 <div className="lesson-image-container">
                   <img
                     src={lessonContent[selectedLesson].image}
-                    alt={`${selectedLesson}`}
                     className="lesson-image"
                   />
                   <p className="lesson-description">{lessonContent[selectedLesson].description}</p>

@@ -193,3 +193,33 @@
                  15px 15px 10px #48289666;
   }
 }
+
+.slide-in {
+  animation: slideIn 400ms forwards; 
+}
+
+.slide-out {
+  animation: slideOut 400ms forwards;
+}
+
+@keyframes slideIn {
+  from {
+      transform: translateX(100%); 
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0); 
+      opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+      transform: translateX(0);
+      opacity: 1;
+  }
+  to {
+      transform: translateX(100%); 
+      opacity: 0;
+  }
+}
