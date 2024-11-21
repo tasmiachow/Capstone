@@ -5,6 +5,7 @@ const LearningModule = () => {
   const [expandedLevel, setExpandedLevel] = useState(null);
   const [selectedLesson, setSelectedLesson] = useState(null);
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
+  const [isSidebarVisible, setIsSidebarVisible] = useState(true);  // State for sidebar visibility
 
   const lessons = {
     Beginner: ['Lesson 1', 'Lesson 2', 'Lesson 3', 'Lesson 4', 'Lesson 5'],
@@ -68,7 +69,7 @@ const LearningModule = () => {
         setSelectedLesson(null);
         setIsAnimatingOut(false);
       }, 400);
-    } else { 
+    } else {
       setIsAnimatingOut(true);
       setTimeout(() => {
         setSelectedLesson(null); // temporarily deselect new lesson to reactivate slide animation
@@ -80,63 +81,84 @@ const LearningModule = () => {
     }
   };
 
+  const toggleSidebar = () => {
+    setIsSidebarVisible(!isSidebarVisible);
+  };
+
+  const handleBackClick = () => {
+    setSelectedLesson(null);
+    setIsSidebarVisible(true);
+  };
   return (
     <div className="learning-module-container">
       <h1>Learning Module</h1>
       <div className="content">
-        <div className= {`levels-sidebar `}>
-          {Object.keys(lessons).map((level) => (
-            <div className="level" key={level}>
-              <button className="level-button" onClick={() => toggleLevel(level)}>
-                {level}
-              </button>
-              {expandedLevel === level && (
-                <ul className="lesson-list">
-                  {lessons[level].map((lesson) => (
-                    <li key={lesson} className="lesson-item">
-                      <button
-                        className="lesson-button"
-                        onClick={() => handleLessonClick(lesson)}
-                      >
-                        {lesson}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          ))}
-        </div>
+        {/* Levels Sidebar */}
+        {selectedLesson === null && (
+          <div className={`levels-sidebar ${isSidebarVisible ? '' : 'collapsed'}`}>
+            {Object.keys(lessons).map((level) => (
+              <div className="level" key={level}>
+                <button className="level-button" onClick={() => toggleLevel(level)}>
+                  {level}
+                </button>
+                {expandedLevel === level && (
+                  <ul className="lesson-list">
+                    {lessons[level].map((lesson) => (
+                      <li key={lesson} className="lesson-item">
+                        <button
+                          className="lesson-button"
+                          onClick={() => handleLessonClick(lesson)}
+                        >
+                          {lesson}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
 
-        <div className={`lesson-content`}>
-          {selectedLesson ? (
-            <div className={`${isAnimatingOut ? 'slide-out' : 'slide-in'}`}>
-              <h2>{selectedLesson}</h2>
-              <p>{lessonContent[selectedLesson].text}</p>
-              {lessonContent[selectedLesson].image && (
-                <div className="lesson-image-container">
-                  <img
-                    src={lessonContent[selectedLesson].image}
-                    className="lesson-image"
-                  />
-                  <p className="lesson-description">{lessonContent[selectedLesson].description}</p>
-                  <button className="lesson-button">Try it</button>
-                </div>
-              )}
-              {lessonContent[selectedLesson].video && (
-                <div className="lesson-video-container">
-                  <video key={selectedLesson} controls className="lesson-video">
-                    <source src={lessonContent[selectedLesson].video} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                  <p className="lesson-description">{lessonContent[selectedLesson].description}</p>
-                  <button className="lesson-button">Try it</button>
-                </div>
-              )}
-            </div>
-          ) : (
-            <p>Pick a lesson to start your adventure and unlock points!</p>
-          )}
+        {/* Expand Sidebar Button */}
+        {selectedLesson !== null && !isSidebarVisible && (
+          <button className="expand-sidebar-button" onClick={toggleSidebar}>
+            Expand Sidebar
+          </button>
+        )}
+
+        {/* Lesson Content */}
+        <div className={`lesson-content ${selectedLesson ? 'full-width' : ''}`}>
+        {selectedLesson ? (
+          <div>
+            <button className="back-button" onClick={handleBackClick}>Back</button>
+            <h2>{selectedLesson}</h2>
+            <p>{lessonContent[selectedLesson].text}</p>
+            {lessonContent[selectedLesson].image && (
+              <div className="lesson-image-container">
+                <img
+                  src={lessonContent[selectedLesson].image}
+                  className="lesson-image"
+                />
+                <p className="lesson-description">{lessonContent[selectedLesson].description}</p>
+                <button className="lesson-button">Try it</button>
+              </div>
+            )}
+            {lessonContent[selectedLesson].video && (
+              <div className="lesson-video-container">
+                <video key={selectedLesson} controls className="lesson-video">
+                  <source src={lessonContent[selectedLesson].video} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+                <p className="lesson-description">{lessonContent[selectedLesson].description}</p>
+                <button className="lesson-button">Try it</button>
+              </div>
+            )}
+          </div>
+        ) : (
+          <p>Pick a lesson to start your adventure and unlock points!</p>
+        )}
+
         </div>
       </div>
     </div>
