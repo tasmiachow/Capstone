@@ -150,14 +150,6 @@ const LearningModule = () => {
         {/* Modal Header */}
         <div className="custom-modal-header">
           <h5 className="custom-modal-title">Continue Lesson</h5>
-          <button
-            type="button"
-            className="custom-close-btn"
-            onClick={closeLevelModal}
-            aria-label="Close"
-          >
-            &times;
-          </button>
         </div>
 
         {/* Modal Body */}
@@ -173,17 +165,10 @@ const LearningModule = () => {
         {/* Modal Footer */}
         <div className="custom-modal-footer">
           <button
-            className="custom-btn custom-btn-secondary"
-            onClick={closeLevelModal}
-            style={{ marginRight: '10px' }}
-          >
-            Close
-          </button>
-          <button
             className="custom-btn custom-btn-primary"
             onClick={closeLevelModal}
           >
-            Proceed
+            Continue
           </button>
         </div>
       </div>
