@@ -1,38 +1,97 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
 .navbar {
+    position: relative;
     display: flex;
     justify-content: space-between;
-    background: -webkit-linear-gradient(to right, #ABD2FA, #7692FF);
-    background: linear-gradient(to right, #eff2fc 40%,#CCCCFF 120%);
-  }
-  
-  .navbar h1 {
-    color: white;
-  }
-  
-  .navbar ul {
+    align-items: center; /* Center align items vertically */
+    background: linear-gradient(to right, #eff2fc 40%, #CCCCFF 120%);
+    padding: 10px 30px; /* Add padding for better spacing */
+    height: 60px; /* Fixed height for consistent alignment */
+    padding: 0 20px;
+}
+
+.navbar ul {
     list-style: none;
     display: flex;
-  }
-  
-  .navbar ul li {
-    margin-left: 20px;
-  }
-  
-  .navbar ul li a {
-    font-family: manrope;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+.navbar ul li {
+    margin-right: 30px; /* Space between navbar items */
+}
+
+.navbar ul li:last-child {
+    margin-right: 0; /* Remove margin from the last item */
+}
+
+.navbar ul li a {
+    font-family: 'Manrope', sans-serif; /* Ensure the correct font is applied */
     color: rgb(0, 0, 0);
     text-decoration: none;
     font-size: 1rem;
     font-weight: 600;
-  }
-  
-  .navbar ul li a:hover {
+    display: flex; /* Enable flex on links for vertical centering */
+    align-items: center; /* Center text vertically within the link */
+    height: 100%; /* Make link height equal to navbar height */
+}
+
+.navbar ul li a:hover {
     text-decoration: underline;
     text-decoration-color: blue;
+}
+
+.logo-image {
+
+  margin-left: 5px; /* Space before logo */
+  max-width: 100%; /* Ensures the logo doesn't exceed its container */
+  height: auto; /* Maintains the aspect ratio */
+  width: 150px; /* Set a base width for the logo, adjust as needed */
+}
+
+.login-button {
+    padding: 8px 16px;
+    background-color: #3D518C; 
+    color: white;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s;
+    display: flex; /* Ensures the button can align its content */
+    align-items: center; /* Center text vertically within the button */
+}
+
+.login-button:hover {
+    background-color: #007bff; 
+    text-decoration: none;
+
+}
+/* might want to change the color of logout button later? - joe */
+.logout-button{
+    padding: 8px 16px;
+    background-color: #3D518C; 
+    color: white;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s;
+    display: flex; 
+    align-items: center; 
+}
+.logout-button:hover {
+    background-color: #007bff; 
+    text-decoration: none;
+}
+
+.profile-icon {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
   }
   
-  .logo-image {
-    width: 10vw; /* Set the width you need */
-    height: auto; /* Maintains the aspect ratio */
+  .profile-icon svg {
+    font-size: 2rem;
+    color: #3D518C;
+
   }

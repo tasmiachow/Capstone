@@ -1,0 +1,45 @@
+.profile-dropdown {
+    position: absolute;
+    top: 3rem; /* Adjusted to place right below the icon */
+    right: 5rem;
+    background: white;
+    box-shadow: 0px 8px 16px rgba(2, 0, 0, 0.2);
+    border-radius: 8px;
+    max-width: 200px;
+    z-index: 1000;
+  }  
+  .edit {
+    margin-top: 15px;
+    padding: 5 5;
+    background-color: #3D518C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    justify-content: left;
+    position: absolute;
+    top: 10px;
+    right: 8px;
+}
+  
+  .profile-card, .edit-profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .modal {
+    display: none; /* hides the modal from view by default*/
+    position: fixed; /* keeps the modal in one place */
+    z-index: 2; /* positions the modal on top of all other elements on the screen */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    background-color: rgba(0,0,0,0.4); /* 40% opacity black - other elements can still be seen */
+    flex-direction: column; /* these flexbox rules center the content on the screen */
+    align-items: center;
+    justify-content: center;
+  }

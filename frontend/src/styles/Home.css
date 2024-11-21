@@ -1,14 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Manrope:wght@200&family=Monoton&family=Pacifico&display=swap');
 .home {
   display: flex;
   flex-direction: row; 
   align-items: center; 
   justify-content: center; 
-  height: calc(100vh - 73px); 
-  background: -webkit-linear-gradient(to right, #ABD2FA 30%,#7692FF 120%);
-  background: linear-gradient(to right, #ABD2FA 30%,#7692FF 120%);
-  color: white;
+  min-height: calc(100vh - 56px);
+  /*
+  background-image: url('/public/backimg.jpg'); 
+  background-size: 100%; /* Adjust this value for more or less zoom
+  background-position: center; 
+  background-repeat: no-repeat;
+  */
   text-align: center; 
   padding: 100px; 
   box-sizing: border-box;
@@ -20,8 +24,7 @@
   flex-direction: column; 
   justify-content: center; 
   align-items: center; 
-  height: 100%;
-  overflow: hidden; 
+  height: 10vh;
 }
 
 .gif-container {
@@ -31,15 +34,14 @@
   justify-content: center;
   align-items: center; 
   text-align: center; 
-  height: 100%; 
+  height: 10vh;
 }
 
 .learning-gif {
-  max-width: 100%; 
   height: auto; 
+  max-width: 100%;
   margin: 0 auto; 
 }
-
 
 .home h1 {
   font-family: 'Poppins', sans-serif;
@@ -47,39 +49,81 @@
   background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
   -webkit-background-clip: text;
   color: transparent;
+  margin-bottom: 10px;
 }
 
 .home p {
   font-family: 'Poppins';
   color: rgb(0, 0, 0);
-  font-size: 1.5vw; 
+  font-size: 1.7vw; 
   max-width: 800px;
   line-height: 1.6;
+  margin-bottom: 5px;
 }
 
 .start-button {
   background-color: #3D518C;
   border: none;
   color: white;
-  padding: 15px 30px;
-  font-size: 1.2rem;
-  border-radius: 5px;
+  padding: 20px 40px;
+  font-size: 1.5rem;;
+  border-radius: 30px;
   cursor: pointer;
-  border-radius:25px;
+  border-radius: 25px;
   transition: background-color 0.3s ease;
+  margin-bottom: 10px;
 }
 
 .start-button:hover {
-  background-color: #e84118;
+  background-color: #007bff;
 }
 
-/* Ensure the image scales properly without causing overflow */
-@media (max-height: 600px) {
-  .home img {
-      display: none; 
+a {
+  text-align: center;
+  font-size: 7em;
+  margin-bottom: 0;
+  margin-top: 0;
+  line-height: 1;
+  text-decoration: none;
+  color: #fff;
+}
+
+.neon-blue {
+  font-family: monoton;
+  font-size: 1.5em;
+  text-decoration: none;
+  color: #3D518C;
+  text-align: center;
+  animation: neon-blue 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes neon-blue {
+  from {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228dff,
+      0 0 35px #228dff, 0 0 40px #228dff, 0 0 50px #228dff, 0 0 75px #228dff;
   }
-  
-  .home {
-      padding: 20px; 
+  to {
+    text-shadow: 0 0 2.5px #fff, 0 0 5px #fff, 0 0 7.5px #fff, 0 0 10px #228dff,
+      0 0 17.5px #228dff, 0 0 20px #228dff, 0 0 25px #228dff, 0 0 37.5px #228dff;
+  }
+}
+
+@media (max-width: 768px) {
+  .text-container {
+    height: 60vh; /* Adjust for smaller screens */
+  }
+
+  .gif-container {
+    height: 40vh; /* Adjust for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .text-container {
+    height: 50vh; /* Further adjustments for very small screens */
+  }
+
+  .gif-container {
+    height: 50vh; /* Further adjustments for very small screens */
   }
 }
