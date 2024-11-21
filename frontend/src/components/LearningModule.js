@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import '../styles/LearningModule.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const LearningModule = () => {
   const [expandedLevel, setExpandedLevel] = useState(null);
   const [selectedLesson, setSelectedLesson] = useState(null);
+  const [showLevelModal, setShowLevelModal] = useState(false);
 
   const lessons = {
     Beginner: ['Lesson 1', 'Lesson 2', 'Lesson 3', 'Lesson 4', 'Lesson 5'],
@@ -63,6 +65,13 @@ const LearningModule = () => {
   const handleLessonClick = (lesson) => {
     setSelectedLesson(lesson);
   };
+  const openLevelModal = () => {
+    setShowLevelModal(true);
+  };
+
+  const closeLevelModal = () => {
+    setShowLevelModal(false);
+  };
 
   return (
     <div className="learning-module-container">
@@ -106,6 +115,7 @@ const LearningModule = () => {
                   />
                   <p className="lesson-description">{lessonContent[selectedLesson].description}</p>
                   <button className="lesson-button">Try it</button>
+                  <button className="lesson-button" onClick={openLevelModal}>Continue</button>
                 </div>
               )}
               {lessonContent[selectedLesson].video && (
@@ -116,6 +126,7 @@ const LearningModule = () => {
                   </video>
                   <p className="lesson-description">{lessonContent[selectedLesson].description}</p>
                   <button className="lesson-button">Try it</button>
+                  <button className="lesson-button" onClick={openLevelModal}>Continue</button>
                 </div>
               )}
             </div>
@@ -124,6 +135,63 @@ const LearningModule = () => {
           )}
         </div>
       </div>
+
+  
+{/* Level Modal */}
+{showLevelModal && (
+  <div
+    className="custom-modal-overlay"
+    tabIndex="-1"
+    role="dialog"
+    aria-modal="true"
+  >
+    <div className="custom-modal-dialog" role="document">
+      <div className="custom-modal-content">
+        {/* Modal Header */}
+        <div className="custom-modal-header">
+          <h5 className="custom-modal-title">Continue Lesson</h5>
+          <button
+            type="button"
+            className="custom-close-btn"
+            onClick={closeLevelModal}
+            aria-label="Close"
+          >
+            &times;
+          </button>
+        </div>
+
+        {/* Modal Body */}
+        <div className="custom-modal-body">
+          <p>Are you ready to continue to the next part of the lesson?</p>
+          <img
+            src="/thumb.gif" 
+            alt="Thumbs Up"
+            style={{ width: '100px', height: 'auto', display: 'block', margin: '10px auto' }}
+          />
+        </div>
+
+        {/* Modal Footer */}
+        <div className="custom-modal-footer">
+          <button
+            className="custom-btn custom-btn-secondary"
+            onClick={closeLevelModal}
+            style={{ marginRight: '10px' }}
+          >
+            Close
+          </button>
+          <button
+            className="custom-btn custom-btn-primary"
+            onClick={closeLevelModal}
+          >
+            Proceed
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
+
     </div>
   );
 };
