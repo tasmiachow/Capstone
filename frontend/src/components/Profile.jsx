@@ -139,17 +139,21 @@ const Profile = () => {
           <p className="next-level-points">{userData.nextLevelPoints ? userData.nextLevelPoints - userData.points : '0'} points to next level</p>
         </div>
         <div className="badges-section">
-  <h3>Badges</h3>
-  <ul>
-    {userData.badges.map((badge, index) => (
-      <li key={index} className="badge">
-        <img src={require(`../Badges/${badge.icon}`)} alt={badge.name} className="badge-icon" /> {/* Added class */}
-        <p>{badge.name}</p>
-        <small>{badge.description}</small>
-      </li>
-    ))}
-  </ul>
-</div>
+          <h3>Badges</h3>
+          <ul>
+            {userData.badges.map((badge, index) => (
+              <li key={index} className="badge">
+                <div className="badge-container">
+                  <img src={require(`../Badges/${badge.icon}`)} alt={badge.name} className="badge-icon" />
+                  <div className="badge-hover-info">
+                    <h4>{badge.name}</h4>
+                    <p>{badge.description}</p>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
       {isEditing && (
         <div className={`edit-form ${isAnimatingOut ? 'slide-out' : 'slide-in'}`}>

@@ -143,9 +143,13 @@ const ProfileDropdown = ({ onClose }) => {
           <ul>
             {userData.badges.map((badge, index) => (
               <li key={index} className="badge">
-                <img src={require(`../Badges/${badge.icon}`)} alt={badge.name} className="badge-icon" />
-                <p>{badge.name}</p>
-                <small>{badge.description}</small>
+                <div className="badge-container">
+                  <img src={require(`../Badges/${badge.icon}`)} alt={badge.name} className="badge-icon" />
+                  <div className="badge-hover-info">
+                    <h4>{badge.name}</h4>
+                    <p>{badge.description}</p>
+                  </div>
+                </div>
               </li>
             ))}
           </ul>
