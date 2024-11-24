@@ -226,3 +226,27 @@
 .badge-container:hover .badge-hover-info {
     display: block;
 }
+
+.profile-pic-selection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.selectable-pic {
+    width: 40px;  
+    height: 40px; 
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.selectable-pic:hover {
+    transform: scale(1.1);
+}
+
+.selectable-pic.selected {
+    border: 2px solid #3D518C;
+}
