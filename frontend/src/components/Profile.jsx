@@ -5,6 +5,14 @@ import { getDoc, doc, updateDoc } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { db, auth, storage } from '../firebase';
 
+const profilePics = [
+  'Profile_Pic/browngirl.png',
+  'Profile_Pic/brownman.png',
+  'Profile_Pic/cat.png',
+  'Profile_Pic/girl.png',
+  'Profile_Pic/man.png',
+];
+
 const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
@@ -91,6 +99,10 @@ const Profile = () => {
     }
   };
 
+  const handleProfilePicSelect = (pic) => {
+    setUserData({ ...userData, profilePic: pic });
+  };
+
   const handleSaveChanges = async () => {
     try {
       const user = auth.currentUser;
@@ -159,7 +171,17 @@ const Profile = () => {
         <div className={`edit-form ${isAnimatingOut ? 'slide-out' : 'slide-in'}`}>
           <h3>Edit Profile</h3>
           <h4>Profile Image</h4>
-          <input type="file" id="avatarupload" name="filename" onChange={handleFileChange} />
+          <div className="profile-pic-selection">
+            {profilePics.map((pic, index) => (
+              <img
+                key={index}
+                src={`./${pic}`}
+                alt={`Profile ${index}`}
+                className={`selectable-pic ${userData.profilePic === pic ? 'selected' : ''}`}
+                onClick={() => handleProfilePicSelect(pic)}
+              />
+            ))}
+          </div>
           <h4>Name</h4>
           <input
             type="text"
