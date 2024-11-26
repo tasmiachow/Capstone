@@ -6,6 +6,14 @@ import { getDoc, doc, updateDoc } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { db, auth, storage } from '../firebase';
 
+const profilePics = [
+  'Profile_Pic/browngirl.png',
+  'Profile_Pic/brownman.png',
+  'Profile_Pic/cat.png',
+  'Profile_Pic/girl.png',
+  'Profile_Pic/man.png',
+];
+
 const ProfileDropdown = ({ onClose }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
@@ -91,6 +99,10 @@ const ProfileDropdown = ({ onClose }) => {
     }
   };
 
+  const handleProfilePicSelect = (pic) => {
+    setUserData({ ...userData, profilePic: pic });
+  };
+
   const handleSaveChanges = async () => {
     try {
       const user = auth.currentUser;
@@ -143,9 +155,13 @@ const ProfileDropdown = ({ onClose }) => {
           <ul>
             {userData.badges.map((badge, index) => (
               <li key={index} className="badge">
-                <img src={require(`../Badges/${badge.icon}`)} alt={badge.name} className="badge-icon" />
-                <p>{badge.name}</p>
-                <small>{badge.description}</small>
+                <div className="badge-container">
+                  <img src={require(`../Badges/${badge.icon}`)} alt={badge.name} className="badge-icon" />
+                  <div className="badge-hover-info">
+                    <h4>{badge.name}</h4>
+                    <p>{badge.description}</p>
+                  </div>
+                </div>
               </li>
             ))}
           </ul>
@@ -157,7 +173,17 @@ const ProfileDropdown = ({ onClose }) => {
           <div className={`edit-form ${isAnimatingOut ? 'slide-out' : 'slide-in'}`}>
             <h3>Edit Profile</h3>
             <h4>Profile Image</h4>
-            <input type="file" id="avatarupload" name="filename" onChange={handleFileChange} />
+            <div className="profile-pic-selection">
+              {profilePics.map((pic, index) => (
+                <img
+                  key={index}
+                  src={`./${pic}`}
+                  alt={`Profile ${index}`}
+                  className={`selectable-pic ${userData.profilePic === pic ? 'selected' : ''}`}
+                  onClick={() => handleProfilePicSelect(pic)}
+                />
+              ))}
+            </div>
             <h4>Name</h4>
             <input
               type="text"
