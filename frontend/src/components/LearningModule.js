@@ -111,10 +111,63 @@ const LearningModule = () => {
   };
 
   const isLessonUnlocked = (lesson) => {
-    const lessonIndex = parseInt(lesson.split(' ')[1]);
     const currentLevel = Object.keys(lessons).find(level => lessons[level].includes(lesson));
-    const previousLesson = lessons[currentLevel][lessonIndex - 2];
-    return lessonIndex === 1 || (previousLesson && userProgress[previousLesson]?.completed);
+    if (!currentLevel) {
+      console.error(`Current Level for ${lesson} not found.`);
+      return false;
+    }
+  
+    const currentLessons = lessons[currentLevel];
+    const lessonIndex = currentLessons.indexOf(lesson) + 1;  // Find the 1-based index of the lesson in the current level
+    const levelIndex = Object.keys(lessons).indexOf(currentLevel);
+  
+    // console.log(`Checking if ${lesson} is unlocked.`);
+    // console.log(`Current Level: ${currentLevel}`);
+    // console.log(`Lesson Index: ${lessonIndex}`);
+  
+    // check if it is the first level's first lesson
+    if (lessonIndex === 1 && levelIndex === 0) {
+      return true;
+    }
+  
+    // check if all previous lessons in the same level are completed
+    for (let i = 0; i < lessonIndex - 1; i++) {
+      const previousLesson = currentLessons[i];
+      if (!userProgress[previousLesson]?.completed) {
+        console.log(`${lesson} is not unlocked because ${previousLesson} is not completed.`);
+        return false;
+      }
+    }
+  
+    // check if all lessons in previous levels are completed if it is the first lesson in the level
+    if (lessonIndex === 1) {
+      for (let i = 0; i < levelIndex; i++) {
+        const previousLevelLessons = lessons[Object.keys(lessons)[i]];
+        for (let j = 0; j < previousLevelLessons.length; j++) {
+          if (!userProgress[previousLevelLessons[j]]?.completed) {
+            console.log(`${lesson} is not unlocked because ${previousLevelLessons[j]} from previous level is not completed.`);
+            return false;
+          }
+        }
+      }
+    }
+  
+    console.log(`${lesson} is unlocked.`);
+    return true;
+  };
+
+  const updateProgress = async (lesson) => {
+    const user = auth.currentUser;
+    if (user) {
+      const newProgress = {
+        ...userProgress,
+        [lesson]: { completed: true }
+      };
+      const userRef = doc(db, 'users', user.uid);
+      const userData = await getDoc(userRef);
+      await updateDoc(userRef, { progress: newProgress });
+      setUserProgress(newProgress);
+    }
   };
 
   const handleLessonComplete = async () => {
@@ -142,26 +195,33 @@ const LearningModule = () => {
     }
   };
 
-  const handleNextLesson = () => {
-    const lessonIndex = parseInt(selectedLesson.split(' ')[1]);
+  const handleNextLesson = async () => {
+    if (!selectedLesson) return;
+
     const currentLevel = Object.keys(lessons).find(level => lessons[level].includes(selectedLesson));
     const currentLessons = lessons[currentLevel];
-    const nextLessonIndex = lessonIndex;
-  
-    if (nextLessonIndex < currentLessons.length) {
-      const nextLesson = currentLessons[nextLessonIndex];
+    const lessonIndex = currentLessons.indexOf(selectedLesson);
+
+    if (lessonIndex < currentLessons.length - 1) {
+      const nextLesson = currentLessons[lessonIndex + 1];
       handleLessonClick(nextLesson);
     } else {
-      const nextLevel = Object.keys(lessons)[Object.keys(lessons).indexOf(currentLevel) + 1];
-      if (nextLevel) {
-        const nextLesson = lessons[nextLevel][0];
-        handleLessonClick(nextLesson);
+      const nextLevelIndex = Object.keys(lessons).indexOf(currentLevel) + 1;
+      if (nextLevelIndex < Object.keys(lessons).length) {
+        // check if all lessons in the current level are completed before unlocking the next level
+        const allCurrentLessonsCompleted = currentLessons.every(lesson => userProgress[lesson]?.completed);
+        if (allCurrentLessonsCompleted) {
+          const nextLevel = Object.keys(lessons)[nextLevelIndex];
+          const nextLesson = lessons[nextLevel][0];
+          handleLessonClick(nextLesson);
+        } else {
+          alert("Complete all lessons in the current level to unlock the next level.");
+        }
       } else {
         alert("All lessons completed!");
       }
     }
   };
-  
 
   const toggleSidebar = () => {
     setIsSidebarVisible(!isSidebarVisible);
