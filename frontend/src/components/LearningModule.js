@@ -279,16 +279,19 @@ const LearningModule = () => {
                 </button>
                 {expandedLevel === level && (
                   <ul className="lesson-list">
-                    {lessons[level].map((lesson) => (
-                      <li key={lesson} className="lesson-item">
-                        <button
-                          className="lesson-button"
-                          onClick={() => handleLessonClick(lesson)}
-                        >
-                          {lesson}
-                        </button>
-                      </li>
-                    ))}
+                    {lessons[level].map((lesson) => {
+                      const isCompleted = userProgress[lesson]?.completed;
+                      return (
+                        <li key={lesson} className="lesson-item">
+                          <button
+                            className={`lesson-button ${isCompleted ? 'completed' : ''}`}
+                            onClick={() => handleLessonClick(lesson)}
+                          >
+                            {lesson}
+                          </button>
+                        </li>
+                      );
+                    })}
                   </ul>
                 )}
               </div>
