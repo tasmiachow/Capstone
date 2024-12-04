@@ -4,6 +4,8 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import { getDoc, doc, updateDoc } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { db, auth, storage } from '../firebase'; 
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 import '../styles/ProfileDropdown.css';
 
 const ProfileDropdown = ({ onClose }) => {
@@ -19,6 +21,25 @@ const ProfileDropdown = ({ onClose }) => {
     });
     const [loading, setLoading] = useState(true);
     const [profilePicFile, setProfilePicFile] = useState(null);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      const auth = getAuth();
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          setIsLoggedIn(true);
+        } else {
+          setIsLoggedIn(false);
+        }
+      });
+    }, []);
+  
+    const handleLogout = async () => {
+      const auth = getAuth();
+      await signOut(auth);
+      navigate('/');
+    };
   
     useEffect(() => {
       const fetchUserData = async () => {
@@ -128,7 +149,14 @@ const ProfileDropdown = ({ onClose }) => {
           <div className="profile-section">
             <img src={userData.profilePic || './profile.png'} alt="Profile" className="profile-pic" />
             <h2 className="profile-name">{userData.name || 'No Name'}</h2>
+            {isLoggedIn ? (
+          <li><button onClick={handleLogout} className="profile-logout-button">Logout</button></li>
+        ) : (
+          null
+        )}
+
           </div>
+          
           <div className="user-about">
             <h3>About</h3>
             <p>{userData.about || 'No description available'}</p>
