@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/Profile.css';
 import '../styles/ProfileDropdown.css';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -136,7 +137,9 @@ const ProfileDropdown = ({ onClose }) => {
           <SettingsIcon />
         </button>
         <div className="profile-section">
-          <img src={userData.profilePic || './profile.png'} alt="Profile" className="profile-pic" />
+          <Link to="/profile">
+            <img src={userData.profilePic || './profile.png'} alt="Profile" className="profile-pic" />
+          </Link>
           <h2 className="profile-name">{userData.name || 'No Name'}</h2>
         </div>
         <div className="user-about">

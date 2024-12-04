@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Profile.css';
 import SettingsIcon from '@mui/icons-material/Settings';
-import { getDoc, doc, updateDoc } from 'firebase/firestore';
+import { getDoc, doc, updateDoc, collection, getDocs } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { db, auth, storage } from '../firebase';
 
@@ -26,6 +26,7 @@ const Profile = () => {
   });
   const [loading, setLoading] = useState(true);
   const [profilePicFile, setProfilePicFile] = useState(null);
+  const [allUsersData, setAllUsersData] = useState([]);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -72,6 +73,28 @@ const Profile = () => {
     });
 
     return () => unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    const fetchAllUsersData = async () => {
+      try {
+        const usersSnapshot = await getDocs(collection(db, 'users'));
+        const usersList = usersSnapshot.docs.map((doc) => {
+          const data = doc.data();
+          return {
+            id: doc.id,
+            name: data.name,
+            points: data.points,
+          };
+        });
+        const sortedUsers = usersList.sort((a, b) => b.points - a.points);
+        setAllUsersData(sortedUsers);
+      } catch (error) {
+        console.error('Error fetching all users data:', error);
+      }
+    };
+
+    fetchAllUsersData();
   }, []);
 
   const progress = userData.nextLevelPoints ? (userData.points / userData.nextLevelPoints) * 100 : 0;
@@ -200,6 +223,18 @@ const Profile = () => {
           <button onClick={handleSaveChanges}>Save Changes</button>
         </div>
       )}
+      <div className="leaderboard-section">
+        <h3>Leaderboard</h3>
+        <ul>
+          {allUsersData.map((user, index) => (
+            <li key={user.id} className="leaderboard-entry">
+              <span className="leaderboard-rank">#{index + 1}</span>
+              <span className="leaderboard-name">{user.name}</span>
+              <span className="leaderboard-points">{user.points} points</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
