@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Profile.css';
 import SettingsIcon from '@mui/icons-material/Settings';
-import { getDoc, doc, updateDoc } from 'firebase/firestore';
+import { getDoc, doc, updateDoc, collection, getDocs } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
-import { db, auth, storage } from '../firebase'; 
+import { db, auth, storage } from '../firebase';
+
+const profilePics = [
+  'Profile_Pic/browngirl.png',
+  'Profile_Pic/brownman.png',
+  'Profile_Pic/cat.png',
+  'Profile_Pic/girl.png',
+  'Profile_Pic/man.png',
+];
 
 const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
@@ -12,18 +20,20 @@ const Profile = () => {
     name: '',
     profilePic: '',
     about: '',
-    points: 0,  
-    nextLevelPoints: 0,  
-    badges: [], 
+    points: 0,
+    nextLevelPoints: 0,
+    badges: [],
   });
   const [loading, setLoading] = useState(true);
   const [profilePicFile, setProfilePicFile] = useState(null);
+  const [allUsersData, setAllUsersData] = useState([]);
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         const user = auth.currentUser;
         if (user) {
+          console.log('Fetching user data for UID:', user.uid);
           const userDoc = await getDoc(doc(db, 'users', user.uid));
           if (userDoc.exists()) {
             const data = userDoc.data();
@@ -46,7 +56,6 @@ const Profile = () => {
       }
     };
 
-    // check for changes in auth
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         fetchUserData();
@@ -66,7 +75,28 @@ const Profile = () => {
     return () => unsubscribe();
   }, []);
 
-  // calculate progress 
+  useEffect(() => {
+    const fetchAllUsersData = async () => {
+      try {
+        const usersSnapshot = await getDocs(collection(db, 'users'));
+        const usersList = usersSnapshot.docs.map((doc) => {
+          const data = doc.data();
+          return {
+            id: doc.id,
+            name: data.name,
+            points: data.points,
+          };
+        });
+        const sortedUsers = usersList.sort((a, b) => b.points - a.points);
+        setAllUsersData(sortedUsers);
+      } catch (error) {
+        console.error('Error fetching all users data:', error);
+      }
+    };
+
+    fetchAllUsersData();
+  }, []);
+
   const progress = userData.nextLevelPoints ? (userData.points / userData.nextLevelPoints) * 100 : 0;
 
   const toggleEditMode = () => {
@@ -75,9 +105,9 @@ const Profile = () => {
       setTimeout(() => {
         setIsEditing(false);
         setIsAnimatingOut(false);
-      }, 300); 
+      }, 300);
     } else {
-      setIsEditing(true); 
+      setIsEditing(true);
     }
   };
 
@@ -90,6 +120,10 @@ const Profile = () => {
     if (e.target.files[0]) {
       setProfilePicFile(e.target.files[0]);
     }
+  };
+
+  const handleProfilePicSelect = (pic) => {
+    setUserData({ ...userData, profilePic: pic });
   };
 
   const handleSaveChanges = async () => {
@@ -122,7 +156,7 @@ const Profile = () => {
     <div className="user-page">
       <div className={`profile-card ${isAnimatingOut ? 'slide-out' : 'slide-in'}`}>
         <button onClick={toggleEditMode} className="edit-button">
-          {isEditing ? 'Cancel' : <SettingsIcon/>}
+          {isEditing ? 'Cancel' : <SettingsIcon />}
         </button>
         <div className="profile-section">
           <img src={userData.profilePic || './profile.png'} alt="Profile" className="profile-pic" />
@@ -143,17 +177,34 @@ const Profile = () => {
           <h3>Badges</h3>
           <ul>
             {userData.badges.map((badge, index) => (
-              <li key={index} className="badge">{badge}</li>
+              <li key={index} className="badge">
+                <div className="badge-container">
+                  <img src={require(`../Badges/${badge.icon}`)} alt={badge.name} className="badge-icon" />
+                  <div className="badge-hover-info">
+                    <h4>{badge.name}</h4>
+                    <p>{badge.description}</p>
+                  </div>
+                </div>
+              </li>
             ))}
           </ul>
         </div>
       </div>
-
       {isEditing && (
         <div className={`edit-form ${isAnimatingOut ? 'slide-out' : 'slide-in'}`}>
           <h3>Edit Profile</h3>
           <h4>Profile Image</h4>
-          <input type="file" id="avatarupload" name="filename" onChange={handleFileChange}/>
+          <div className="profile-pic-selection">
+            {profilePics.map((pic, index) => (
+              <img
+                key={index}
+                src={`./${pic}`}
+                alt={`Profile ${index}`}
+                className={`selectable-pic ${userData.profilePic === pic ? 'selected' : ''}`}
+                onClick={() => handleProfilePicSelect(pic)}
+              />
+            ))}
+          </div>
           <h4>Name</h4>
           <input
             type="text"
@@ -172,6 +223,18 @@ const Profile = () => {
           <button onClick={handleSaveChanges}>Save Changes</button>
         </div>
       )}
+      <div className="leaderboard-section">
+        <h3>Leaderboard</h3>
+        <ul>
+          {allUsersData.map((user, index) => (
+            <li key={user.id} className="leaderboard-entry">
+              <span className="leaderboard-rank">#{index + 1}</span>
+              <span className="leaderboard-name">{user.name}</span>
+              <span className="leaderboard-points">{user.points} points</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

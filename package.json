@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@lordicon/element": "^1.10.1",
+    "lottie-react": "^2.4.0",
+    "lottie-web": "^5.12.2"
+  }
+}
