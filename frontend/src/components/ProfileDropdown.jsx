@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Profile.css';
@@ -153,7 +154,7 @@ const ProfileDropdown = ({ onClose }) => {
           </Link>
           <h2 className="profile-name">{userData.name || 'No Name'}</h2>
         </div>
-        {isLoggedIn ? (<li><button onClick={handleLogout} className="profile-logout-button">Logout</button></li>) : (null)}
+        {isLoggedIn ? (<button onClick={handleLogout} className="profile-logout-button">Logout</button>) : (null)}
         <div className="user-about">
           <h3>About</h3>
           <p>{userData.about || 'No description available'}</p>
