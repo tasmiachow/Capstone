@@ -206,3 +206,155 @@
 .back-button:hover {
   background-color: #0056b3;
 }
+.lesson-button.completed {
+  background-image: radial-gradient(100% 100% at 100% 0, #b2ff5a 0, #088a13 100%);
+  color: white;
+  font-weight: bold;
+}
+
+.lesson-button{
+  align-items: center;
+  appearance: none;
+  background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "Manrope",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.lesson-button:focus {
+box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+.lesson-button.completed:focus {
+  box-shadow: #088a13 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #088a13 0 -3px 0 inset;
+}
+.lesson-button:hover {
+box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+transform: translateY(-2px);
+}
+
+.lesson-button:active {
+box-shadow: #3c4fe0 0 3px 7px inset;
+transform: translateY(2px);
+}
+.lesson-button.completed:active {
+  box-shadow: #b2ff5a 0 3px 7px inset;
+  transform: translateY(2px);
+  }
+
+.slide-out {
+  animation: slideOut 400ms forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%); 
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0); 
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%); 
+    opacity: 0;
+  }
+} */
+
+/* Update the content grid layout when lesson is selected */
+.content {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 20px;
+  width: 100%;
+  max-width: 80%;
+}
+
+/* You can use slide-in and slide-out animations as before */
+.lesson-content {
+  padding: 20px;
+  border-left: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: auto;
+}
+
+.expand-sidebar-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1em;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+.expand-sidebar-button:hover {
+  background-color: #0056b3;
+}
+
+.levels-sidebar.collapsed {
+  display: none; /* Collapse sidebar */
+}
+
+.content.full-width {
+  grid-template-columns: 1fr; /* Adjust content layout when sidebar is collapsed */
+}
+
+.levels-sidebar {
+  display: block;
+  transition: all 0.3s ease;
+  width: 100%; 
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.lesson-content.full-width {
+  grid-column: span 2; /* Make it span both columns in the grid */
+}
+
+.back-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
