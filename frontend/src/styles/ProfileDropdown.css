@@ -98,8 +98,6 @@ html, body {
 .selectable-pic.selected {
   border: 2px solid #3D518C;
 }
-
-  
   .profile-card, .edit-profile-card {
     display: flex;
     flex-direction: column;
