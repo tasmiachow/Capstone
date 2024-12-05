@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import '../styles/LearningModule.css';
 import { doc, getDoc, updateDoc, setDoc } from 'firebase/firestore';
@@ -13,6 +14,7 @@ const LearningModule = () => {
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
   const [userProgress, setUserProgress] = useState({});
   const [loading, setLoading] = useState(true);
+  const [modal, setModal] = useState({ isVisible: false, message: '' });
 
   const lessons = {
     Beginner: ['Lesson 1', 'Lesson 2', 'Lesson 3', 'Lesson 4', 'Lesson 5'],
@@ -106,7 +108,10 @@ const LearningModule = () => {
         }, 400);
       }
     } else {
-      alert("Complete previous lessons to unlock this one.");
+      setModal({
+        isVisible: true,
+        message: `Complete previous lessons to unlock "${lesson}".`,
+      });
     }
   };
 
@@ -134,7 +139,10 @@ const LearningModule = () => {
     for (let i = 0; i < lessonIndex - 1; i++) {
       const previousLesson = currentLessons[i];
       if (!userProgress[previousLesson]?.completed) {
-        console.log(`${lesson} is not unlocked because ${previousLesson} is not completed.`);
+        setModal({
+          isVisible: true,
+          message: `${lesson} is not unlocked because "${previousLesson}" is not completed.`,
+        });
         return false;
       }
     }
@@ -145,7 +153,10 @@ const LearningModule = () => {
         const previousLevelLessons = lessons[Object.keys(lessons)[i]];
         for (let j = 0; j < previousLevelLessons.length; j++) {
           if (!userProgress[previousLevelLessons[j]]?.completed) {
-            console.log(`${lesson} is not unlocked because ${previousLevelLessons[j]} from previous level is not completed.`);
+            setModal({
+              isVisible: true,
+              message: `${lesson} is not unlocked because "${previousLevelLessons[j]}" from a previous level is not completed.`,
+            });
             return false;
           }
         }
@@ -154,6 +165,10 @@ const LearningModule = () => {
   
     console.log(`${lesson} is unlocked.`);
     return true;
+  };
+
+  const closeModal = () => {
+    setModal({ isVisible: false, message: '' });
   };
 
   const updateProgress = async (lesson) => {
@@ -346,6 +361,15 @@ const LearningModule = () => {
           <p>Pick a lesson to start your adventure and unlock points!</p>
         )}
         </div>
+        {/* Modal */}
+        {modal.isVisible && (
+        <div className="lesson-modal-overlay">
+          <div className="lesson-modal">
+            <p>{modal.message}</p>
+            <button onClick={closeModal}>Close</button>
+          </div>
+        </div>
+        )}
       </div>
     </div>
   );
