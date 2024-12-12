@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import '../styles/LearningModule.css';
@@ -15,6 +16,7 @@ const LearningModule = () => {
   const [userProgress, setUserProgress] = useState({});
   const [loading, setLoading] = useState(true);
   const [modal, setModal] = useState({ isVisible: false, message: '' });
+  const [hoverIndex, setHoverIndex] = useState(null);
 
   const lessons = {
     Beginner: ['Lesson 1', 'Lesson 2', 'Lesson 3', 'Lesson 4', 'Lesson 5'],
@@ -82,7 +84,7 @@ const LearningModule = () => {
     };
 
     fetchUserData();
-  }, []);
+   }, []);
 
   const toggleLevel = (level) => {
     setExpandedLevel(expandedLevel === level ? null : level);
@@ -289,25 +291,23 @@ const LearningModule = () => {
           <div className={`levels-sidebar ${isSidebarVisible ? '' : 'collapsed'}`}>
             {Object.keys(lessons).map((level) => (
               <div className="level" key={level}>
-                <button className="level-button" onClick={() => toggleLevel(level)}>
+                <p className="level-button" onClick={() => toggleLevel(level)}>
                   {level}
-                </button>
+                </p>
                 {expandedLevel === level && (
-                  <ul className="lesson-list">
-                    {lessons[level].map((lesson) => {
+                  <div className="lesson-list">
+                    {lessons[level].map((lesson, index) => {
                       const isCompleted = userProgress[lesson]?.completed;
                       return (
-                        <li key={lesson} className="lesson-item">
-                          <button
-                            className={`lesson-button ${isCompleted ? 'completed' : ''}`}
-                            onClick={() => handleLessonClick(lesson)}
+                          <p key={lesson} className={`lesson-item ${isCompleted ? 'completed' : ''} ${hoverIndex === index ? 'hover' : ''}`}
+                          onMouseEnter={() => setHoverIndex(index)} onMouseLeave={() => setHoverIndex(null)} 
+                          onClick={() => handleLessonClick(lesson)}
                           >
-                            {lesson}
-                          </button>
-                        </li>
+                            <span className={`text ${hoverIndex === index ? 'hover' : ''}`}>{lesson}</span>
+                          </p>
                       );
                     })}
-                  </ul>
+                  </div>
                 )}
               </div>
             ))}
