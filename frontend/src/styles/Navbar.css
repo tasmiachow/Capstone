@@ -83,7 +83,7 @@
     cursor: pointer;
 }
 .logout-button:hover {
-    text-decoration: underline;
+    background: linear-gradient(to right, #8f95b6 20%, #fdfdff 120%);
 }
 
 .profile-icon {

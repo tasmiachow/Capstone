@@ -223,19 +223,17 @@ const Profile = () => {
           <button onClick={handleSaveChanges}>Save Changes</button>
         </div>
       )}
-      <div className="leaderboard-section">
-        <h3>Leaderboard</h3>
-        <ul>
-          {allUsersData.map((user, index) => (
-            <li key={user.id} className="leaderboard-entry">
-              <span className="leaderboard-rank">#{index + 1}</span>
-              <span className="leaderboard-name">{user.name}</span>
-              <span className="leaderboard-points">{user.points} points</span>
-            </li>
-          ))}
-        </ul>
+        <div className="leaderboard-section">
+          <h3>Leaderboard</h3>
+            {allUsersData.map((user, index) => (
+              <p key={user.id} className="leaderboard-entry">
+                <span className="leaderboard-rank">#{index + 1}</span>
+                <span className="leaderboard-name">{user.name}</span>
+                <span className="leaderboard-points">{user.points} points</span>
+              </p>
+            ))}
+        </div>
       </div>
-    </div>
   );
 };
 
