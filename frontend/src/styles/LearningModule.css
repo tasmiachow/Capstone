@@ -100,10 +100,6 @@
    left:100%;
 }
 
-.lesson-button:hover {
-  text-decoration: underline;
-}
-
 .lesson-content p {
   text-align: center;
 }
@@ -138,14 +134,14 @@
   align-content: center;
   border: none;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.5em;
   padding: 0 10% 0 10%;
   font-weight: 300;
 }
 
 .lesson-button:hover {
-  text-decoration: underline;
   font-weight: bold;
+  background:linear-gradient(to right, #8f95b6 20%, #fdfdff 120%);
 }
 
 .lesson-image-container,
@@ -468,12 +464,10 @@
 .close-btn:hover {
   color: #333;
 }
-=======
   to {
     transform: translateX(100%); 
     opacity: 0;
   }
-} */
 
 /* Update the content grid layout when lesson is selected */
 .content {
@@ -544,6 +538,6 @@
 }
 
 .back-button:hover{
-  text-decoration: underline;
+  background: linear-gradient(to right, #8f95b6 20%, #fdfdff 120%);
   font-weight: bold;
 }

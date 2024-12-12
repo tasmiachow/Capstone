@@ -255,22 +255,36 @@
     border-radius: 15px;
     padding: 30px;
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     text-align: center;
     margin-top: 20px;
+    transition: all 0.3s ease;
+    background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
+    transition: transform 0.3s ease;
 }
 
 .leaderboard-section h3 {
     font-size: 1.5rem;
-    color: #333;
+    color: white;
     margin-bottom: 20px;
 }
 
 .leaderboard-entry {
+    font-weight: 350;
+    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #f9f9f9;
-    padding: 10px;
+    gap: 1%;
+}
+.leaderboard-rank,
+.leaderboard-points {
+    text-align: center;
+    flex: 1;
+}
+
+.leaderboard-name {
+    flex: 2;
+    text-align: center;
 }

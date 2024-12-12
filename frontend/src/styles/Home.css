@@ -83,7 +83,7 @@
 }
 
 .start-button:hover {
-  background-color: #007bff;
+  background: linear-gradient(to right, #8f95b6 20%, #fdfdff 120%);
 }
 
 a {
