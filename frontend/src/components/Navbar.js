@@ -5,7 +5,6 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ProfileDropdown from './ProfileDropdown';
 import '../styles/Navbar.css';
 
-
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -28,11 +27,9 @@ const Navbar = () => {
     navigate('/');
   };
 
-
   const toggleDropdown = () => {
     setShowDropdown((prev) => !prev);
   };
-
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -40,11 +37,10 @@ const Navbar = () => {
         setShowDropdown(false);
       }
     };
-  
+
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
-  
 
   return (
     <nav className="navbar">
@@ -56,7 +52,7 @@ const Navbar = () => {
             <div onClick={toggleDropdown} className="profile-icon">
               <AccountCircleIcon />
             </div>
-            {showDropdown && <ProfileDropdown onClose={() => setShowDropdown(false)} />} 
+            {showDropdown && <ProfileDropdown onClose={() => setShowDropdown(false)} />}
           </li>
         )}
         <li><Link to="/modules">Modules</Link></li>
@@ -65,6 +61,8 @@ const Navbar = () => {
         ) : (
           <li><Link to="/login"><div className="navitem login-button">Login</div></Link></li>
         )}
+        <li><Link to="/contact">Contact</Link></li>
+        <li><Link to="/faq">FAQ</Link></li>
       </ul>
     </nav>
   );

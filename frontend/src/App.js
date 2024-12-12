@@ -6,6 +6,8 @@ import Profile from './components/Profile';
 import SlidingLoginForm from './components/SlidingLoginForm';
 import ForgotPassword from './components/ForgotPassword.jsx';
 import LearningModule from './components/LearningModule.js';
+import Contact from './components/Contact';  
+import FAQ from './components/FAQ';  
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path="/modules" element={<LearningModule />} />
         <Route path="/login" element={<SlidingLoginForm />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/faq" element={<FAQ />} />
       </Routes>
     </Router>
   );
