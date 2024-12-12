@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Japanese&display=swap');
 @layer mShadow, mGradientStroke;
+
 .learning-module-container {
   display: flex;
   flex-direction: column;
@@ -7,19 +8,15 @@
   padding: 20px;
 }
 
-.content {
-  display: grid;
-  grid-template-columns: 200px 1fr; 
-  gap: 20px; 
+.toggle-sidebar-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1.1em;
   width: 100%;
-  max-width: 1000px;
-}
-
-.levels-sidebar {
-  width: 100%; 
-  background-color: #f4f4f4;
-  padding: 20px;
-  border-radius: 8px;
+  text-align: center;
 }
 
 .level {
@@ -31,7 +28,7 @@
   border: none;
   font-size: 1.1em;
   font-weight: bold;
-  color: #333;
+  color:#eff2fc;
   cursor: pointer;
   text-align: left;
   width: 100%;
@@ -44,28 +41,67 @@
 }
 
 .lesson-item {
+  color:#eff2fc;
+  font-size:1em;
+  font-weight:400;
+  text-align:center;
+  position:relative;
+  height:40px;
+  line-height:40px;
+  margin-top:10px;
+  overflow:hidden;
+  width:90%;
+  margin-left:5%;
+  cursor:pointer;
   margin: 5px 0;
+  border-radius: 10px;
+}
+.lesson-item:hover{
+  background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
+  color:#fdfdff;
+  text-decoration: underline;
+}
+.lesson-item:after{
+  content: '';
+  position:absolute;
+  width:80%;
+  border-bottom:1px solid rgba(255, 255, 255, 0.5);
+  bottom:50%;
+  left:-100%;
+  transition-delay: all 0.5s;
+  transition: all 0.5s;
+}
+.completed {
+  color:rgb(92, 236, 56);
+  font-weight: bold;
+}
+.completed:hover{
+  background:linear-gradient(to right, #3D518C 20%, #CCCCFF 120%);
+  color:rgb(92, 236, 56);
+  text-decoration: underline;
 }
 
-.lesson-button {
-  background: none;
-  border: none;
-  color: #007bff;
-  text-align: left;
-  cursor: pointer;
-  font-size: 1em;
+.text{
+  text-shadow:0px -40px 0px rgba(255, 255, 255, 1);
+  transition:all 0.75s;
+  transform:translateY(100%) translateZ(0);
+  transition-delay:all 0.25s;
+}
+
+.lesson-item:hover .text,
+.lesson-item.hover .text{
+   text-shadow:0px -40px 0px rgba(255, 255, 255, 0);
+   transform:translateY(0%) translateZ(0) scale(1.1);
+   font-weight:800;
+}
+
+.lesson-item:hover:after,
+.lesson-item.hover:after{
+   left:100%;
 }
 
 .lesson-button:hover {
   text-decoration: underline;
-}
-
-.lesson-content {
-  padding: 20px;
-  border-left: 1px solid #ccc;
-  background-color: #fff;
-  border-radius: 8px;
-  overflow: auto; 
 }
 
 .lesson-content p {
@@ -94,103 +130,222 @@
 }
 
 .lesson-button {
-  border-radius: 4px;
+  border-radius: 10px;
   margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #3D518C;
-  color: white;
+  background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
+  border: 2px solid #CCCCFF; 
+  color:#fdfdff;
+  align-content: center;
   border: none;
   cursor: pointer;
   font-size: 1rem;
+  padding: 0 10% 0 10%;
+  font-weight: 300;
 }
 
 .lesson-button:hover {
-  background-color: #007bff;
-  text-decoration: none;
+  text-decoration: underline;
+  font-weight: bold;
 }
 
 .lesson-image-container,
 .lesson-video-container {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centers the content vertically */
-  justify-content: center; /* Centers the content horizontally */
+  align-items: center;
+  justify-content: center;
   margin-top: 20px;
 }
 
-@layer mShadow {
-	.learning-module-container h1 {
-    margin-top: 0;
-		/* Text Fill GRadient */
-		background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,112,9,1) 43%, rgba(0,212,255,1) 100%);
-		color: transparent;
-		text-fill-color: transparent;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-		-webkit-background-clip: text;
-
-		font-size: 6rem;
-		paint-order: stroke fill;
-		text-shadow: 3px 3px 0px cyan, 5px 5px 0px darkcyan;
-		transition: all 0.5s;
-	}
-
-	.learning-module-container h1 {
-		font-variation-settings: "wght" 100, "ital" 1, "rota" 20;
-		/* Multiple Shadows */
-		text-shadow: 10px 10px 0px #07bcccdd,
-			15px 15px 0px #e601c099,
-			22px 22px 0px #e9019a88,
-			31px 31px 0px #f4046877,
-			42px 42px 10px #48289666;
-		animation: hithere 1s ease infinite;
-	}
-
-	.learning-module-container h1:hover {
-		animation-play-state: paused;
-	}
+/* .slide-in {
+  animation: slideIn 400ms forwards; 
 }
 
-
-
-.container {
-  display: flex;
-  gap: 2rem;
+.slide-out {
+  animation: slideOut 400ms forwards;
 }
 
-.column {
-  font-size: 2rem;
-  padding: 1rem;
-  text-align: center;
-}
-
-/* Layer for text stroke */
-@layer tStroke {
-  .text-stroke {
-    -webkit-text-stroke: 0.3px #fff;
-    color: #000;
+@keyframes slideIn {
+  from {
+    transform: translateX(100%); 
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0); 
+    opacity: 1;
   }
 }
 
-/* Layer for text gradient fill */
-@layer tGradient {
-  .text-gradient {
-    background-image: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(121, 112, 9, 1) 43%, rgba(0, 212, 255, 1) 100%);
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    -webkit-background-clip: text;
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%); 
+    opacity: 0;
+  }
+} */
+
+/* Update the content grid layout when lesson is selected */
+.content {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 20px;
+  width: 100%;
+  max-width: 80%;
+}
+
+/* You can use slide-in and slide-out animations as before */
+.lesson-content {
+  padding: 20px;
+  border-left: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: auto;
+}
+
+.expand-sidebar-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1em;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+.expand-sidebar-button:hover {
+  background-color: #0056b3;
+}
+
+.levels-sidebar.collapsed {
+  display: none; /* Collapse sidebar */
+}
+
+.content.full-width {
+  grid-template-columns: 1fr; /* Adjust content layout when sidebar is collapsed */
+}
+
+.levels-sidebar {
+  padding:10px 0px 20px 0px;
+  border-radius:4px;
+}
+
+.lesson-content.full-width {
+  grid-column: span 2; /* Make it span both columns in the grid */
+}
+
+.back-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+.lesson-button{
+  font-size:16px;
+  font-weight:300;
+  text-align:center;
+  position:relative;
+  height:40px;
+  line-height:40px;
+  margin-top:10px;
+  overflow:hidden;
+  margin-right: 25%;
+  cursor:pointer;
+}
+
+  .lesson-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .lesson-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 20%; 
+    font-size: 1rem;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    p{
+      margin-bottom: 20px;
+    }
+  }
+  
+  .lesson-modal button {
+    max-width: 30%;
+    align-items: center;
+    appearance: none;
+    background-color:  #5468ff;
+    border: 0;
+    border-radius: 6px;
+    box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    height: 48px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 18px;
+  }
+  
+
+.slide-out {
+  animation: slideOut 400ms forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%); 
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0); 
+    opacity: 1;
   }
 }
 
-/* Layer for multiple shadows */
-@layer tShadows {
-  .text-shadows {
-    text-shadow: 5px 5px 0px #07bcccdd,
-                 6px 6px 0px #e601c099,
-                 8px 8px 0px #e9019a88,
-                 11px 11px 0px #f4046877,
-                 15px 15px 10px #48289666;
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 
@@ -312,4 +467,83 @@
 
 .close-btn:hover {
   color: #333;
+}
+=======
+  to {
+    transform: translateX(100%); 
+    opacity: 0;
+  }
+} */
+
+/* Update the content grid layout when lesson is selected */
+.content {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 20px;
+  width: 100%;
+  max-width: 80%;
+}
+
+/* You can use slide-in and slide-out animations as before */
+.lesson-content {
+  padding: 20px;
+  border-left: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: auto;
+}
+
+.expand-sidebar-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1em;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+
+
+.levels-sidebar.collapsed {
+  display: none; /* Collapse sidebar */
+}
+
+.content.full-width {
+  grid-template-columns: 1fr; /* Adjust content layout when sidebar is collapsed */
+}
+
+.levels-sidebar {
+  display: block;
+  transition: all 0.3s ease;
+  width: 100%; 
+  background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
+  padding: 20px;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.lesson-content.full-width {
+  grid-column: span 2; /* Make it span both columns in the grid */
+}
+
+.back-button {
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
+  border: 2px solid #CCCCFF; 
+  color:#fdfdff;
+  align-content: center;
+  cursor: pointer;
+  font-weight: 300;
+}
+
+.back-button:hover{
+  text-decoration: underline;
+  font-weight: bold;
 }

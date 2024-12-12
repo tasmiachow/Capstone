@@ -1,12 +1,24 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/Profile.css';
 import '../styles/ProfileDropdown.css';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { getDoc, doc, updateDoc } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { db, auth, storage } from '../firebase';
+import { useNavigate } from 'react-router-dom';
+import { getAuth, signOut } from 'firebase/auth';
+const profilePics = [
+  'Profile_Pic/browngirl.png',
+  'Profile_Pic/brownman.png',
+  'Profile_Pic/cat.png',
+  'Profile_Pic/girl.png',
+  'Profile_Pic/man.png',
+];
 
 const ProfileDropdown = ({ onClose }) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
   const [userData, setUserData] = useState({
@@ -19,12 +31,14 @@ const ProfileDropdown = ({ onClose }) => {
   });
   const [loading, setLoading] = useState(true);
   const [profilePicFile, setProfilePicFile] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         const user = auth.currentUser;
         if (user) {
+          setIsLoggedIn(true);
           const userDoc = await getDoc(doc(db, 'users', user.uid));
           if (userDoc.exists()) {
             const data = userDoc.data();
@@ -39,6 +53,7 @@ const ProfileDropdown = ({ onClose }) => {
           }
         } else {
           console.log('No user is signed in.');
+          setIsLoggedIn(false);
         }
         setLoading(false);
       } catch (error) {
@@ -91,6 +106,10 @@ const ProfileDropdown = ({ onClose }) => {
     }
   };
 
+  const handleProfilePicSelect = (pic) => {
+    setUserData({ ...userData, profilePic: pic });
+  };
+
   const handleSaveChanges = async () => {
     try {
       const user = auth.currentUser;
@@ -117,6 +136,12 @@ const ProfileDropdown = ({ onClose }) => {
     return <div>Loading...</div>;
   }
 
+  const handleLogout = async () => {
+    const auth = getAuth();
+    await signOut(auth);
+    navigate('/');
+  };
+
   return (
     <div className="profile-dropdown">
       <div className={`profile-card ${isAnimatingOut ? 'slide-out' : 'slide-in'}`}>
@@ -124,9 +149,12 @@ const ProfileDropdown = ({ onClose }) => {
           <SettingsIcon />
         </button>
         <div className="profile-section">
-          <img src={userData.profilePic || './profile.png'} alt="Profile" className="profile-pic" />
+          <Link to="/profile">
+            <img src={userData.profilePic || './profile.png'} alt="Profile" className="profile-pic" />
+          </Link>
           <h2 className="profile-name">{userData.name || 'No Name'}</h2>
         </div>
+        {isLoggedIn ? (<button onClick={handleLogout} className="profile-logout-button">Logout</button>) : (null)}
         <div className="user-about">
           <h3>About</h3>
           <p>{userData.about || 'No description available'}</p>
@@ -143,9 +171,13 @@ const ProfileDropdown = ({ onClose }) => {
           <ul>
             {userData.badges.map((badge, index) => (
               <li key={index} className="badge">
-                <img src={require(`../Badges/${badge.icon}`)} alt={badge.name} className="badge-icon" />
-                <p>{badge.name}</p>
-                <small>{badge.description}</small>
+                <div className="badge-container">
+                  <img src={require(`../Badges/${badge.icon}`)} alt={badge.name} className="badge-icon" />
+                  <div className="badge-hover-info">
+                    <h4>{badge.name}</h4>
+                    <p>{badge.description}</p>
+                  </div>
+                </div>
               </li>
             ))}
           </ul>
@@ -157,7 +189,17 @@ const ProfileDropdown = ({ onClose }) => {
           <div className={`edit-form ${isAnimatingOut ? 'slide-out' : 'slide-in'}`}>
             <h3>Edit Profile</h3>
             <h4>Profile Image</h4>
-            <input type="file" id="avatarupload" name="filename" onChange={handleFileChange} />
+            <div className="profile-pic-selection">
+              {profilePics.map((pic, index) => (
+                <img
+                  key={index}
+                  src={`./${pic}`}
+                  alt={`Profile ${index}`}
+                  className={`selectable-pic ${userData.profilePic === pic ? 'selected' : ''}`}
+                  onClick={() => handleProfilePicSelect(pic)}
+                />
+              ))}
+            </div>
             <h4>Name</h4>
             <input
               type="text"

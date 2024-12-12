@@ -52,7 +52,7 @@
 
 .login-button {
     padding: 8px 16px;
-    background-color: #3D518C; 
+    background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
     color: white;
     border-radius: 4px;
     font-weight: bold;
@@ -63,25 +63,27 @@
 }
 
 .login-button:hover {
-    background-color: #007bff; 
-    text-decoration: none;
+    text-decoration: underline;
 
 }
 /* might want to change the color of logout button later? - joe */
 .logout-button{
+    font-family: 'Manrope',monospace;
     padding: 8px 16px;
-    background-color: #3D518C; 
+    background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
     color: white;
-    border-radius: 4px;
+    border-radius: 10px;
     font-weight: bold;
     text-align: center;
     transition: background-color 0.3s;
     display: flex; 
     align-items: center; 
+    font-size: 1rem;    
+    border: 2px solid #CCCCFF; 
+    cursor: pointer;
 }
 .logout-button:hover {
-    background-color: #007bff; 
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 .profile-icon {
