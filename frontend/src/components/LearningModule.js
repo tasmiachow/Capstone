@@ -121,10 +121,6 @@ const LearningModule = () => {
     const lessonIndex = currentLessons.indexOf(lesson) + 1;  // Find the 1-based index of the lesson in the current level
     const levelIndex = Object.keys(lessons).indexOf(currentLevel);
   
-    // console.log(`Checking if ${lesson} is unlocked.`);
-    // console.log(`Current Level: ${currentLevel}`);
-    // console.log(`Lesson Index: ${lessonIndex}`);
-  
     // check if it is the first level's first lesson
     if (lessonIndex === 1 && levelIndex === 0) {
       return true;
@@ -264,7 +260,16 @@ const LearningModule = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
+// tracks your progress for progressbar
+const calculateProgress = (level) => {
+  const levelLessons = lessons[level];
+  const completedLessons = levelLessons.filter(lesson => userProgress[lesson]?.completed);
+  const progress = (completedLessons.length / levelLessons.length) * 100;
+  const isComplete = completedLessons.length === levelLessons.length;
+  return { progress, isComplete };
+};
 
+  
   return (
     <div className="learning-module-container">
       <h1>Learning Module</h1>
@@ -272,10 +277,18 @@ const LearningModule = () => {
         {/* Levels Sidebar */}
         {selectedLesson === null && (
           <div className={`levels-sidebar ${isSidebarVisible ? '' : 'collapsed'}`}>
-            {Object.keys(lessons).map((level) => (
+          {Object.keys(lessons).map((level) => {
+            const { progress, isComplete } = calculateProgress(level);
+            return (
               <div className="level" key={level}>
                 <button className="level-button" onClick={() => toggleLevel(level)}>
                   {level}
+                  <div className="progress-bar">
+                    <div
+                      className="progress-bar-fill"
+                      style={{ width: `${progress}%`, backgroundColor: isComplete ? 'green' : '#3D518C' }}
+                    ></div>
+                  </div>
                 </button>
                 {expandedLevel === level && (
                   <ul className="lesson-list">
@@ -292,8 +305,11 @@ const LearningModule = () => {
                   </ul>
                 )}
               </div>
-            ))}
-          </div>
+            );
+          })}
+        </div>
+        
+        
         )}
 
         {/* Expand Sidebar Button */}
