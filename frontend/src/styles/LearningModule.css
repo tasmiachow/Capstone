@@ -34,6 +34,7 @@
   width: 100%;
 }
 
+
 .lesson-list {
   list-style: none;
   padding-left: 20px;
@@ -85,6 +86,50 @@
   text-decoration: underline;
 }
 
+.lesson-item:hover{
+  background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
+  color:#fdfdff;
+  text-decoration: underline;
+}
+.lesson-item:after{
+  content: '';
+  position:absolute;
+  width:80%;
+  border-bottom:1px solid rgba(255, 255, 255, 0.5);
+  bottom:50%;
+  left:-100%;
+  transition-delay: all 0.5s;
+  transition: all 0.5s;
+}
+.completed {
+  color:rgb(92, 236, 56);
+  font-weight: bold;
+}
+.completed:hover{
+  background:linear-gradient(to right, #3D518C 20%, #CCCCFF 120%);
+  color:rgb(92, 236, 56);
+  text-decoration: underline;
+}
+
+.text{
+  text-shadow:0px -40px 0px rgba(255, 255, 255, 1);
+  transition:all 0.75s;
+  transform:translateY(100%) translateZ(0);
+  transition-delay:all 0.25s;
+}
+
+.lesson-item:hover .text,
+.lesson-item.hover .text{
+   text-shadow:0px -40px 0px rgba(255, 255, 255, 0);
+   transform:translateY(0%) translateZ(0) scale(1.1);
+   font-weight:800;
+}
+
+.lesson-item:hover { 
+  background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
+   color: #fdfdff;
+    text-decoration: underline;
+   }
 .text {
   text-shadow: 0px -40px 0px rgba(255, 255, 255, 1);
   transition: all 0.75s;
@@ -148,6 +193,7 @@
   background: linear-gradient(to right, #8f95b6 20%, #fdfdff 120%);
 }
 
+
 .lesson-image-container,
 .lesson-video-container {
   display: flex;
@@ -205,6 +251,7 @@
   transition: transform 0.3s ease;
 }
 
+
 .lesson-content.full-width {
   grid-column: span 2; /* Make it span both columns in the grid */
 }
@@ -247,7 +294,6 @@
 .progress-bar-fill.complete {
   background-color: green; /* Color when complete */
 }
-
 
 .lesson-modal-overlay {
   position: absolute;
@@ -333,3 +379,237 @@
   }
 }
 
+.lesson-button {
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+  margin-top: 10px;
+  overflow: hidden;
+  margin-right: 25%;
+  cursor: pointer;
+}
+
+.lesson-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.lesson-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 20%;
+  font-size: 1rem;
+  text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  p {
+    margin-bottom: 20px;
+  }
+}
+
+.lesson-modal button {
+  max-width: 30%;
+  align-items: center;
+  appearance: none;
+  background-color: #5468ff;
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.custom-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8); /* Dimmed background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+}
+
+.custom-modal-dialog {
+  background: white;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.custom-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.custom-modal-title {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.custom-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #888;
+  cursor: pointer;
+}
+
+.custom-close-btn:hover {
+  color: #333;
+}
+
+.custom-modal-body {
+  padding: 1rem;
+  font-size: 1rem;
+  color: #555;
+  text-align: center;
+}
+
+.custom-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+  border-top: 1px solid #ddd;
+}
+
+.custom-btn {
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.custom-btn-secondary {
+  background: #ccc;
+  color: #333;
+}
+
+.custom-btn-secondary:hover {
+  background: #bbb;
+}
+
+.custom-btn-primary {
+  background: #007bff;
+  color: white;
+}
+
+.custom-btn-primary:hover {
+  background: #0056b3;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.close-btn {
+  font-size: 1.5rem;
+  color: #888;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 20px;
+  width: 100%;
+  max-width: 80%;
+}
+
+.lesson-content {
+  padding: 20px;
+  border-left: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: auto;
+}
+
+.expand-sidebar-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1em;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+.expand-sidebar-button:hover {
+  background-color: #0056b3;
+}
+
+.levels-sidebar.collapsed {
+  display: none; /* Collapse sidebar */
+}
+
+.content.full-width {
+  grid-template-columns: 1fr; /* Adjust content layout when sidebar is collapsed */
+}
+
+.levels-sidebar {
+  display: block;
+  transition: all 0.3s ease;
+  width: 100%;
+  background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
+  padding: 20px;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
