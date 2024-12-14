@@ -18,7 +18,7 @@ Make sure you download the installer and the powershell prompt </br>
 Cd into backend folder </br>
 cd backend </br>
 
-# Delete old virtual Env 
+# Delete old virtual Env BE SUPER CAREFUL
 rm -rf path_to_your_virtual_env <br>
 or <br>
 Remove-Item -Recurse -Force path_to_your_virtual_env <br>
