@@ -28,7 +28,7 @@
   border: none;
   font-size: 1.1em;
   font-weight: bold;
-  color: #333;
+  color: #eff2fc;
   cursor: pointer;
   text-align: left;
   width: 100%;
@@ -41,20 +41,67 @@
 }
 
 .lesson-item {
-  margin: 5px 0;
-}
-
-.lesson-button {
-  background: none;
-  border: none;
-  color: #007bff;
-  text-align: left;
-  cursor: pointer;
+  color: #eff2fc;
   font-size: 1em;
+  font-weight: 400;
+  text-align: center;
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+  margin-top: 10px;
+  overflow: hidden;
+  width: 90%;
+  margin-left: 5%;
+  cursor: pointer;
+  margin: 5px 0;
+  border-radius: 10px;
 }
 
-.lesson-button:hover {
+.lesson-item:hover {
+  background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
+  color: #fdfdff;
   text-decoration: underline;
+}
+
+.lesson-item:after {
+  content: '';
+  position: absolute;
+  width: 80%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  bottom: 50%;
+  left: -100%;
+  transition-delay: all 0.5s;
+  transition: all 0.5s;
+}
+
+.completed {
+  color: rgb(92, 236, 56);
+  font-weight: bold;
+}
+
+.completed:hover {
+  background: linear-gradient(to right, #3D518C 20%, #CCCCFF 120%);
+  color: rgb(92, 236, 56);
+  text-decoration: underline;
+}
+
+.text {
+  text-shadow: 0px -40px 0px rgba(255, 255, 255, 1);
+  transition: all 0.75s;
+  transform: translateY(100%) translateZ(0);
+  transition-delay: all 0.25s;
+}
+
+.lesson-item:hover .text,
+.lesson-item.hover .text {
+  text-shadow: 0px -40px 0px rgba(255, 255, 255, 0);
+  transform: translateY(0%) translateZ(0) scale(1.1);
+  font-weight: 800;
+}
+
+.lesson-item:hover:after,
+.lesson-item.hover:after {
+  left: 100%;
 }
 
 .lesson-content p {
@@ -62,8 +109,8 @@
 }
 
 .lesson-image {
-  width: 80%;       
-  max-width: 300px; 
+  width: 80%;
+  max-width: 300px;
   margin-top: 20px;
   border-radius: 8px;
 }
@@ -83,19 +130,22 @@
 }
 
 .lesson-button {
-  border-radius: 4px;
+  border-radius: 10px;
   margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #3D518C;
-  color: white;
+  background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
+  border: 2px solid #CCCCFF;
+  color: #fdfdff;
+  align-content: center;
   border: none;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.5em;
+  padding: 0 10% 0 10%;
+  font-weight: 300;
 }
 
 .lesson-button:hover {
-  background-color: #007bff;
-  text-decoration: none;
+  font-weight: bold;
+  background: linear-gradient(to right, #8f95b6 20%, #fdfdff 120%);
 }
 
 .lesson-image-container,
@@ -107,37 +157,6 @@
   margin-top: 20px;
 }
 
-/* .slide-in {
-  animation: slideIn 400ms forwards; 
-}
-
-.slide-out {
-  animation: slideOut 400ms forwards;
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateX(100%); 
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0); 
-    opacity: 1;
-  }
-}
-
-@keyframes slideOut {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(100%); 
-    opacity: 0;
-  }
-} */
-
-/* Update the content grid layout when lesson is selected */
 .content {
   display: grid;
   grid-template-columns: 200px 1fr;
@@ -146,7 +165,6 @@
   max-width: 80%;
 }
 
-/* You can use slide-in and slide-out animations as before */
 .lesson-content {
   padding: 20px;
   border-left: 1px solid #ccc;
@@ -179,10 +197,9 @@
 }
 
 .levels-sidebar {
-  display: block;
-  transition: all 0.3s ease;
-  width: 100%; 
-  background-color: #f4f4f4;
+  padding: 10px 0px 20px 0px;
+  border-radius: 4px;
+  background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
   padding: 20px;
   border-radius: 8px;
   transition: transform 0.3s ease;
@@ -201,11 +218,18 @@
   font-size: 1rem;
   border-radius: 4px;
   margin-bottom: 20px;
+  background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
+  border: 2px solid #CCCCFF;
+  color: #fdfdff;
+  align-content: center;
+  font-weight: 300;
 }
 
 .back-button:hover {
-  background-color: #0056b3;
+  background: linear-gradient(to right, #8f95b6 20%, #fdfdff 120%);
+  font-weight: bold;
 }
+
 .progress-bar {
   height: 10px;
   background-color: #e0e0e0;
@@ -216,6 +240,96 @@
 
 .progress-bar-fill {
   height: 100%;
-  background-color: #3D518C;
-  transition: width 0.3s ease;
+  background-color: blue; /* Default in-progress color */
+  transition: width 0.3s ease, background-color 0.3s ease;
 }
+
+.progress-bar-fill.complete {
+  background-color: green; /* Color when complete */
+}
+
+
+.lesson-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.lesson-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 20%;
+  font-size: 1rem;
+  text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.lesson-modal button {
+  max-width: 30%;
+  align-items: center;
+  appearance: none;
+  background-color: #5468ff;
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.slide-out {
+  animation: slideOut 400ms forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+

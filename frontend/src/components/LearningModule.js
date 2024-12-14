@@ -13,7 +13,7 @@ const LearningModule = () => {
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
   const [userProgress, setUserProgress] = useState({});
   const [loading, setLoading] = useState(true);
-
+  const [hoverIndex, setHoverIndex] = useState(null);
   const lessons = {
     Beginner: ['Lesson 1', 'Lesson 2', 'Lesson 3', 'Lesson 4', 'Lesson 5'],
     Intermediate: ['Lesson 6', 'Lesson 7', 'Lesson 8', 'Lesson 9', 'Lesson 10'],
@@ -281,34 +281,34 @@ const calculateProgress = (level) => {
             const { progress, isComplete } = calculateProgress(level);
             return (
               <div className="level" key={level}>
-                <button className="level-button" onClick={() => toggleLevel(level)}>
+                <p className="level-button" onClick={() => toggleLevel(level)}>
                   {level}
                   <div className="progress-bar">
                     <div
-                      className="progress-bar-fill"
-                      style={{ width: `${progress}%`, backgroundColor: isComplete ? 'green' : '#3D518C' }}
+                      className={`progress-bar-fill ${isComplete ? 'complete' : ''}`}
+                      style={{ width: `${progress}%` }}
                     ></div>
                   </div>
-                </button>
+                </p>
                 {expandedLevel === level && (
-                  <ul className="lesson-list">
-                    {lessons[level].map((lesson) => (
-                      <li key={lesson} className="lesson-item">
-                        <button
-                          className="lesson-button"
-                          onClick={() => handleLessonClick(lesson)}
+                  <div className="lesson-list">
+                    {lessons[level].map((lesson, index) => {
+                      const isCompleted = userProgress[lesson]?.completed;
+                      return (
+                        <p key={lesson} className={`lesson-item ${isCompleted ? 'completed' : ''} ${hoverIndex === index ? 'hover' : ''}`}
+                           onMouseEnter={() => setHoverIndex(index)} onMouseLeave={() => setHoverIndex(null)}
+                           onClick={() => handleLessonClick(lesson)}
                         >
-                          {lesson}
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
+                          <span className={`text ${hoverIndex === index ? 'hover' : ''}`}>{lesson}</span>
+                        </p>
+                      );
+                    })}
+                  </div>
                 )}
               </div>
             );
           })}
-        </div>
-        
+        </div>                
         
         )}
 
