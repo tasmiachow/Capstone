@@ -24,7 +24,7 @@ or <br>
 Remove-Item -Recurse -Force path_to_your_virtual_env <br>
 
 # Open up Anaconda Powershell Prompt </br>
-Create a virtual environment 
+Create a virtual environment </br>
 conda create --name modelenv python=3.11 </br>
 conda activate modelenv  </br>
 
