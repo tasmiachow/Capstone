@@ -13,10 +13,8 @@ npm run start - will start the frontend.
 
 Go to [Anaconda](https://www.anaconda.com/download) </br>
 Make sure you download the installer and the powershell prompt </br>
- </br>
-
- </br>
-
+ 
+# Once Installed 
 Cd into backend folder </br>
 cd backend </br>
 
