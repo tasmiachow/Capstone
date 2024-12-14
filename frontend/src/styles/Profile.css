@@ -95,6 +95,18 @@
     margin: 5px;
 }
 
+.badge img {
+    width: 50px; 
+    height: 50px; 
+    object-fit: cover; 
+}
+
+.badge-icon {
+    width: 50px;  
+    height: 50px;
+    object-fit: cover;
+}
+
 .edit-button {
     margin-top: 15px;
     padding: 10px 15px;
@@ -189,4 +201,90 @@
         transform: translateX(100%); 
         opacity: 0;
     }
+}
+
+.badge-container {
+    position: relative;
+    display: inline-block;
+}
+
+.badge-hover-info {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    color: #000; 
+    border: 1px solid #ddd;
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.badge-container:hover .badge-hover-info {
+    display: block;
+}
+
+.profile-pic-selection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.selectable-pic {
+    width: 40px;  
+    height: 40px; 
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.selectable-pic:hover {
+    transform: scale(1.1);
+}
+
+.selectable-pic.selected {
+    border: 2px solid #3D518C;
+}
+.leaderboard-section {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
+    transition: transform 0.3s ease;
+}
+
+.leaderboard-section h3 {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.leaderboard-entry {
+    font-weight: 350;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1%;
+}
+.leaderboard-rank,
+.leaderboard-points {
+    text-align: center;
+    flex: 1;
+}
+
+.leaderboard-name {
+    flex: 2;
+    text-align: center;
 }
