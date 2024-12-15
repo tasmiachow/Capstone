@@ -8,6 +8,7 @@ import { db, auth } from '../firebase';
 import beginnerBadge from '../Badges/beginner.json';
 import intermediateBadge from '../Badges/intermediate.json';
 import hardBadge from '../Badges/hard.json';
+import Example from './example';
 
 const LearningModule = () => {
   const [expandedLevel, setExpandedLevel] = useState(null);
@@ -28,25 +29,25 @@ const LearningModule = () => {
 
   const lessonContent = {
     'Lesson 1': {
-      text: 'A',
-      image: '/Aslvid/Alphabet/A.png',
-      description: 'How to sign "A" in American Sign Language (ASL), raise your dominant hand in a fist with the palm facing out and extend your thumb.'
+      text: 'Hello',
+      video: '/Aslvid/Greetings/Hello.mp4',
+      description: 'To sign "Hello," simply raise your hand in front of the camera and give a friendly wave.'
     },
     'Lesson 2': {
-      text: 'C',
-      image: '/Aslvid/Alphabet/C.png',
+      text: 'Good Morning',
+      video: '/Aslvid/Alphabet/C.png',
     },
     'Lesson 3': {
-      text: 'E',
-      image: '/Aslvid/Alphabet/E.png'
+      text: 'Bye',
+      video: '/Aslvid/Alphabet/E.png'
     },
     'Lesson 4': {
       text: 'L',
-      image: '/Aslvid/Alphabet/L.png'
+      video: '/Aslvid/Alphabet/L.png'
     },
     'Lesson 5': {
       text: 'O',
-      image: '/Aslvid/Alphabet/O.png'
+      video: '/Aslvid/Alphabet/O.png'
     },
     'Lesson 6': {
       text: 'Angry',
@@ -288,7 +289,7 @@ const LearningModule = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <img src="/loading.gif" alt="Loading" className="loading-rotate"/>;
   }
 
   return (
@@ -354,10 +355,17 @@ const LearningModule = () => {
             )}
             {lessonContent[selectedLesson].video && (
               <div className="lesson-video-container">
-                <video key={selectedLesson} controls className="lesson-video">
-                  <source src={lessonContent[selectedLesson].video} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                <div className='lesson-video-hold'>
+                  <div className="lesson-video-explanation">
+                    <video key={selectedLesson} controls className="lesson-video">
+                      <source src={lessonContent[selectedLesson].video} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                    </div>
+                    {/* <div className="web-video-explanation"> */}
+                    <Example/>
+                    {/* </div> */}
+                  </div>
                 <p className="lesson-description">{lessonContent[selectedLesson].description}</p>
                 <div className="lesson-buttons">
                   <button className="lesson-button">Try it</button>

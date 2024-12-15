@@ -8,6 +8,7 @@ import ForgotPassword from './components/ForgotPassword.jsx';
 import LearningModule from './components/LearningModule.js';
 import Contact from './components/Contact';  
 import FAQ from './components/FAQ';  
+import Example from './components/example.jsx';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/faq" element={<FAQ />} />
+        <Route path="/example" element={<Example />} />
       </Routes>
     </Router>
   );
