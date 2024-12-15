@@ -120,10 +120,34 @@
 
 .lesson-image,
 .lesson-video {
-  width: 80%;
-  max-width: 300px;
-  margin-top: 20px;
-  border-radius: 8px;
+  width: 100%;
+  max-width: 500px;
+  /* margin-top: 20px;
+  border-radius: 8px; */
+}
+
+/* .lesson-video-container{
+  display: flex; 
+  gap: 20px; 
+  align-items: flex-start;
+} */
+
+.lesson-video-hold{
+  display: flex; 
+  gap: 20px; 
+  align-items: flex-start;
+}
+
+.lesson-video-explanation{
+  display: flex; 
+  flex: 1; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+}
+
+.web-video-explanation{
+  flex: 1;
 }
 
 .lesson-description {

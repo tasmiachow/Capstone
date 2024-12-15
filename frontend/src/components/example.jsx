@@ -50,19 +50,19 @@ const Example = () => {
   };
 
   return (
-    <div>
-      <h1>Real-Time Prediction</h1>
+    <div style={{ display: "flex", flex: 1, flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+      {/* <h1>Real-Time Prediction</h1> */}
       <Webcam
         ref={webcamRef}
         screenshotFormat="image/jpeg"
-        style={{ width: "100%", maxWidth: "500px" }}
+        style={{ width: "52.5%", maxWidth: "500px" }}
       />
-      <p>Frames Sent: {framesSent}</p>
+      {/* <p>Frames Sent: {framesSent}</p> */}
       {prediction && (
         <div>
-          <h2>Prediction</h2>
-          <p>Action: {prediction.predicted_label}</p>
-          <p>Confidence: {prediction.confidence.join(", ")}</p>
+          {/* <h2>Prediction</h2>
+          <p>Action: {prediction.predicted_label}</p> */}
+          {/* <p>Confidence: {prediction.confidence.join(", ")}</p> */}
         </div>
       )}
     </div>
