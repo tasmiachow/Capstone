@@ -8,7 +8,9 @@
   padding: 20px;
 }
 
-.toggle-sidebar-button {
+.toggle-sidebar-button,
+.expand-sidebar-button,
+.back-button {
   background-color: #007bff;
   color: white;
   border: none;
@@ -17,18 +19,28 @@
   font-size: 1.1em;
   width: 100%;
   text-align: center;
+  border-radius: 4px;
 }
 
-.level {
+.toggle-sidebar-button:hover,
+.expand-sidebar-button:hover,
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+.level,
+.lesson-list,
+.level-button {
   margin-bottom: 15px;
 }
 
-.level-button {
+.level-button,
+.lesson-item {
   background: none;
   border: none;
   font-size: 1.1em;
   font-weight: bold;
-  color:#eff2fc;
+  color: #eff2fc;
   cursor: pointer;
   text-align: left;
   width: 100%;
@@ -41,79 +53,75 @@
 }
 
 .lesson-item {
-  color:#eff2fc;
-  font-size:1em;
-  font-weight:400;
-  text-align:center;
-  position:relative;
-  height:40px;
-  line-height:40px;
-  margin-top:10px;
-  overflow:hidden;
-  width:90%;
-  margin-left:5%;
-  cursor:pointer;
+  color: #eff2fc;
+  font-size: 1em;
+  font-weight: 400;
+  text-align: center;
+  position: relative;
+  height: 40px;
+  line-height: 40px;
   margin: 5px 0;
+  overflow: hidden;
+  width: 90%;
+  margin-left: 5%;
+  cursor: pointer;
   border-radius: 10px;
 }
-.lesson-item:hover{
+
+.lesson-item:hover {
   background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
-  color:#fdfdff;
-  text-decoration: underline;
-}
-.lesson-item:after{
-  content: '';
-  position:absolute;
-  width:80%;
-  border-bottom:1px solid rgba(255, 255, 255, 0.5);
-  bottom:50%;
-  left:-100%;
-  transition-delay: all 0.5s;
-  transition: all 0.5s;
-}
-.completed {
-  color:rgb(92, 236, 56);
-  font-weight: bold;
-}
-.completed:hover{
-  background:linear-gradient(to right, #3D518C 20%, #CCCCFF 120%);
-  color:rgb(92, 236, 56);
+  color: #fdfdff;
   text-decoration: underline;
 }
 
-.text{
-  text-shadow:0px -40px 0px rgba(255, 255, 255, 1);
-  transition:all 0.75s;
-  transform:translateY(100%) translateZ(0);
-  transition-delay:all 0.25s;
+.lesson-item:after {
+  content: '';
+  position: absolute;
+  width: 80%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  bottom: 50%;
+  left: -100%;
+  transition: all 0.5s;
+}
+
+.completed {
+  color: rgb(92, 236, 56);
+  font-weight: bold;
+}
+
+.completed:hover {
+  background: linear-gradient(to right, #3D518C 20%, #CCCCFF 120%);
+  color: rgb(92, 236, 56);
+  text-decoration: underline;
+}
+
+.text {
+  text-shadow: 0px -40px 0px rgba(255, 255, 255, 1);
+  transition: all 0.75s;
+  transform: translateY(100%) translateZ(0);
+  transition-delay: all 0.25s;
 }
 
 .lesson-item:hover .text,
-.lesson-item.hover .text{
-   text-shadow:0px -40px 0px rgba(255, 255, 255, 0);
-   transform:translateY(0%) translateZ(0) scale(1.1);
-   font-weight:800;
+.lesson-item.hover .text {
+  text-shadow: 0px -40px 0px rgba(255, 255, 255, 0);
+  transform: translateY(0%) translateZ(0) scale(1.1);
+  font-weight: 800;
 }
 
 .lesson-item:hover:after,
-.lesson-item.hover:after{
-   left:100%;
+.lesson-item.hover:after {
+  left: 100%;
 }
 
 .lesson-content p {
   text-align: center;
 }
 
-.lesson-image {
-  width: 80%;       
-  max-width: 300px; 
-  margin-top: 20px;
-  border-radius: 8px;
-}
-
+.lesson-image,
 .lesson-video {
-  width: 100%;
-  max-width: 500px;
+  width: 80%;
+  max-width: 300px;
   margin-top: 20px;
   border-radius: 8px;
 }
@@ -126,64 +134,27 @@
 }
 
 .lesson-button {
-  border-radius: 10px;
-  margin-top: 20px;
-  background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
-  border: 2px solid #CCCCFF; 
-  color:#fdfdff;
-  align-content: center;
-  border: none;
-  cursor: pointer;
-  font-size: 1.5em;
-  padding: 0 10% 0 10%;
+  font-size: 16px;
   font-weight: 300;
+  text-align: center;
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+  margin-top: 10px;
+  overflow: hidden;
+  margin-right: 25%;
+  cursor: pointer;
+  background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
+  border: 2px solid #CCCCFF;
+  color: #fdfdff;
+  align-content: center;
 }
 
 .lesson-button:hover {
   font-weight: bold;
-  background:linear-gradient(to right, #8f95b6 20%, #fdfdff 120%);
+  background: linear-gradient(to right, #8f95b6 20%, #fdfdff 120%);
 }
 
-.lesson-image-container,
-.lesson-video-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-/* .slide-in {
-  animation: slideIn 400ms forwards; 
-}
-
-.slide-out {
-  animation: slideOut 400ms forwards;
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateX(100%); 
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0); 
-    opacity: 1;
-  }
-}
-
-@keyframes slideOut {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(100%); 
-    opacity: 0;
-  }
-} */
-
-/* Update the content grid layout when lesson is selected */
 .content {
   display: grid;
   grid-template-columns: 200px 1fr;
@@ -192,7 +163,6 @@
   max-width: 80%;
 }
 
-/* You can use slide-in and slide-out animations as before */
 .lesson-content {
   padding: 20px;
   border-left: 1px solid #ccc;
@@ -201,139 +171,76 @@
   overflow: auto;
 }
 
-.expand-sidebar-button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 1.1em;
-  border-radius: 4px;
-  margin-top: 20px;
-}
-
-.expand-sidebar-button:hover {
-  background-color: #0056b3;
+.levels-sidebar {
+  padding: 20px;
+  border-radius: 8px;
+  background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
+  transition: transform 0.3s ease;
 }
 
 .levels-sidebar.collapsed {
-  display: none; /* Collapse sidebar */
+  display: none;
 }
 
 .content.full-width {
-  grid-template-columns: 1fr; /* Adjust content layout when sidebar is collapsed */
+  grid-template-columns: 1fr;
 }
 
 .levels-sidebar {
-  padding:10px 0px 20px 0px;
-  border-radius:4px;
+  padding: 20px;
+  border-radius: 8px;
 }
 
 .lesson-content.full-width {
-  grid-column: span 2; /* Make it span both columns in the grid */
+  grid-column: span 2;
 }
 
-.back-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
+.lesson-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.lesson-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 20%;
   font-size: 1rem;
-  border-radius: 4px;
-  margin-bottom: 20px;
+  text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.back-button:hover {
-  background-color: #0056b3;
-}
-
-.lesson-button{
-  font-size:16px;
-  font-weight:300;
-  text-align:center;
-  position:relative;
-  height:40px;
-  line-height:40px;
-  margin-top:10px;
-  overflow:hidden;
-  margin-right: 25%;
-  cursor:pointer;
-}
-
-  .lesson-modal-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .lesson-modal {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: white;
-    padding: 30px;
-    border-radius: 8px;
-    max-width: 20%; 
-    font-size: 1rem;
-    text-align: center;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    p{
-      margin-bottom: 20px;
-    }
-  }
-  
-  .lesson-modal button {
-    max-width: 30%;
-    align-items: center;
-    appearance: none;
-    background-color:  #5468ff;
-    border: 0;
-    border-radius: 6px;
-    box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    display: inline-flex;
-    height: 48px;
-    justify-content: center;
-    line-height: 1;
-    list-style: none;
-    overflow: hidden;
-    padding-left: 16px;
-    padding-right: 16px;
-    position: relative;
-    text-align: left;
-    text-decoration: none;
-    transition: box-shadow .15s,transform .15s;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    white-space: nowrap;
-    will-change: box-shadow,transform;
-    font-size: 18px;
-  }
-  
-
-.slide-out {
-  animation: slideOut 400ms forwards;
+.lesson-modal button {
+  max-width: 30%;
+  background-color: #5468ff;
+  border: 0;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  padding: 0 16px;
+  height: 48px;
+  font-size: 18px;
 }
 
 @keyframes slideIn {
   from {
-    transform: translateX(100%); 
+    transform: translateX(100%);
     opacity: 0;
   }
   to {
-    transform: translateX(0); 
+    transform: translateX(0);
     opacity: 1;
   }
 }
@@ -343,23 +250,25 @@
     transform: translateX(0);
     opacity: 1;
   }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
 }
 
-/* Custom modal overlay */
 .custom-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8); /* Dimmed background */
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1050;
 }
 
-/* Custom modal dialog */
 .custom-modal-dialog {
   background: white;
   border-radius: 10px;
@@ -369,78 +278,6 @@
   animation: fadeIn 0.3s ease-in-out;
 }
 
-/* Custom modal header */
-.custom-modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  border-bottom: 1px solid #ddd;
-}
-
-.custom-modal-title {
-  font-size: 1.5rem;
-  color: #333;
-}
-
-/* Close button */
-.custom-close-btn {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: #888;
-  cursor: pointer;
-}
-
-.custom-close-btn:hover {
-  color: #333;
-}
-
-/* Custom modal body */
-.custom-modal-body {
-  padding: 1rem;
-  font-size: 1rem;
-  color: #555;
-  text-align: center;
-}
-
-/* Custom modal footer */
-.custom-modal-footer {
-  display: flex;
-  justify-content: flex-end;
-  padding: 1rem;
-  border-top: 1px solid #ddd;
-}
-
-/* Custom buttons */
-.custom-btn {
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-}
-
-.custom-btn-secondary {
-  background: #ccc;
-  color: #333;
-}
-
-.custom-btn-secondary:hover {
-  background: #bbb;
-}
-
-.custom-btn-primary {
-  background: #007bff;
-  color: white;
-}
-
-.custom-btn-primary:hover {
-  background: #0056b3;
-}
-
-/* Fade-in animation for the modal */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -451,113 +288,20 @@
     transform: translateY(0);
   }
 }
-
-.close-btn {
-  font-size: 1.5rem;
-  color: #888;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
+.progress-bar {
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  margin-top: 5px;
+  overflow: hidden;
 }
 
-.close-btn:hover {
-  color: #333;
-}
-  to {
-    transform: translateX(100%); 
-    opacity: 0;
-  }
-
-/* Update the content grid layout when lesson is selected */
-.content {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 20px;
-  width: 100%;
-  max-width: 80%;
+.progress-bar-fill {
+  height: 100%;
+  background-color: blue; 
+  transition: width 0.3s ease, background-color 0.3s ease;
 }
 
-/* You can use slide-in and slide-out animations as before */
-.lesson-content {
-  padding: 20px;
-  border-left: 1px solid #ccc;
-  background-color: #fff;
-  border-radius: 8px;
-  overflow: auto;
-}
-
-.expand-sidebar-button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 1.1em;
-  border-radius: 4px;
-  margin-top: 20px;
-}
-
-
-
-.levels-sidebar.collapsed {
-  display: none; /* Collapse sidebar */
-}
-
-.content.full-width {
-  grid-template-columns: 1fr; /* Adjust content layout when sidebar is collapsed */
-}
-
-.levels-sidebar {
-  display: block;
-  transition: all 0.3s ease;
-  width: 100%; 
-  background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
-  padding: 20px;
-  border-radius: 8px;
-  transition: transform 0.3s ease;
-}
-
-.lesson-content.full-width {
-  grid-column: span 2; /* Make it span both columns in the grid */
-}
-
-.back-button {
-  color: white;
-  padding: 10px 20px;
-  font-size: 1rem;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  margin-top: 20px;
-  background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
-  border: 2px solid #CCCCFF; 
-  color:#fdfdff;
-  align-content: center;
-  cursor: pointer;
-  font-weight: 300;
-}
-
-.back-button:hover{
-  background: linear-gradient(to right, #8f95b6 20%, #fdfdff 120%);
-  font-weight: bold;
-}
-/* loading animation  */
-.loading-rotate {
-  animation: rotate 2s linear infinite;
-  width: 100px;  
-  height: 100px; 
-  
-  position: fixed;     
-  top: 50%;             
-  left: 50%;           
-  transform: translate(-50%, -50%); 
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+.progress-bar-fill.complete {
+  background-color:  rgb(92, 236, 56); 
 }
