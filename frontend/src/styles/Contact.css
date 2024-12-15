@@ -1,65 +1,109 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Manrope:wght@200&display=swap');
-
-.contact {
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Inter&family=Lexend:wght@100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+.contact-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   min-height: calc(100vh - 56px);
-  text-align: center;
-  padding: 100px;
+  background: linear-gradient(to right, #ABD2FA 30%, #7692FF 120%);
+  padding: 50px 80px;
   box-sizing: border-box;
-  background-color: #f5f5f5;
 }
 
-.contact h1 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 3vw;
-  color: #4158D0;
+.contact-image {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-image img {
+  width: 100%;
+  max-width: 700px;
+  border-radius: 20px;
+}
+
+.contact-form-container {
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+  border: linear-gradient(to right, #eff2fc 40%, #CCCCFF 120%) 0.5rem;
+  border-radius: 2rem;
+  background: linear-gradient(to right, #eff2fc 40%, #CCCCFF 120%);
+}
+
+.contact-form-container h1 {
+  font-family: 'Lexend', sans-serif;
+  font-size: 2.5rem;
+  color: #3D518C;
   margin-bottom: 20px;
 }
 
-.contact p {
-  font-family: 'Manrope', sans-serif;
-  font-size: 1.2vw;
-  color: rgb(0, 0, 0);
-  max-width: 800px;
-  line-height: 1.6;
-  margin-bottom: 30px;
-}
-
-.contact form {
+.contact-form-container form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 15px;
 }
 
-.contact label {
-  font-family: 'Arvo', serif;
-  font-size: 1vw;
-  margin-bottom: 5px;
+.contact-form-container label {
+  font-family: 'Lexend', serif;
+  font-size: 1rem;
+  color: #3D518C;
 }
 
-.contact input, .contact textarea {
-  width: 300px;
+.contact-form-container input, 
+.contact-form-container textarea {
+  font-family: 'Lexend',serif;
+  width: 100%;
   padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
+  font-size: 1rem;
+  border: 1px linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
   border-radius: 5px;
+  box-sizing: border-box;
 }
 
-.contact button {
-  background-color: #3D518C;
+.contact-form-container button {
+  font-family: 'Lexend', serif;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
+  color: #CCCCFF;
+  padding: 10px;
+  font-size: 1rem;
   border: none;
-  color: white;
-  padding: 10px 20px;
-  font-size: 1.5rem;
   border-radius: 25px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  width:30%;
 }
 
-.contact button:hover {
-  background-color: #007bff;
+.contact-form-container button:hover {
+  background: linear-gradient(to right, #8f95b6 20%, #fdfdff 120%);
+  color:#ffffff;
+  box-shadow: 0 0 10px 2px #FFCC70,
+  0 0 20px 4px #C850C0; 
+}
+
+.contact-form-container input, 
+.contact-form-container textarea {
+  color:#3D518C;
+  width: 100%;
+  padding: 10px 0;
+  font-size: 1rem;
+  border: none;
+  border-bottom: 2px solid #3D518C; /* add an underline */
+  outline: none; /* remove the default focus outline */
+  background: transparent; /* the trick here is to not have a visible text box and more of a line */
+  transition: border-color 0.3s ease;
+}
+
+.contact-form-container input:focus, 
+.contact-form-container textarea:focus {
+  border-bottom: 2px solid #3D518C; /* Highlight the underline on focus */
+}
+
+.contact-form-container textarea {
+  resize: none; /* Disable resizing */
+  min-height: 100px; /* Set a fixed height for the textarea */
 }

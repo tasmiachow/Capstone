@@ -28,7 +28,7 @@
 
 .navbar ul li a {
     font-family: 'Manrope', sans-serif; /* Ensure the correct font is applied */
-    color: rgb(0, 0, 0);
+    color: #3D518C;
     text-decoration: none;
     font-size: 1rem;
     font-weight: 600;
@@ -39,11 +39,10 @@
 
 .navbar ul li a:hover {
     text-decoration: underline;
-    text-decoration-color: blue;
+    text-decoration-color: #3D518C;
 }
 
 .logo-image {
-
   margin-left: 5px; /* Space before logo */
   max-width: 100%; /* Ensures the logo doesn't exceed its container */
   height: auto; /* Maintains the aspect ratio */
@@ -64,6 +63,8 @@
 
 .login-button:hover {
     text-decoration: underline;
+    box-shadow: 0 0 10px 2px rgba(118, 146, 255),
+    0 0 20px 4px rgba(171, 210, 250, 0.5); 
 
 }
 /* might want to change the color of logout button later? - joe */
@@ -75,15 +76,17 @@
     border-radius: 10px;
     font-weight: bold;
     text-align: center;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
     display: flex; 
     align-items: center; 
     font-size: 1rem;    
-    border: 2px solid #CCCCFF; 
+    border: none; 
     cursor: pointer;
 }
 .logout-button:hover {
     background: linear-gradient(to right, #8f95b6 20%, #fdfdff 120%);
+    box-shadow: 0 0 10px 2px rgba(118, 146, 255),
+    0 0 20px 4px rgba(171, 210, 250, 0.5); 
 }
 
 .profile-icon {
@@ -95,5 +98,4 @@
   .profile-icon svg {
     font-size: 2rem;
     color: #3D518C;
-
   }

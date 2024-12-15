@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Japanese&display=swap');
 @layer mShadow, mGradientStroke;
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Inter&family=Lexend:wght@100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
 
 .learning-module-container {
   display: flex;
@@ -70,8 +71,7 @@
 
 .lesson-item:hover {
   background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
-  color: #fdfdff;
-  text-decoration: underline;
+  color:#fdfdff;
 }
 
 .lesson-item:after {
@@ -92,7 +92,6 @@
 .completed:hover {
   background: linear-gradient(to right, #3D518C 20%, #CCCCFF 120%);
   color: rgb(92, 236, 56);
-  text-decoration: underline;
 }
 
 .text {
@@ -158,8 +157,8 @@
 }
 
 .lesson-button {
-  font-size: 16px;
-  font-weight: 300;
+  font-family: 'Lexend', serif;
+  border-radius: 10px;
   text-align: center;
   position: relative;
   height: 40px;
@@ -167,15 +166,50 @@
   margin-top: 10px;
   overflow: hidden;
   margin-right: 25%;
-  cursor: pointer;
   background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
   border: 2px solid #CCCCFF;
   color: #fdfdff;
   align-content: center;
-}
-
+  border: none;
+  cursor: pointer;
+  font-size: 1.5em;
+  padding: 0 10% 0 10%;
+  font-weight: 300;
+  transition: all .3s ease;
+  
 .lesson-button:hover {
   font-weight: bold;
+  background:linear-gradient(to right, #8f95b6 20%, #fdfdff 120%);
+  box-shadow: 0 0 10px 2px #C850C0,
+  0 0 20px 4px #FFCC70;
+}
+
+.lesson-image-container,
+.lesson-video-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* .slide-in {
+  animation: slideIn 400ms forwards; 
+}
+
+.slide-out {
+  animation: slideOut 400ms forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%); 
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0); 
+    opacity: 1;
+  }
   background: linear-gradient(to right, #8f95b6 20%, #fdfdff 120%);
 }
 
@@ -219,6 +253,87 @@
   grid-column: span 2;
 }
 
+.lesson-button{
+  font-size:16px;
+  font-weight:300;
+  text-align:center;
+  position:relative;
+  height:40px;
+  line-height:40px;
+  margin-top:10px;
+  overflow:hidden;
+  margin-right: 25%;
+  cursor:pointer;
+}
+
+  .lesson-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .lesson-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 20%; 
+    font-size: 1rem;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    p{
+      margin-bottom: 20px;
+    }
+  }
+  
+  .lesson-modal button {
+    max-width: 30%;
+    align-items: center;
+    appearance: none;
+    background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
+    border: 0;
+    border-radius: 6px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    height: 48px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: all .3s ease;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 18px;
+  }
+  .lesson-modal button:hover{
+    background: linear-gradient(to right, #8f95b6 20%, #fdfdff 120%);
+    box-shadow: 0 0 10px 2px rgba(118, 146, 255),
+    0 0 20px 4px rgba(171, 210, 250, 0.5); 
+  }
+  
+
+.slide-out {
+  animation: slideOut 400ms forwards;
 .lesson-modal-overlay {
   position: absolute;
   top: 0;
@@ -320,6 +435,29 @@
   overflow: hidden;
 }
 
+.back-button {
+  font-family: 'Lexend', serif;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
+  color:#fdfdff;
+  align-content: center;
+  cursor: pointer;
+  font-weight: 300;
+  transition: all .3s ease;
+}
+
+.back-button:hover{
+  background: linear-gradient(to right, #8f95b6 20%, #fdfdff 120%);
+  font-weight: bold;
+  box-shadow: 0 0 10px 2px rgba(118, 146, 255),
+  0 0 20px 4px rgba(171, 210, 250, 0.5); 
+}
+
 .progress-bar-fill {
   height: 100%;
   background-color: blue; 
@@ -329,3 +467,4 @@
 .progress-bar-fill.complete {
   background-color:  rgb(92, 236, 56); 
 }
+

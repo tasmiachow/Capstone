@@ -70,9 +70,9 @@
   border-radius: 30px;
   cursor: pointer;
   border-radius: 25px;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  margin-top: 10%;
   margin-bottom: 10px;
-
   font-family: 'Manrope',monospace;
   background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
   color: white;
@@ -83,7 +83,9 @@
 }
 
 .start-button:hover {
-  background: linear-gradient(to right, #8f95b6 20%, #fdfdff 120%);
+  background: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+  box-shadow: 0 0 10px 2px #FFCC70,
+  0 0 20px 4px #C850C0; 
 }
 
 a {
