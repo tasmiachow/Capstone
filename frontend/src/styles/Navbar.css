@@ -9,6 +9,7 @@
     padding: 10px 30px; /* Add padding for better spacing */
     height: 60px; /* Fixed height for consistent alignment */
     padding: 0 20px;
+    overflow: hidden;
 }
 
 .navbar ul {
@@ -43,10 +44,11 @@
 }
 
 .logo-image {
-  margin-left: 5px; /* Space before logo */
-  max-width: 100%; /* Ensures the logo doesn't exceed its container */
-  height: auto; /* Maintains the aspect ratio */
-  width: 150px; /* Set a base width for the logo, adjust as needed */
+    max-height: 100%; /* Ensures the logo height doesn't exceed the navbar's height */
+    margin-left: 5px; /* Space before logo */
+    max-width: 150px; 
+    height: auto; /* Maintains the aspect ratio */
+    display: block; /* Prevent extra white space caused by inline elements */
 }
 
 .login-button {
