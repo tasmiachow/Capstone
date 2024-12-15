@@ -44,7 +44,9 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <img src="/logo.png" alt="logo" className="logo-image" />
+      <a href="/">
+        <img src="/logo.png" alt="logo" className="logo-image" />
+      </a>
       <ul>
         <li><Link to="/">Home</Link></li>
         {isLoggedIn && (

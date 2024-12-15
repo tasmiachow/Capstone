@@ -1,9 +1,10 @@
 import React from 'react';
 import '../styles/Contact.css'; 
 import ContactImage from '../contact.jpeg'; // Ensure the image is in your assets folder
-
+import Footer from './Footer';
 function Contact() {
   return (
+    <>
     <div className="contact-container">
       {/* left img section */}
       <div className="contact-image">
@@ -27,6 +28,8 @@ function Contact() {
         </form>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 }
 

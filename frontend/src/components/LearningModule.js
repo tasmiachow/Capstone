@@ -9,6 +9,7 @@ import beginnerBadge from '../Badges/beginner.json';
 import intermediateBadge from '../Badges/intermediate.json';
 import hardBadge from '../Badges/hard.json';
 import Example from './example';
+import Footer from './Footer';
 
 const LearningModule = () => {
   const [expandedLevel, setExpandedLevel] = useState(null);
@@ -293,6 +294,7 @@ const LearningModule = () => {
   }
 
   return (
+    <>
     <div className="learning-module-container">
       <h1>Learning Module</h1>
       <div className="content">
@@ -433,6 +435,8 @@ const LearningModule = () => {
 
 
     </div>
+          <Footer/>
+    </>
   );
 };
 

@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+*{
+    font-family: 'Manrope',serif;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.footer {
+    background: linear-gradient(to right, #eff2fc 10%, #CCCCFF 35%,#3D518C 120%);
+    color: #e4e4e4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    height:fit-content;
+  }
+  li{list-style:none;}
+  li a{
+    font-size: 1rem;
+    font-weight: bolder;
+    color: #3D518C;
+    margin: 5px 0 10px;
+  }
+  li a:hover{
+    text-decoration: underline;
+  }
+  .logo {
+    max-width: 400px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .footer-description {
+    font-size: 1rem;
+    color: #3D518C;
+    margin: 5px 0 10px;
+  }
+  
+  .footer-copyright {
+    font-size: 0.9rem;
+    color: #3D518C;
+    margin-bottom: 15px;
+  }
+  
+  .footer-icons {
+    display: flex;
+    gap: 15px; 
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .footer-icons a {
+    color: #3D518C;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  .footer-icons a:hover {
+    color: #e4e4e4;
+    transform: scale(1.2); 
+  }
+  
+
+.tooltip {
+    position: relative; 
+    display: inline-block;
+  }
+  
+  .tooltip[data-tip]::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: 50%; 
+    left: 50%;
+    transform: translateX(-50%); 
+    background: #333;
+    color: #fff; 
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    white-space: nowrap; 
+    z-index: 10;
+  }
+  
+  .tooltip:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px); 
+  }
+  

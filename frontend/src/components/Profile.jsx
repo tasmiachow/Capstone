@@ -4,6 +4,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import { getDoc, doc, updateDoc, collection, getDocs } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { db, auth, storage } from '../firebase';
+import Footer from './Footer';
 
 const profilePics = [
   'Profile_Pic/browngirl.png',
@@ -25,7 +26,7 @@ const Profile = () => {
     badges: [],
   });
   const [loading, setLoading] = useState(true);
-  const [profilePicFile, setProfilePicFile] = useState(null);
+  const [profilePicFile] = useState(null);
   const [allUsersData, setAllUsersData] = useState([]);
 
   useEffect(() => {
@@ -116,11 +117,11 @@ const Profile = () => {
     setUserData({ ...userData, [name]: value });
   };
 
-  const handleFileChange = (e) => {
-    if (e.target.files[0]) {
-      setProfilePicFile(e.target.files[0]);
-    }
-  };
+  // const handleFileChange = (e) => {
+  //   if (e.target.files[0]) {
+  //     setProfilePicFile(e.target.files[0]);
+  //   }
+  // };
 
   const handleProfilePicSelect = (pic) => {
     setUserData({ ...userData, profilePic: pic });
@@ -153,6 +154,7 @@ const Profile = () => {
   }
 
   return (
+    <>
     <div className="user-page">
       <div className={`profile-card ${isAnimatingOut ? 'slide-out' : 'slide-in'}`}>
         <button onClick={toggleEditMode} className="edit-button">
@@ -220,7 +222,7 @@ const Profile = () => {
             onChange={handleInputChange}
             placeholder="Tell us about yourself"
           ></textarea>
-          <button onClick={handleSaveChanges}>Save Changes</button>
+          <button className='save' onClick={handleSaveChanges}>Save Changes</button>
         </div>
       )}
         <div className="leaderboard-section">
@@ -234,6 +236,8 @@ const Profile = () => {
             ))}
         </div>
       </div>
+      <Footer/>
+      </>
   );
 };
 
