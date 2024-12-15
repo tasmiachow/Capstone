@@ -1,19 +1,25 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import '../styles/LearningModule.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import { doc, getDoc, updateDoc, setDoc } from 'firebase/firestore';
 import { db, auth } from '../firebase';
 import beginnerBadge from '../Badges/beginner.json';
 import intermediateBadge from '../Badges/intermediate.json';
-import hardBadge from '../Badges/hard.json';
+import hardBadge from '../Badges/hard.json'
 
 const LearningModule = () => {
   const [expandedLevel, setExpandedLevel] = useState(null);
   const [selectedLesson, setSelectedLesson] = useState(null);
+  const [showLevelModal, setShowLevelModal] = useState(false);
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
   const [userProgress, setUserProgress] = useState({});
   const [loading, setLoading] = useState(true);
+  const [modal, setModal] = useState({ isVisible: false, message: '' });
   const [hoverIndex, setHoverIndex] = useState(null);
+
   const lessons = {
     Beginner: ['Lesson 1', 'Lesson 2', 'Lesson 3', 'Lesson 4', 'Lesson 5'],
     Intermediate: ['Lesson 6', 'Lesson 7', 'Lesson 8', 'Lesson 9', 'Lesson 10'],
@@ -80,7 +86,7 @@ const LearningModule = () => {
     };
 
     fetchUserData();
-  }, []);
+   }, []);
 
   const toggleLevel = (level) => {
     setExpandedLevel(expandedLevel === level ? null : level);
@@ -98,15 +104,18 @@ const LearningModule = () => {
       } else {
         setIsAnimatingOut(true);
         setTimeout(() => {
-          setSelectedLesson(null); // temporarily deselect new lesson to reactivate slide animation
+          setSelectedLesson(null);
           setIsAnimatingOut(false);
           setTimeout(() => {
-            setSelectedLesson(lesson); // reselect
+            setSelectedLesson(lesson);
           }, 1);
         }, 400);
       }
     } else {
-      alert("Complete previous lessons to unlock this one.");
+      setModal({
+        isVisible: true,
+        message: `Complete previous lessons to unlock "${lesson}".`,
+      });
     }
   };
 
@@ -118,30 +127,33 @@ const LearningModule = () => {
     }
   
     const currentLessons = lessons[currentLevel];
-    const lessonIndex = currentLessons.indexOf(lesson) + 1;  // Find the 1-based index of the lesson in the current level
+    const lessonIndex = currentLessons.indexOf(lesson) + 1;
     const levelIndex = Object.keys(lessons).indexOf(currentLevel);
   
-    // check if it is the first level's first lesson
     if (lessonIndex === 1 && levelIndex === 0) {
       return true;
     }
   
-    // check if all previous lessons in the same level are completed
     for (let i = 0; i < lessonIndex - 1; i++) {
       const previousLesson = currentLessons[i];
       if (!userProgress[previousLesson]?.completed) {
-        console.log(`${lesson} is not unlocked because ${previousLesson} is not completed.`);
+        setModal({
+          isVisible: true,
+          message: `${lesson} is not unlocked because "${previousLesson}" is not completed.`,
+        });
         return false;
       }
     }
   
-    // check if all lessons in previous levels are completed if it is the first lesson in the level
     if (lessonIndex === 1) {
       for (let i = 0; i < levelIndex; i++) {
         const previousLevelLessons = lessons[Object.keys(lessons)[i]];
         for (let j = 0; j < previousLevelLessons.length; j++) {
           if (!userProgress[previousLevelLessons[j]]?.completed) {
-            console.log(`${lesson} is not unlocked because ${previousLevelLessons[j]} from previous level is not completed.`);
+            setModal({
+              isVisible: true,
+              message: `${lesson} is not unlocked because "${previousLevelLessons[j]}" from a previous level is not completed.`,
+            });
             return false;
           }
         }
@@ -150,6 +162,18 @@ const LearningModule = () => {
   
     console.log(`${lesson} is unlocked.`);
     return true;
+  };
+
+  const closeModal = () => {
+    setModal({ isVisible: false, message: '' });
+  };
+
+  const openLevelModal = () => {
+    setShowLevelModal(true);
+  };
+
+  const closeLevelModal = () => {
+    setShowLevelModal(false);
   };
 
   const updateProgress = async (lesson) => {
@@ -204,7 +228,6 @@ const LearningModule = () => {
     } else {
       const nextLevelIndex = Object.keys(lessons).indexOf(currentLevel) + 1;
       if (nextLevelIndex < Object.keys(lessons).length) {
-        // check if all lessons in the current level are completed before unlocking the next level
         const allCurrentLessonsCompleted = currentLessons.every(lesson => userProgress[lesson]?.completed);
         if (allCurrentLessonsCompleted) {
           const nextLevel = Object.keys(lessons)[nextLevelIndex];
@@ -222,7 +245,6 @@ const LearningModule = () => {
   const toggleSidebar = () => {
     setIsSidebarVisible(!isSidebarVisible);
   };
-
   const handleBackClick = () => {
     setSelectedLesson(null);
     setIsSidebarVisible(true);
@@ -258,7 +280,7 @@ const LearningModule = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <img src="/loading.gif" alt="Loading" className="loading-rotate"/>;
   }
 // tracks your progress for progressbar
 const calculateProgress = (level) => {
@@ -267,16 +289,15 @@ const calculateProgress = (level) => {
   const progress = (completedLessons.length / levelLessons.length) * 100;
   const isComplete = completedLessons.length === levelLessons.length;
   return { progress, isComplete };
-};
+}; 
 
-  
-  return (
-    <div className="learning-module-container">
-      <h1>Learning Module</h1>
-      <div className="content">
-        {/* Levels Sidebar */}
-        {selectedLesson === null && (
-          <div className={`levels-sidebar ${isSidebarVisible ? '' : 'collapsed'}`}>
+return (
+  <div className="learning-module-container">
+    <h1>Learning Module</h1>
+    <div className="content">
+      {/* Levels Sidebar */}
+      {selectedLesson === null && (
+        <div className={`levels-sidebar ${isSidebarVisible ? '' : 'collapsed'}`}>
           {Object.keys(lessons).map((level) => {
             const { progress, isComplete } = calculateProgress(level);
             return (
@@ -308,19 +329,18 @@ const calculateProgress = (level) => {
               </div>
             );
           })}
-        </div>                
-        
-        )}
+        </div>
+      )}
 
-        {/* Expand Sidebar Button */}
-        {selectedLesson !== null && !isSidebarVisible && (
-          <button className="expand-sidebar-button" onClick={toggleSidebar}>
-            Expand Sidebar
-          </button>
-        )}
+      {/* Expand Sidebar Button */}
+      {selectedLesson !== null && !isSidebarVisible && (
+        <button className="expand-sidebar-button" onClick={toggleSidebar}>
+          Expand Sidebar
+        </button>
+      )}
 
-        {/* Lesson Content */}
-        <div className={`lesson-content ${selectedLesson ? 'full-width' : ''}`}>
+      {/* Lesson Content */}
+      <div className={`lesson-content ${selectedLesson ? 'full-width' : ''}`}>
         {selectedLesson ? (
           <div>
             <button className="back-button" onClick={handleBackClick}>Back</button>
@@ -335,6 +355,7 @@ const calculateProgress = (level) => {
                 <p className="lesson-description">{lessonContent[selectedLesson].description}</p>
                 <div className="lesson-buttons">
                   <button className="lesson-button">Try it</button>
+                  <button className="lesson-button" onClick={openLevelModal}>Continue</button>
                   <button className="lesson-button" onClick={handleLessonComplete}>Complete Lesson</button>
                   <button className="lesson-button" onClick={handleNextLesson}>Next Lesson</button>
                 </div>
@@ -349,19 +370,69 @@ const calculateProgress = (level) => {
                 <p className="lesson-description">{lessonContent[selectedLesson].description}</p>
                 <div className="lesson-buttons">
                   <button className="lesson-button">Try it</button>
+                  <button className="lesson-button" onClick={openLevelModal}>Continue</button>
                   <button className="lesson-button" onClick={handleLessonComplete}>Complete Lesson</button>
                   <button className="lesson-button" onClick={handleNextLesson}>Next Lesson</button>
                 </div>
               </div>
             )}
           </div>
-        ) :  (
+        ) : (
           <p>Pick a lesson to start your adventure and unlock points!</p>
         )}
-        </div>
       </div>
+
+      {/* Modal */}
+      {modal.isVisible && (
+        <div className="lesson-modal-overlay">
+          <div className="lesson-modal">
+            <p>{modal.message}</p>
+            <button onClick={closeModal}>Close</button>
+          </div>
+        </div>
+      )}
+
+      {/* Level Modal */}
+      {showLevelModal && (
+        <div
+          className="custom-modal-overlay"
+          tabIndex="-1"
+          role="dialog"
+          aria-modal="true"
+        >
+          <div className="custom-modal-dialog" role="document">
+            <div className="custom-modal-content">
+              {/* Modal Header */}
+              <div className="custom-modal-header">
+                <h5 className="custom-modal-title">Continue Lesson</h5>
+              </div>
+
+              {/* Modal Body */}
+              <div className="custom-modal-body">
+                <p>Are you ready to continue to the next part of the lesson?</p>
+                <img
+                  src="/thumb.gif" 
+                  alt="Thumbs Up"
+                  style={{ width: '100px', height: 'auto', display: 'block', margin: '10px auto' }}
+                />
+              </div>
+
+              {/* Modal Footer */}
+              <div className="custom-modal-footer">
+                <button
+                  className="custom-btn custom-btn-primary"
+                  onClick={closeLevelModal}
+                >
+                  Continue
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
-  );
+  </div>
+);
 };
 
 export default LearningModule;

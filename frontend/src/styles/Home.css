@@ -72,10 +72,18 @@
   border-radius: 25px;
   transition: background-color 0.3s ease;
   margin-bottom: 10px;
+
+  font-family: 'Manrope',monospace;
+  background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  display: flex; 
+  align-items: center; 
 }
 
 .start-button:hover {
-  background-color: #007bff;
+  background: linear-gradient(to right, #8f95b6 20%, #fdfdff 120%);
 }
 
 a {
