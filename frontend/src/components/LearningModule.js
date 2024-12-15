@@ -7,7 +7,7 @@ import { doc, getDoc, updateDoc, setDoc } from 'firebase/firestore';
 import { db, auth } from '../firebase';
 import beginnerBadge from '../Badges/beginner.json';
 import intermediateBadge from '../Badges/intermediate.json';
-import hardBadge from '../Badges/hard.json'
+import hardBadge from '../Badges/hard.json';
 
 const LearningModule = () => {
   const [expandedLevel, setExpandedLevel] = useState(null);
