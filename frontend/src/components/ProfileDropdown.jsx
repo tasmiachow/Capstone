@@ -216,7 +216,7 @@ const ProfileDropdown = ({ onClose }) => {
               placeholder="Tell us about yourself"
             ></textarea>
             <button onClick={toggleEditMode} className="edit">Cancel Changes</button>
-            <button onClick={handleSaveChanges}>Save Changes</button>
+            <button onClick={handleSaveChanges} className='save'>Save Changes</button>
           </div>
         </div>
       )}

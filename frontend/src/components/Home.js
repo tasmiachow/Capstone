@@ -11,7 +11,7 @@ const Home = () => {
           How? Allow your camera, start working on the lessons, and make the gestures!
         </p>
         <Link to="/modules">
-          <button className="start-button">Get started</button>
+          <button className="start-button">Get Started</button>
         </Link>
       </div>
       <div className="gif-container">

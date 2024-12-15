@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Japanese&display=swap');
 @layer mShadow, mGradientStroke;
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Inter&family=Lexend:wght@100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
 
 .learning-module-container {
   display: flex;
@@ -59,7 +60,6 @@
 .lesson-item:hover{
   background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
   color:#fdfdff;
-  text-decoration: underline;
 }
 .lesson-item:after{
   content: '';
@@ -78,7 +78,6 @@
 .completed:hover{
   background:linear-gradient(to right, #3D518C 20%, #CCCCFF 120%);
   color:rgb(92, 236, 56);
-  text-decoration: underline;
 }
 
 .text{
@@ -126,6 +125,7 @@
 }
 
 .lesson-button {
+  font-family: 'Lexend', serif;
   border-radius: 10px;
   margin-top: 20px;
   background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
@@ -137,11 +137,14 @@
   font-size: 1.5em;
   padding: 0 10% 0 10%;
   font-weight: 300;
+  transition: all .3s ease;
 }
 
 .lesson-button:hover {
   font-weight: bold;
   background:linear-gradient(to right, #8f95b6 20%, #fdfdff 120%);
+  box-shadow: 0 0 10px 2px #C850C0,
+  0 0 20px 4px #FFCC70;
 }
 
 .lesson-image-container,
@@ -233,21 +236,6 @@
   grid-column: span 2; /* Make it span both columns in the grid */
 }
 
-.back-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 1rem;
-  border-radius: 4px;
-  margin-bottom: 20px;
-}
-
-.back-button:hover {
-  background-color: #0056b3;
-}
-
 .lesson-button{
   font-size:16px;
   font-weight:300;
@@ -295,10 +283,9 @@
     max-width: 30%;
     align-items: center;
     appearance: none;
-    background-color:  #5468ff;
+    background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
     border: 0;
     border-radius: 6px;
-    box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
     box-sizing: border-box;
     color: #fff;
     cursor: pointer;
@@ -313,13 +300,18 @@
     position: relative;
     text-align: left;
     text-decoration: none;
-    transition: box-shadow .15s,transform .15s;
+    transition: all .3s ease;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
     white-space: nowrap;
     will-change: box-shadow,transform;
     font-size: 18px;
+  }
+  .lesson-modal button:hover{
+    background: linear-gradient(to right, #8f95b6 20%, #fdfdff 120%);
+    box-shadow: 0 0 10px 2px rgba(118, 146, 255),
+    0 0 20px 4px rgba(171, 210, 250, 0.5); 
   }
   
 
@@ -523,21 +515,24 @@
 }
 
 .back-button {
-  color: white;
+  font-family: 'Lexend', serif;
+  border: none;
   padding: 10px 20px;
   font-size: 1rem;
   margin-bottom: 20px;
   border-radius: 10px;
   margin-top: 20px;
   background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
-  border: 2px solid #CCCCFF; 
   color:#fdfdff;
   align-content: center;
   cursor: pointer;
   font-weight: 300;
+  transition: all .3s ease;
 }
 
 .back-button:hover{
   background: linear-gradient(to right, #8f95b6 20%, #fdfdff 120%);
   font-weight: bold;
+  box-shadow: 0 0 10px 2px rgba(118, 146, 255),
+  0 0 20px 4px rgba(171, 210, 250, 0.5); 
 }
