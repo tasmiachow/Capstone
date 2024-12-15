@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Home.css';
-
+import Footer from './Footer'
 const Home = () => {
   return (
+    <>
     <div className="home">
       <div className="text-container">
         <h1>Dive into <span className='neon-blue'>ASL</span> and express yourself beyond words</h1>
@@ -18,6 +19,8 @@ const Home = () => {
         <img src="/handigif.gif" alt="Learning GIF" className="learning-gif" />
       </div>
     </div>
+    <Footer/>
+    </>
   );
 }
 

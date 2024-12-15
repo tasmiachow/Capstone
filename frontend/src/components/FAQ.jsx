@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/FAQ.css';  // Ensure this path correctly points to the styles folder
+import Footer from './Footer';
 
 function FAQ() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -36,6 +37,7 @@ function FAQ() {
   };
 
   return (
+    <>
     <div className="faq">
       <h1>Frequently Asked Questions</h1>
       {faqs.map((faq, index) => (
@@ -56,6 +58,8 @@ function FAQ() {
         </div>
       ))}
     </div>
+    <Footer/>
+    </>
   );
 }
 

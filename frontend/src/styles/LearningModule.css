@@ -7,6 +7,9 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  min-height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column; 
 }
 
 .toggle-sidebar-button,
@@ -177,6 +180,7 @@
   font-weight: 300;
   transition: all .3s ease;
   
+}
 .lesson-button:hover {
   font-weight: bold;
   background:linear-gradient(to right, #8f95b6 20%, #fdfdff 120%);
@@ -192,7 +196,6 @@
   justify-content: center;
   margin-top: 20px;
 }
-
 /* .slide-in {
   animation: slideIn 400ms forwards; 
 }
@@ -212,6 +215,7 @@
   }
   background: linear-gradient(to right, #8f95b6 20%, #fdfdff 120%);
 }
+*/
 
 .content {
   display: grid;
@@ -334,6 +338,7 @@
 
 .slide-out {
   animation: slideOut 400ms forwards;
+}
 .lesson-modal-overlay {
   position: absolute;
   top: 0;

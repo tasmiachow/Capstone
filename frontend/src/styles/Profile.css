@@ -110,7 +110,7 @@
 .edit-button {
     margin-top: 15px;
     padding: 10px 15px;
-    background-color: #3D518C;
+    background-image: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
     color: white;
     border: none;
     border-radius: 5px;
@@ -121,8 +121,26 @@
     position: absolute;
     top: 10px;
     right: 30px;
+    transition: all 0.3s ease;
 }
-
+.edit-button:hover,.save:hover{
+    background: linear-gradient(to right, #8f95b6 20%, #fdfdff 120%);
+    box-shadow: 0 0 10px 2px rgba(118, 146, 255),
+    0 0 20px 4px rgba(171, 210, 250, 0.5); 
+  }
+.save{
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
+  color: #CCCCFF;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Lexend',serif;
+}
 .edit-form {
     background: white;
     border-radius: 15px;
@@ -151,7 +169,7 @@
 
 .edit-form button {
     padding: 10px;
-    background-color:#3D518C;
+    background: linear-gradient(to right, #3D518C 30%, #CCCCFF 120%);
     color: white;
     border: none;
     border-radius: 5px;
