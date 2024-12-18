@@ -6,9 +6,11 @@ import cv2
 # Load MediaPipe holistic model
 mp_holistic = mp.solutions.holistic
 
-def load_model():
-    model = tf.keras.models.load_model("models/model_1.h5")
-    return model
+def load_models():
+    model_1 = tf.keras.models.load_model("models/model_1.h5")
+    model_2 = tf.keras.models.load_model("models/model_2.h5")
+    model_3 = tf.keras.models.load_model("models/model_3.h5")
+    return {"model_1": model_1, "model_2": model_2,  "model_3": model_3}
 
 def mediapipe_detection(image, model):
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)

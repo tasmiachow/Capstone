@@ -2,7 +2,7 @@ from firebase_admin import auth
 from rest_framework.decorators import api_view
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .utils import load_model, mediapipe_detection, extract_keypoints
+from .utils import load_models, mediapipe_detection, extract_keypoints
 import mediapipe as mp
 import cv2
 import numpy as np
@@ -20,7 +20,7 @@ def verify_token(request):
     except Exception as e:
         return JsonResponse({'status': 'error', 'message': str(e)})
     
-model = load_model()
+models = load_models()
 mp_holistic = mp.solutions.holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5)
 
 sequences = {}
@@ -29,6 +29,10 @@ sequences = {}
 def predict_action(request):
     if request.method == 'POST' and request.FILES.get('frame'):
         session_id = request.POST.get('session_id', 'default')  # Use session_id to track user
+        model_type = request.POST.get('model_type') 
+        if model_type not in models:
+            return JsonResponse({"error": "Invalid model type. Use model_1, model_2, or model_3."}, status=400)
+        
         if session_id not in sequences:
             sequences[session_id] = []  # Initialize a new sequence
 
@@ -50,12 +54,24 @@ def predict_action(request):
 
             # If sequence is complete, make a prediction
             if len(sequences[session_id]) == 30:
-                res = model.predict(np.expand_dims(sequences[session_id], axis=0))[0]
+                selected_model = models[model_type]
+                res = selected_model.predict(np.expand_dims(sequences[session_id], axis=0))[0]
+
+                # Determine actions based on the selected model
+                if model_type == 'model_1':
+                    actions = ['Hello', 'Bye', 'Good_morning']
+                elif model_type == 'model_2':
+                    actions = ['Happy', 'Sad', 'Surprised']
+                elif model_type == 'model_3':
+                    actions = ['Lets_go', 'Help_me', 'Whats_your_name']
+                else:
+                    return JsonResponse({"error": "Invalid model_type specified."}, status=400)
+
                 predicted_action = int(np.argmax(res))
-                predicted_label = ['Hello', 'Bye', 'Good_morning'][predicted_action]
+                predicted_label = actions[predicted_action]
                 confidence = [float(c) for c in res]
 
-                # Reset the sequence after prediction
+                # Clear sequence after prediction
                 sequences[session_id] = []
 
                 return JsonResponse({
