@@ -22,9 +22,9 @@ const LearningModule = () => {
   const [hoverIndex, setHoverIndex] = useState(null);
 
   const lessons = {
-    Beginner: ['Lesson 1', 'Lesson 2', 'Lesson 3', 'Lesson 4', 'Lesson 5'],
-    Intermediate: ['Lesson 6', 'Lesson 7', 'Lesson 8', 'Lesson 9', 'Lesson 10'],
-    Hard: ['Lesson 11', 'Lesson 12', 'Lesson 13', 'Lesson 14', 'Lesson 15'],
+    Beginner: ['Lesson 1', 'Lesson 2', 'Lesson 3'],
+    Intermediate: ['Lesson 4', 'Lesson 5', 'Lesson 6'],
+    Hard: ['Lesson 7', 'Lesson 8', 'Lesson 9'],
   };
 
   const lessonContent = {

@@ -9,7 +9,7 @@
     padding: 10px 30px; /* Add padding for better spacing */
     height: 60px; /* Fixed height for consistent alignment */
     padding: 0 20px;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .navbar ul {

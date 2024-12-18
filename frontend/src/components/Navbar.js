@@ -58,14 +58,14 @@ const Navbar = () => {
           </li>
         )}
         <li><Link to="/modules">Modules</Link></li>
+        <li><Link to="/contact">Contact</Link></li>
+        <li><Link to="/faq">FAQ</Link></li>
+        <li><Link to="/example">Example</Link></li>
         {isLoggedIn ? (
           <li><button onClick={handleLogout} className="navitem logout-button">Logout</button></li>
         ) : (
           <li><Link to="/login"><div className="navitem login-button">Login</div></Link></li>
         )}
-        <li><Link to="/contact">Contact</Link></li>
-        <li><Link to="/faq">FAQ</Link></li>
-        <li><Link to="/example">Example</Link></li>
       </ul>
     </nav>
   );
