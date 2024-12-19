@@ -101,41 +101,49 @@ const LearningModule = () => {
     'Lesson 2': {
       text: 'Good Morning',
       video: '/Aslvid/Greetings/GoodMorning.mp4',
+      description:'To sign "Good Morning" in American Sign Language (ASL), with your dominant hand in a "closed 5" shape, touch your chin and then rest the palm facing up on the open palm of your other hand without moving. Then slide your dominant hand down and slightly forward and up in front of the other hand.',
       index: 2
     },
     'Lesson 3': {
       text: 'Bye',
       video: '/Aslvid/Greetings/Bye.mp4',
+      description: 'Goodbye is the same as the traditional gesture for the word. Open your palm, folding down your fingers, then open your palm again. An ASL alternative for goodbye or bye-bye is to wave your open hand sideways, like a leaf swaying in the wind',
       index: 1
     },
     'Lesson 4': {
       text: 'Happy',
       video: '/Aslvid/Emotions/Happy.mp4',
+      description: 'The sign for "happy" is made by placing one or both of your hands in front of you. Use flat hands, palms pointing back.',
       index: 0
     },
     'Lesson 5': {
       text: 'Sad',
       video: '/Aslvid/Emotions/Sad.mp4',
+      description: 'The sign for "sad" is made by placing both hands in front of your face, palms in. Bring both of your hands down the length of your face. Tilt your head forward slightly, and make a sad face.',
       index: 1
     },
     'Lesson 6': {
       text: 'Surprise',
       video: '/Aslvid/Emotions/Surprise.mp4',
-      index:2
+      description: 'Bring both hands up in front of your face and near your eyes. The pointer finger touches the tip of the thumb on both hands, and the remaining fingers tuck into each palm.',
+      index: 2
     },
     'Lesson 7': {
       text: 'Lets go',
-      video: '/Aslvid/Phrases/Help_me.mp4',
+      video: '/Aslvid/Phrases/Lets_go.mp4',
+      description: 'To sign "let go" in ASL, start with your hand in a gripping position and open it outward to mimic releasing something.',
       index:0
     },
     'Lesson 8': {
       text: 'Help me',
       video: '/Aslvid/Phrases/Help_me.mp4',
+      description: 'To sign "help me" in ASL, place your dominant hand in a thumbs-up position on your open palm (non-dominant hand), then move both hands slightly toward yourself.',
       index: 1
     },
     'Lesson 9': {
       text: 'Whats your name',
       video: '/Aslvid/Phrases/Whats_your_name.mp4',
+      description: 'To sign "Whats your name?" in ASL, point to the person, tap both hands in an "H" shape for "name," and finish with open palms moving side to side for "what."',
       index: 2
     }
   };
