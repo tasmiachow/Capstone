@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../styles/LearningModule.css';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import { doc, getDoc, updateDoc, setDoc } from 'firebase/firestore';
@@ -8,7 +8,8 @@ import { db, auth } from '../firebase';
 import beginnerBadge from '../Badges/beginner.json';
 import intermediateBadge from '../Badges/intermediate.json';
 import hardBadge from '../Badges/hard.json';
-import Example from './example';
+import Webcam from "react-webcam";
+import axios from "axios";
 
 const LearningModule = () => {
   const [expandedLevel, setExpandedLevel] = useState(null);
@@ -21,6 +22,69 @@ const LearningModule = () => {
   const [modal, setModal] = useState({ isVisible: false, message: '' });
   const [hoverIndex, setHoverIndex] = useState(null);
 
+  const webcamRef = useRef(null);
+  const [framesSent, setFramesSent] = useState(0);
+  const [prediction, setPrediction] = useState(null);
+  const sessionId = "unique_session_id"; // Use a unique identifier per user/session
+  const intervalRef = useRef(null); // To store the interval reference
+  const [isCapturing, setIsCapturing] = useState(false);
+
+  const startCapture = () => {
+    if (!isCapturing) {
+      setIsCapturing(true);
+
+      // Start capturing frames
+      intervalRef.current = setInterval(() => {
+        captureFrame();
+      }, 200); // Capture frame every 500ms
+    }
+  };
+  const captureFrame = async () => {
+    let modelType='model_1'
+    const lessonNum = selectedLesson;
+    const selectedLess = lessonNum.split(' ').pop();
+    if(selectedLess>3 && selectedLess<=6){
+      modelType='model_2'
+    }
+    else if(selectedLess>6 && selectedLess<=9){
+      modelType='model_3'
+    }
+    else{
+      modelType='model_1'
+    }
+
+    if (webcamRef.current) {
+      const imageSrc = webcamRef.current.getScreenshot();
+      const blob = await fetch(imageSrc).then((res) => res.blob());
+
+      const formData = new FormData();
+      formData.append("frame", blob, "frame.jpg");
+      formData.append("session_id", sessionId);
+      formData.append("model_type", modelType);
+
+      try {
+        const response = await axios.post("http://127.0.0.1:8000/api/predict-action/", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+
+        console.log("API Response:", response.data);
+
+        if (response.data.predicted_action !== undefined) {
+          clearInterval(intervalRef.current);  // Stop capturing frames
+          console.log("Prediction set:", response.data);
+          setPrediction(response.data);
+          handleLessonComplete(response.data);
+        } else {
+          setFramesSent((prev) => prev + 1);  // Increment frame count if not yet predicted
+        }
+      } catch (error) {
+        console.error("Error sending frame:", error);
+      }
+    }
+  };
+
   const lessons = {
     Beginner: ['Lesson 1', 'Lesson 2', 'Lesson 3'],
     Intermediate: ['Lesson 4', 'Lesson 5', 'Lesson 6'],
@@ -31,44 +95,48 @@ const LearningModule = () => {
     'Lesson 1': {
       text: 'Hello',
       video: '/Aslvid/Greetings/Hello.mp4',
-      description: 'To sign "Hello," simply raise your hand in front of the camera and give a friendly wave.'
+      description: 'To sign "Hello," simply raise your hand in front of the camera and give a friendly wave.',
+      index: 0
     },
     'Lesson 2': {
       text: 'Good Morning',
-      video: '/Aslvid/Alphabet/C.png',
+      video: '/Aslvid/Greetings/GoodMorning.mp4',
+      index: 2
     },
     'Lesson 3': {
       text: 'Bye',
-      video: '/Aslvid/Alphabet/E.png'
+      video: '/Aslvid/Greetings/Bye.mp4',
+      index: 1
     },
     'Lesson 4': {
-      text: 'L',
-      video: '/Aslvid/Alphabet/L.png'
-    },
-    'Lesson 5': {
-      text: 'O',
-      video: '/Aslvid/Alphabet/O.png'
-    },
-    'Lesson 6': {
-      text: 'Angry',
-      video: '/Aslvid/Emotions/Angry.mp4',
-      description: 'The sign for "angry" uses a single motion. If you use a double motion and a slightly less intense face it can mean "grouchy" or "grumpy." Try not to actually touch your face while doing this sign.'
-    },
-    'Lesson 7': {
       text: 'Happy',
       video: '/Aslvid/Emotions/Happy.mp4',
+      index: 0
     },
-    'Lesson 8': {
+    'Lesson 5': {
       text: 'Sad',
       video: '/Aslvid/Emotions/Sad.mp4',
+      index: 1
+    },
+    'Lesson 6': {
+      text: 'Surprise',
+      video: '/Aslvid/Emotions/Surprise.mp4',
+      index:2
+    },
+    'Lesson 7': {
+      text: 'Lets go',
+      video: '/Aslvid/Phrases/Help_me.mp4',
+      index:0
+    },
+    'Lesson 8': {
+      text: 'Help me',
+      video: '/Aslvid/Phrases/Help_me.mp4',
+      index: 1
     },
     'Lesson 9': {
-      text: 'Confused',
-      video: '/Aslvid/Emotions/Confused.mp4',
-    },
-    'Lesson 10': {
-      text: 'Calm',
-      video: '/Aslvid/Emotions/Calm.mp4',
+      text: 'Whats your name',
+      video: '/Aslvid/Phrases/Whats_your_name.mp4',
+      index: 2
     }
   };
 
@@ -197,7 +265,7 @@ const LearningModule = () => {
     }
   };
 
-  const handleLessonComplete = async () => {
+  const handleLessonComplete = async (predictionData) => {
     const user = auth.currentUser;
     if (user) {
       const completed = userProgress[selectedLesson]?.completed;
@@ -209,16 +277,16 @@ const LearningModule = () => {
       };
       const userRef = doc(db, 'users', user.uid);
       const userData = await getDoc(userRef);
-      await updateDoc(userRef, { progress: newProgress, points: userData.data().points + pointsToAdd });
       setUserProgress(newProgress);
-
-      if (completed) {
+      if (completed && predictionData.predicted_action==lessonContent[selectedLesson].index) {
+        await updateDoc(userRef, { progress: newProgress, points: userData.data().points + pointsToAdd });
         alert("Lesson revisited and 50 points awarded!");
-      } else {
+      } else if(predictionData.predicted_action==lessonContent[selectedLesson].index){
+        await updateDoc(userRef, { progress: newProgress, points: userData.data().points + pointsToAdd });
         alert("Lesson completed and 100 points awarded!");
       }
-
       checkAndAwardBadges(newProgress, userRef);
+      setIsCapturing(false);
     }
   };
 
@@ -372,17 +440,39 @@ const calculateProgress = (level) => {
                   </div>
                 )}
                 {lessonContent[selectedLesson].video && (
-                  <div className="lesson-video-container">
-                    <video key={selectedLesson} controls className="lesson-video">
-                      <source src={lessonContent[selectedLesson].video} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                    <p className="lesson-description">{lessonContent[selectedLesson].description}</p>
-                    <div className="lesson-buttons">
-                      <button className="lesson-button">Try it</button>
-                      <button className="lesson-button" onClick={openLevelModal}>Continue</button>
-                      <button className="lesson-button" onClick={handleLessonComplete}>Complete Lesson</button>
-                      <button className="lesson-button" onClick={handleNextLesson}>Next Lesson</button>
+                   <div className="lesson-video-container">
+                   <div className='lesson-video-hold'>
+                     <div className="lesson-video-explanation">
+                       <video key={selectedLesson} controls className="lesson-video">
+                         <source src={lessonContent[selectedLesson].video} type="video/mp4" />
+                         Your browser does not support the video tag.
+                       </video>
+                       </div>
+                       {/* <div className="web-video-explanation"> */}
+                       <div style={{ display: "flex", flex: 1, flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+                             {/* <h1>Real-Time Prediction</h1> */}
+                             <Webcam
+                               ref={webcamRef}
+                               screenshotFormat="image/jpeg"
+                               style={{ width: "74.5%", maxWidth: "500px",  transform: "scaleX(-1)",WebkitTransform: "scaleX(-1)"}}
+                             />
+                             {/* <p>Frames Sent: {framesSent}</p> */}
+                             {/* {prediction && (
+                               <div>
+                                 <h2>Prediction</h2>
+                                 <p>Action: {prediction.predicted_label}</p>
+                                 <p>Confidence: {prediction.confidence.join(", ")}</p>
+                               </div>
+                             )} */}
+                           </div>
+                       {/* </div> */}
+                     </div>
+                   <p className="lesson-description">{lessonContent[selectedLesson].description}</p>
+                   <div className="lesson-buttons">
+                     {/* <button className="lesson-button">Try it</button> */}
+                     {/* <button className="lesson-button" onClick={openLevelModal}>Continue</button>  */}
+                     <button className="lesson-button" onClick={startCapture} disabled={isCapturing}>Start</button>
+                     <button className="lesson-button" onClick={handleNextLesson}>Next Lesson</button>
                     </div>
                   </div>
                 )}

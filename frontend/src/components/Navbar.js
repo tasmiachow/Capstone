@@ -66,6 +66,9 @@ const Navbar = () => {
       </a>
       <ul>
         <li><Link to="/">Home</Link></li>
+        <li><Link to="/modules">Modules</Link></li>
+        <li><Link to="/contact">Contact</Link></li>
+        <li><Link to="/faq">FAQ</Link></li>
         {isLoggedIn && (
           <li>
             <div onClick={toggleDropdown} className="profile-icon">
@@ -74,12 +77,9 @@ const Navbar = () => {
             {showDropdown && <ProfileDropdown onClose={() => setShowDropdown(false)} />}
           </li>
         )}
-        <li><Link to="/modules">Modules</Link></li>
-        <li><Link to="/contact">Contact</Link></li>
-        <li><Link to="/faq">FAQ</Link></li>
-        <li><Link to="/example">Example</Link></li>
+        {/* <li><Link to="/example">Example</Link></li> */}
         {isLoggedIn ? (
-          <li><button onClick={handleLogout} className="navitem logout-button">Logout</button></li>
+          <li></li>
         ) : (
           <li><Link to="/login"><div className="navitem login-button">Login</div></Link></li>
         )}
