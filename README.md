@@ -51,7 +51,7 @@ This will start the frontend.
 Go to [Anaconda](https://www.anaconda.com/download). 
 Make sure you download the installer and the PowerShell prompt. 
 
-## Create Virtual Environment
+## Navigate
 Once installed, navigate to the backend folder:
 ```bash
 cd backend
