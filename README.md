@@ -1,4 +1,4 @@
-<div style="text-align: right;">
+<div style="text-align: center;">
   <img src="frontend/public/logo.png" alt="logo">
 </div>
 
@@ -57,16 +57,7 @@ Once installed, navigate to the backend folder:
 cd backend
 ```
 
-### Delete old virtual environment (BE CAREFUL):
-```bash
-rm -rf path_to_your_virtual_env
-```
-Or, on PowerShell:
-```bash
-Remove-Item -Recurse -Force path_to_your_virtual_env
-```
-
-Open up Anaconda PowerShell Prompt and create a virtual environment:
+## Open up Anaconda PowerShell Prompt and create a virtual environment:
 ```bash
 conda create --name modelenv python=3.11
 conda activate modelenv
